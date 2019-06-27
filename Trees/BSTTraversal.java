@@ -25,6 +25,7 @@ class Program
   // Vist the root
   // Traverse the left subtree : PreOrder(left-subtree)
   // Traverse the right subtree : PreOrder(right-subtree)
+  // O(n) time | O(n) space
   public static ArrayList<Integer> preOrderTraverse(BST tree, ArrayList<Integer> array) {
     array.add(tree.value);
 		if(tree.left != null)
@@ -41,7 +42,7 @@ class Program
   // Traverse the left subtree : PostOrder(left-subtree)
   // Traverse the right subtree: PostOrder(right-subtree)
   // Visit the root
-
+  // O(n) time | O(n) space 
   public static ArrayList<Integer> postOrderTraverse(BST tree, ArrayList<Integer> array) {
   if(tree.left != null)
   {
