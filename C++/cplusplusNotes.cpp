@@ -134,3 +134,12 @@ To accept an array as parameter for a function, the parameters can be declared a
 void procedure (int arg[])
 int myarray [40];
 procedure( myarray);
+
+
+Linked List notes.
+Every node has a pointer to the next node
+Doubly Linked List to the next node / previous node
+head = beginning of the linkedd List (only 1 pointer to the next node)
+tail = final node (only 1 pointer to the previous node)
+
+ 
