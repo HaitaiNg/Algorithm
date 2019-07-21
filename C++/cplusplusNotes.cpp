@@ -142,4 +142,46 @@ Doubly Linked List to the next node / previous node
 head = beginning of the linkedd List (only 1 pointer to the next node)
 tail = final node (only 1 pointer to the previous node)
 
- 
+Stacks and Queues: the whole organization is based on when the elements were placed in that structure (abstract data structure)
+Stacks : LIFO
+Queues: FIFO
+Implementation Independent data structures: stack, tree, queue, sorted list, graph
+
+Any command starting with a # in the first column is not a C++ / C statement
+rather it is a preprocessor statement. The preprocessor performed very basic text-based or lexical substitutuions
+Output is sent tothe compiler
+Sequence is : file (filename.cpp) -> preprocessor -> compiler (g++)
+
+Templates: Abstract way to implement algorithms: increases the reusability (one of the main reasons of OOP);
+Templates can be used with any data structures
+
+Unit for measuring running time: using basic operations
+Basic operation is the operation contributing the most to the total running runtime
+
+Selection Sort
+-Scan the array to find the smallest element and swap it with the first element
+-Starting with the second element, scan the elements to the right of it and find the smallest
+and swap it with the second element
+
+Pseudo code: O(n^2) on all inputs, O(n) swaps
+for i <- 0 to n -2 do
+  min <- i
+  for j <- i + 1 to n - 1 do
+    if a[j] < a[min] min <- j
+  swap A[i] and A[min]
+
+  O(n^2) : insertion, selection, bubble
+  O(nln(n)) : heap sort, quicksort, merge sort
+
+  Merge sort algorithm is defined recursively:
+  - if the list size 1, it is sorted, we are done
+  - otherwise:
+    -divide an unsorted list into two sub-lists
+    -sort each sub-list recursively using merge sort
+    -and merge the two sorted sub-lists into a single sorted list
+
+    Divide an unsorted list into two equal or nearly equal sub lists
+    Sorts each of the sub lists by calling itself recursively and then
+    merges the two sub lists together to form a sorted list
+
+    
