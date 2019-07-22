@@ -184,4 +184,32 @@ for i <- 0 to n -2 do
     Sorts each of the sub lists by calling itself recursively and then
     merges the two sub lists together to form a sorted list
 
-    
+    bool List: empty() const {return (list_head == nullptr);} 
+if you tried to access a member function of a pointer set to nullptr,
+we would be accessing restricted memory. OS would terminate program 
+
+The proces of stepping through a linked list can be thought as being analogous
+to a for loop. We initialize a temporary pointer with the liste head
+We continue iterating until the pointer equals nullptr
+With each step we set the pointe to point to the next object
+
+for(Node *ptr = head(); ptr != nullptr; ptr = ptr->next() ) 
+ Be careful of removing the front node in a linked list. Sometimes
+you may have problems deleting it properly
+
+Stacks: parsing code (matching parenthesis, XML), tracking function calls,
+dealing with undo / redo operations, reverse-polish calculators, assembly language
+Can be implemented using a singly liked list or one-ended array
+
+XMHTML : a markup language is a means of annotating a document to given context 
+to the text/ The annotations give information about the structure or 
+presentation of the text 
+
+Nesting indicates that any closing tag must match the most recent opening tag 
+Strategy for pasing XHTML:
+	-read through the xmhtml linearly
+	-place the opening tags in a stack
+	-when a closing tag is encountered, check that it matches what is on top
+	of the stack and oop 
+Reverse Polish Notation Prefix 
+
