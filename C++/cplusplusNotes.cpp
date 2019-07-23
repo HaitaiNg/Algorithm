@@ -184,16 +184,16 @@ for i <- 0 to n -2 do
     Sorts each of the sub lists by calling itself recursively and then
     merges the two sub lists together to form a sorted list
 
-    bool List: empty() const {return (list_head == nullptr);} 
+    bool List: empty() const {return (list_head == nullptr);}
 if you tried to access a member function of a pointer set to nullptr,
-we would be accessing restricted memory. OS would terminate program 
+we would be accessing restricted memory. OS would terminate program
 
 The proces of stepping through a linked list can be thought as being analogous
 to a for loop. We initialize a temporary pointer with the liste head
 We continue iterating until the pointer equals nullptr
 With each step we set the pointe to point to the next object
 
-for(Node *ptr = head(); ptr != nullptr; ptr = ptr->next() ) 
+for(Node *ptr = head(); ptr != nullptr; ptr = ptr->next() )
  Be careful of removing the front node in a linked list. Sometimes
 you may have problems deleting it properly
 
@@ -201,15 +201,45 @@ Stacks: parsing code (matching parenthesis, XML), tracking function calls,
 dealing with undo / redo operations, reverse-polish calculators, assembly language
 Can be implemented using a singly liked list or one-ended array
 
-XMHTML : a markup language is a means of annotating a document to given context 
-to the text/ The annotations give information about the structure or 
-presentation of the text 
+XMHTML : a markup language is a means of annotating a document to given context
+to the text/ The annotations give information about the structure or
+presentation of the text
 
-Nesting indicates that any closing tag must match the most recent opening tag 
+Nesting indicates that any closing tag must match the most recent opening tag
 Strategy for pasing XHTML:
 	-read through the xmhtml linearly
 	-place the opening tags in a stack
 	-when a closing tag is encountered, check that it matches what is on top
-	of the stack and oop 
-Reverse Polish Notation Prefix 
+	of the stack and oop
+Reverse Polish Notation Prefix
 
+Queue: FIFO
+Linked List array (Queue is best used for Breadth Frist Search)
+Circular arrays
+
+-place the root directory into a Queue
+-while the queue is not empty:
+  dequeue the directory at the front of the Queue
+  enqueue all of its subdirectories into the queue
+
+Depth first traversal:
+use a Stack: create a stack and push the root node onto the Stack
+while the stack is not empty:
+  pop the top Node
+  push all of the children of that node to the top of the stack in reverse order
+run time is O(n)
+the object on the stack are all unvisted siblings from the root to be current Node
+if each node has a maximum of two children, the memory required is O(h):
+the height of the tree
+
+Depth first traversals are used whenever the parent needs information
+about all its children or descendants, or the children require information
+about its parents or ancestors
+
+In designing a depth-first traversal: it is necessary to consider:
+before the children are traversed, what initializations, operations, and calculations must be performed?
+in recursively traversing the children:
+  what information must be passed to the children during the recursive call?
+  what information must the children pass back, and how must this information be collated?
+Once all children have been traversed, what operations and calculations depend on information
+collated during the recursive traversals?
