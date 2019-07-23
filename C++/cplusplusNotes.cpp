@@ -243,3 +243,10 @@ in recursively traversing the children:
   what information must the children pass back, and how must this information be collated?
 Once all children have been traversed, what operations and calculations depend on information
 collated during the recursive traversals?
+
+Perfect binary Trees
+Number of Nodes: 2^(h+1) - 1
+number of leaf nodes: 2^(h)
+Height : lg(n + 1 ) - 1
+
+lect 9 - lecture 13
