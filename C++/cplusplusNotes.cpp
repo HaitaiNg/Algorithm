@@ -1,30 +1,3 @@
-C++ is a compiled language. It is translated
-into machine langauge that can be understood directly
-by the system.
-
-#include <iostream>
-using namespace std;
-
-int main()
-{
-int a, b;
-a = 10;
-b = 4;
-a = b;
-b = 100;
-std::cout << a << "  " << b << endl;  // a = 4, b = 100
-}
-
- y /= x; // y = y/x;
-
-Conditional ternary operator (?)
-7 == 5 ? 1 : 0
-condition ? result1 (true) : result 2 (false)
-
-int i ;
-float f = 3.14;
-i = (int) f;
-
 The standard header <sstream> defines a type called stringstream
  that allows a string to be treated as a stream, and thus
  allowing extraction or insertion operations from/to strings in
@@ -115,18 +88,16 @@ int main()
   factorial(5);
 }
 
-Overloaded functions: two different funtions can have
-the same name but their parameters are different
-
 int foo[5] = {1,2,3,4,5};
 int baz[5] = {};
 int ccc = {10,20,30 }; // compiler will convert this to : {10,20,30,0,0};
 int foo [] = {1,2,3,4,5}; //compiler will automatically determine the size for you
-
 sexier way of creating arrays:
 int foo {10,20,30,40};
 
-In C++, it is syntactically correct to exceed the valid range of indices for an array. This can create problems, since accessing out-of-range elements do not cause errors on compilation, but can cause errors on runtime. The reason for this being allowed will be seen in a later chapter when pointers are introduced.
+In C++, it is syntactically correct to exceed the valid range of indices for an array.
+This can create problems, since accessing out-of-range elements do not cause errors on compilation,
+ but can cause errors on runtime. The reason for this being allowed will be seen in a later chapter when pointers are introduced.
 
 At some point, we may need to pass an array to a function as a parameter. In C++, it is not possible to pass the entire block of memory represented by an array to a function directly as an argument. But what can be passed instead is its address. In practice, this has almost the same effect, and it is a much faster and more efficient operation.
 
@@ -154,9 +125,6 @@ Sequence is : file (filename.cpp) -> preprocessor -> compiler (g++)
 
 Templates: Abstract way to implement algorithms: increases the reusability (one of the main reasons of OOP);
 Templates can be used with any data structures
-
-Unit for measuring running time: using basic operations
-Basic operation is the operation contributing the most to the total running runtime
 
 Selection Sort
 -Scan the array to find the smallest element and swap it with the first element
@@ -250,3 +218,19 @@ number of leaf nodes: 2^(h)
 Height : lg(n + 1 ) - 1
 
 lect 9 - lecture 13
+Binary search tree:
+given a nodes
+  all objects in the left sub-tree are less than the nodes
+  all objects in the right sub-tree are greater than the nodes
+  and both-subtrees are also binary search trees
+
+binary  min heap:
+given a node,
+  all strict descendants are greater than the node,
+  and both sub-trees are also binary heaps
+
+  Review graphs
+
+Breadth first: Queue
+depth first : stack
+Topological sort 
