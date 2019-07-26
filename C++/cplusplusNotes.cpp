@@ -1,14 +1,3 @@
-The standard header <sstream> defines a type called stringstream
- that allows a string to be treated as a stream, and thus
- allowing extraction or insertion operations from/to strings in
- the same way as they are performed on cin and cout. This feature
- is most useful when converting strings to numerical values
-
- string myStr("1024");
- int myInt;
- stringstream(myStr) >> myInt;
-
- ex:
 
  //stringstream
  #include <iostream>
@@ -27,8 +16,7 @@ The standard header <sstream> defines a type called stringstream
 
 
  // arguments passed by value and reference
-
- #include <iostream>
+  #include <iostream>
  using namespace std;
 
  void duplicate( int& a, int& b, int& c)
@@ -233,4 +221,41 @@ given a node,
 
 Breadth first: Queue
 depth first : stack
-Topological sort 
+Topological sort
+
+perfect binary tees:
+number of nodes: 2^(h + 1) - 1
+number of leaf nodes: 2^(h)
+
+Tree traversals:
+In-order: left -> root -> right
+Pre-order: root -> left -> right
+Post-order: left -> right -> root
+
+Longest Substring without repeating characters
+
+
+
+#include <vector>
+#include <iterator>
+#include <algorithm>
+
+using namespace std;
+
+
+class Solution {
+public:
+    int smallestRepunitDivByK(int K) {
+        if(K % 2 == 0 || K % 5 == 0)
+        {
+            return -1;
+        }
+        int r = 0;
+        for(int i = 1; i <= K; i++)
+        {
+            int r = (r * 10 + 1) % K;
+            if( r == 0){return i;}
+        }
+        return -1;
+    }
+};
