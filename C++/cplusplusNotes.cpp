@@ -259,3 +259,11 @@ public:
         return -1;
     }
 };
+
+Double-ended queues are sequence containers
+with dynamic sizes that can be expanded or contracted
+on both ends (either its front or its back)
+Deques are not guaranteed to store all of its
+elements in contiguous storage locations:
+accessing elements in a deque by offsetting a
+pointer to another element causes undefined behavior
