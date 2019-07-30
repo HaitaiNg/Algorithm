@@ -228,6 +228,11 @@ int main() {
     printf("%i\n%li\n%c\n%.03f\n%.09lf\n", a, b, c, d, e);
     return 0;
 }
-An array is a series of elements of the same type placed in contiguous memory locations that can be individually referenced by adding an index to a unique identifier.
 
-stringstream is used to parse-common stringstream
+Sorting algorithm for a linked list with minimum time complexity : mergesort
+Arrays have better cache locality that can make them better in terms of
+performance.
+Easy to insert / delete in a linked list. Random access is now allowed
+in a typical linkedl list ( you have to iterate through all nodes)
+Size of an array has to be pre-determined. Linked lists can change
+their size at any runtime
