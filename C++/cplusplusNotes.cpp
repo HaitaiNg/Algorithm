@@ -236,3 +236,102 @@ Easy to insert / delete in a linked list. Random access is now allowed
 in a typical linkedl list ( you have to iterate through all nodes)
 Size of an array has to be pre-determined. Linked lists can change
 their size at any runtime
+
+Automatically added to every class:
+copy constructor, assignment operator, a constructor without any parameters
+Compiler creates a default constructor, copy constructor, and an assignment operator
+
+Copy constructor is called: when an object of the class is returned by value;
+when an object of the class is passed (to a function) by value as an argument
+When an object is constructed based on another object of the same class
+when compiler generates a temporary object
+
+Copy constructor uses references: A copy construcotr is called
+when an object is passed by value. Copy constructor itself is a
+function. So if we pass argument by value in a cpy constructor,
+a call to copy constructor would be made to call copy constructor
+which becomes a non-terminating chain of calls.
+
+Members of a class are private by default
+Members of a struct are public by default
+When deriving a struct from a class / struct, default access specifier for a
+base class /struct is a public and when deriving a class,
+default access specifier is private
+
+Difference between compile error and run time error?
+
+Objects of a class do not share non static members. Every object has
+its own copy. Every object maintains a copy of non-static
+data members. Static members are shared among obkects. All
+objects share codes of al examples.
+
+A membe function can always access the data in (the class of which it is a
+member) in C++
+
+A member function can access it's class member variables irrespective
+of the access specifier in which the member variable is declared. So a member
+function can always access the data in the class of which it is a member
+
+Inline functions are useful when function is small and we want to
+avoid function call overhead
+
+Destructors can be private
+
+C++
+C++ constructors 10/21
+References 0/6
+Class and object 10/17
+Destructors 2/4
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+class A
+{
+  int id;
+  static int count;
+public:
+  A()
+  {
+    count++;
+    id = count;
+    cout << "constructor for id " << id << endl;
+  }
+  ~A()
+  {
+    cout << "destructor for id" << id << endl;
+  }
+};
+int A::count = 0;
+int main()
+{
+  A a[3];
+  return 0;
+}
+
+// Output
+constructor for id 1
+constructor for id 2
+constructor for id 3
+destructor for id 3
+destructor for id 2
+destructor for id 1
+
+Stack data structure applications
+Managing function calls, stock span problem, artihmetic expression evaluation
+If a stack is implemented using a linked list, to keep it LIFO ( if nodes)
+are appended to the beginning (push), then to remove nodes (pop) must occur
+at the beginning of the linked list
+If nodes are pushed at the end (push), then nodes have to be removed from the end
+(pop)
+
+When you visit a website, the web server
+hosting that site could be anywhere in the world.
+In order for you to find the location of the
+web server, your browser will first connect
+to a domain name server (DNS) server
+A DNS is like a phone book 
