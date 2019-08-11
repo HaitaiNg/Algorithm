@@ -334,4 +334,241 @@ hosting that site could be anywhere in the world.
 In order for you to find the location of the
 web server, your browser will first connect
 to a domain name server (DNS) server
-A DNS is like a phone book 
+A DNS is like a phone book
+
+If a lambda captures a local by reference, which negative outcome may happen?
+The value may go out of scope before lambda uses it
+What does the #include directive do?
+Locates symbols in target file and allows their use of the current line
+
+When can functions be overloaded?
+When there is a diferent number of parmeters and/or types of parameters
+
+If a function returns **this then the return type should be by reference
+'\n' vs std::endl  :: std::endl is slower because of the flush
+
+
+try
+    {
+  string s1("abc");
+  string s2("def");
+  s1.append(s2, 4, 3);
+  cout << s1 << endl;
+    }
+  catch (exception &e)
+    {
+  cerr << "Exception: " << e.what() << endl;
+  cerr << "Type: " << typeid(e).name() << endl;
+};
+
+// INvalid tring position, class std::out_of_range exception is thrown
+
+std::accumulate(begin(numbers), end(numbers), 0); // 0 is the starting point
+//value for the local
+
+What is the name of the function the compiler runs when an object
+goes out of scope? destructor
+What does the keyword "final" do when applied to a method?
+It means that the method can't be overrideen in a derived class
+
+Why would a function take an object by reference (instead by value)
+if the function will not change that object?
+To save the cost of a copy
+
+What is the purpose of c_str() member function of std::string?
+It provides a char* to pass to legacy code tha doesn't know std::string
+
+
+#include <iostream>
+using namespace std;
+double x=1.0;
+void f()
+{
+  int y=2;
+  {
+    float z=3.0f;
+    y = (int)z;
+  }
+  cout << "end of f";
+}
+int main()
+{
+  f();
+  return 0;
+}
+
+// x and y are still in scope at the cout statement
+
+
+int x = 1;
+switch(x)
+{
+   case 1 : // code
+   case 2 : // code
+   case 3 : // code
+   break;
+   default: // code
+}
+
+//the code for the first three test cases will execute
+//In orer to make an efective case / switch statement, you must include "break"
+//statements
+
+Class D is derived from class B. Given the following: catch (const B *)
+{} if a type D+ is thrown, what will happen? The exception will be caught
+
+
+What will the final values of x, y, and z be?
+int x = 0; int y = ++x; int z = x++;  // x = 2, y = 1, z = 1
+
+Which errors are more likely to be fixed by #include statements
+//Both comiler and linker errors
+
+// ----------------------------------- //
+struct Animal
+{
+  virtual void sound() const { cout << "eek"; }
+};
+struct Human : Animal
+{
+  void sound() const { cout << "hello"; }
+};
+struct Scientist : Human
+{
+  void sound() const { cout << "greetings"; }
+};
+
+//What will the following print?
+Animal* animal = new Scientist();
+animal->respond();
+// The code will output (greetings)
+
+A void pointer can be cast (at your own risk) to: any kind of pointer
+Linked list: faster than vector for adding new elements \ Slower than vector for accessing elements
+
+
+Sexy ass lambda code
+vector<double> dv;
+transform(v.begin(), v.end(), back_inserter(dv) [](int n) -> double 
+{
+	if(na%2 == 0)
+	{
+		return n*n*n;
+	}
+	else{
+		return n / 2.0;
+	}
+}}; 
+
+What is a lambda? represent an operation or function object
+Compiler generates an anonymous function object:
+overrides (operator - the function call)
+	parameters are the () of the lambda
+	return type is after the -> of the lambda 
+Look up lambdas C++ 
+
+Lambdas make for_each and other standard library functions suddenly usable
+Open the doors for interesting parallel and functional work
+Parallel for_eaches on the CPU and GPU, take the exact same parameters
+and you can parallelized across the CPU / GPU.
+C++11 Lambdas offer more control than other languages 
+	/ capture by value or reference
+	/C++ is all about power and performance. 
+
+Simplest way to handle expected errors is to test for them
+Deal with them rigth where they are discovered
+Sometimes the code that finds the problem cannot deal with it
+
+One approach
+Have the function return an indication of trouble
+Eg: UpdateTimeSheet() returns true or false
+Constructors cannot return anything
+That is why some developers use INIT 
+A try block can have multiple catch statements
+Only the first exception will be executed 
+Catch more specific exceptions first
+Catch exceptions by reference 
+
+
+using namespace std;
+int _tmain(int argc, _TCHAR* argv[])
+{
+	try{
+		vector<int> v; 
+		v.push_back(1);
+		int j = v.at(99); 
+	} 
+	catch (out_of_range& oor)
+	{
+	} 
+	catch (exception& e)
+	{
+		cout << e.what(); 
+	} 
+
+	return 0
+} 
+
+C++ allows you to throw and catch anything
+THe standard library includes an exception class that way the 
+developer does not have to define everything
+
+sd::exception
+Has a member function: what() - returns a string
+Has a number of derived classes
+logic_error:
+	-domain_error
+	-invalid_argument
+	-length_error
+	-out_of_range
+
+Unwinding the stack
+When an exception is thrown
+
+Unwinding the stack 
+If in a try, everything local to try goes out of scope:
+	destructors go off
+	control goes to the catch 
+If not, everything local to the function goes out of scope
+	control returns to where that function was called from
+	recurse to "if in a try" above
+
+
+Compare these situations
+
+//Why is this scenario bad? Potential memory leaks
+//what if delete x is not called?
+try
+{
+	auto x = new X(stuff);
+	// risky stuff
+	delete x; 
+}
+catch ( exception& e)
+{
+	//react
+}
+
+
+//Better solution
+// Stack will call destructor and delete X after
+// the exception is thrown 
+// You want it such that unwinding the stack
+// automatically deletes and frees memory leaks 
+try
+{
+	auto x = make_sharead<X>(stuff);
+	//risky stuff
+}
+catch (exception& e)
+{
+	// react
+} 
+
+Time is used up if an exception is thrown 
+Otherwise it is very little cost
+using exceptions make neater code that runs faster
+when everything runs nicely
+
+
+
