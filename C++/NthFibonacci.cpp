@@ -1,3 +1,5 @@
+
+#include <iostream>
 using namespace std;
 
 // O(2^n) time | O(n) space
@@ -11,7 +13,7 @@ int getNthFib(int n) {
 
 
 //O(n) time | O(1) space`
-int getNthFib(int n)
+int getNthFibonacciOptimized(int n)
 {
   int lastTwo[] = {0, 1};
   int counter = 3;
@@ -23,4 +25,12 @@ int getNthFib(int n)
     counter++;
   }
   return n > 1 ? lastTwo[1] : lastTwo[0];
+}
+
+int main()
+{
+  cout << "5 " << getNthFib(5) <<  "= 3 \n";
+  cout << "9 " << getNthFib(9) << "= 21 \n";
+  cout << "17 " << getNthFib(17) << "=987 \n";
+  return 0;
 }
