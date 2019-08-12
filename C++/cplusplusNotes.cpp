@@ -449,7 +449,7 @@ Linked list: faster than vector for adding new elements \ Slower than vector for
 
 Sexy ass lambda code
 vector<double> dv;
-transform(v.begin(), v.end(), back_inserter(dv) [](int n) -> double 
+transform(v.begin(), v.end(), back_inserter(dv) [](int n) -> double
 {
 	if(na%2 == 0)
 	{
@@ -458,22 +458,22 @@ transform(v.begin(), v.end(), back_inserter(dv) [](int n) -> double
 	else{
 		return n / 2.0;
 	}
-}}; 
+}};
 
 What is a lambda? represent an operation or function object
 Compiler generates an anonymous function object:
 overrides (operator - the function call)
 	parameters are the () of the lambda
-	return type is after the -> of the lambda 
-Look up lambdas C++ 
+	return type is after the -> of the lambda
+Look up lambdas C++
 
 Lambdas make for_each and other standard library functions suddenly usable
 Open the doors for interesting parallel and functional work
 Parallel for_eaches on the CPU and GPU, take the exact same parameters
 and you can parallelized across the CPU / GPU.
-C++11 Lambdas offer more control than other languages 
+C++11 Lambdas offer more control than other languages
 	/ capture by value or reference
-	/C++ is all about power and performance. 
+	/C++ is all about power and performance.
 
 Simplest way to handle expected errors is to test for them
 Deal with them rigth where they are discovered
@@ -483,34 +483,34 @@ One approach
 Have the function return an indication of trouble
 Eg: UpdateTimeSheet() returns true or false
 Constructors cannot return anything
-That is why some developers use INIT 
+That is why some developers use INIT
 A try block can have multiple catch statements
-Only the first exception will be executed 
+Only the first exception will be executed
 Catch more specific exceptions first
-Catch exceptions by reference 
+Catch exceptions by reference
 
 
 using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
 {
 	try{
-		vector<int> v; 
+		vector<int> v;
 		v.push_back(1);
-		int j = v.at(99); 
-	} 
+		int j = v.at(99);
+	}
 	catch (out_of_range& oor)
 	{
-	} 
+	}
 	catch (exception& e)
 	{
-		cout << e.what(); 
-	} 
+		cout << e.what();
+	}
 
 	return 0
-} 
+}
 
 C++ allows you to throw and catch anything
-THe standard library includes an exception class that way the 
+THe standard library includes an exception class that way the
 developer does not have to define everything
 
 sd::exception
@@ -525,10 +525,10 @@ logic_error:
 Unwinding the stack
 When an exception is thrown
 
-Unwinding the stack 
+Unwinding the stack
 If in a try, everything local to try goes out of scope:
 	destructors go off
-	control goes to the catch 
+	control goes to the catch
 If not, everything local to the function goes out of scope
 	control returns to where that function was called from
 	recurse to "if in a try" above
@@ -542,7 +542,7 @@ try
 {
 	auto x = new X(stuff);
 	// risky stuff
-	delete x; 
+	delete x;
 }
 catch ( exception& e)
 {
@@ -552,9 +552,9 @@ catch ( exception& e)
 
 //Better solution
 // Stack will call destructor and delete X after
-// the exception is thrown 
+// the exception is thrown
 // You want it such that unwinding the stack
-// automatically deletes and frees memory leaks 
+// automatically deletes and frees memory leaks
 try
 {
 	auto x = make_sharead<X>(stuff);
@@ -563,12 +563,11 @@ try
 catch (exception& e)
 {
 	// react
-} 
+}
 
-Time is used up if an exception is thrown 
+Time is used up if an exception is thrown
 Otherwise it is very little cost
 using exceptions make neater code that runs faster
 when everything runs nicely
 
-
-
+typedef: used to define your own types
