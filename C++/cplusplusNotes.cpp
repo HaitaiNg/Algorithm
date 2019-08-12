@@ -571,3 +571,16 @@ using exceptions make neater code that runs faster
 when everything runs nicely
 
 typedef: used to define your own types
+
+Feature of C++ 2011
+TwoNumberSum.cpp:16:12: warning: generalized initializer lists are a C++11 extension [-Wc++11-extensions]
+                                return {array[leftPointer], array[rightPointer]};
+                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TwoNumberSum.cpp:16:12: error: non-aggregate type 'vector<int>' cannot be initialized with an initializer list
+                                return {array[leftPointer], array[rightPointer]};
+                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TwoNumberSum.cpp:27:10: warning: generalized initializer lists are a C++11 extension [-Wc++11-extensions]
+                return {};
+                       ^~
+TwoNumberSum.cpp:27:10: error: non-aggregate type 'vector<int>' cannot be initialized with an initializer list
+                return {};
