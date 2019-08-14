@@ -1,30 +1,30 @@
-#include <vector>
-#include <iostream>
 #include <algorithm>
+#include <iostream>
+#include <vector>
 using namespace std;
 
-/* bubbleSort
- * Best: O(n) time | O(1) name
- * Average : O(n^2) time | O(1) name
- * Worst: O(n^2) time | O(1) space
- */
-vector<int> bubbleSort(vector<int> array) {
-	int i, j = 0;
-	for(i = 0; i < array.size() - 1; i++)
-	{
-		for( j = 0; j < array.size() - i - 1; j++)
-		{
-			if(array[j] > array[j + 1])
-			{
-				int temp = array[j];
-				array[j] = array[j+1];
-				array[j+1] = temp;
-			}
-		}
-	}
+/* Bubble sort
+  Best: O(n) time | O(1) memory
+  Averae: O(n^2) time | O(1) space
+  Worst: O(n^2) time | O(1) space
+*/
+vector<int> bubbleSort(vector<int> array)
+{
+  int i, j = 0;
+  for(i = 0; i < array.size() - 1; i++)
+  {
+    for( j = 0; j < array.size() - i - 1; j++)
+    {
+      if(array[j] > array[j + 1])
+      {
+        int temp = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
+      }
+    }
+  }
   return array;
 }
-
 
 /* Binary Search
  * O(log(n)) time | O(1) space
@@ -77,8 +77,6 @@ vector<int> insertionSort(vector<int> array) {
 	{
 		return {};
 	}
-
-
 	for(int i = 1; i < array.size(); i++)
 	{
 		int j = i;

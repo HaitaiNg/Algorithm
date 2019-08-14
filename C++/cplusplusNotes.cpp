@@ -1,43 +1,20 @@
- // arguments passed by value and reference
-  #include <iostream>
- using namespace std;
+A union is a class type that can hold only one of its
+non-static data members at a time.
+A union can have member functions (constructors and destructors)
+but not virtual functions.
+A union can have base classes and cannot be used as a base class
+A union cannot have non-static data members of reference types
 
- void duplicate( int& a, int& b, int& c)
- {
-  a *= 2;
-  b *= 5;
-  c *= 10;
- }
+In C++, it is not possible to pass the entire block of memory represented by an
+array to a function directly as an argument.
+But what can be passed instead is its address. In practice, this has
+almost the same effect, and it is a much faster and more efficient operation.
 
- int main()
- {
- int a = 10, b = 2, c = 30;
- duplicate(a, b c); // a = 20, b = 10, c = 300
- return 0;
- }
-
-In C++, it is syntactically correct to exceed the valid range of indices for an array.
-This can create problems, since accessing out-of-range elements do not cause errors on compilation,
- but can cause errors on runtime. The reason for this being allowed will be seen in a later chapter when pointers are introduced.
-
-At some point, we may need to pass an array to a function as a parameter.
-In C++, it is not possible to pass the entire block of memory represented by an array to a function directly as an argument.
-But what can be passed instead is its address. In practice, this has almost the same effect, and it is a much faster and more efficient operation.
-
-To accept an array as parameter for a function, the parameters can be declared as the array type, but with empty brackets, omitting the actual size of the array. For example:
+To accept an array as parameter for a function, the parameters can be declared
+as the array type, but with empty brackets, omitting the actual size of the array
 void procedure (int arg[])
 int myarray [40];
 procedure( myarray);
-
-
-Linked List notes.
-Every node has a pointer to the next node
-Doubly Linked List to the next node / previous node
-head = beginning of the linkedd List (only 1 pointer to the next node)
-tail = final node (only 1 pointer to the previous node)
-
-Stacks : LIFO
-Queues: FIFO
 
 Any command starting with a # in the first column is not a C++ / C statement
 rather it is a preprocessor statement.
@@ -48,133 +25,7 @@ Sequence is : file (filename.cpp) -> preprocessor -> compiler (g++)
 Templates: Abstract way to implement algorithms:
 increases the reusability (one of the main reasons of OOP);
 Templates can be used with any data structures
-
-Selection Sort
-Scan the array to find the smallest element and swap it with the first element
-Starting with the second element, scan the elements to the right of it and
-find the smallest and swap it with the second element
-
-Pseudo code: O(n^2) on all inputs, O(n) swaps
-for i <- 0 to n -2 do
-  min <- i
-  for j <- i + 1 to n - 1 do
-    if a[j] < a[min] min <- j
-  swap A[i] and A[min]
-
-  O(n^2) : insertion, selection, bubble
-  O(nln(n)) : heap sort, quicksort, merge sort
-
-  Merge sort algorithm is defined recursively:
-  - if the list size 1, it is sorted, we are done
-  - otherwise:
-    -divide an unsorted list into two sub-lists
-    -sort each sub-list recursively using merge sort
-    -and merge the two sorted sub-lists into a single sorted list
-
-    Divide an unsorted list into two equal or nearly equal sub lists
-    Sorts each of the sub lists by calling itself recursively and then
-    merges the two sub lists together to form a sorted list
-
-    bool List: empty() const {return (list_head == nullptr);}
-if you tried to access a member function of a pointer set to nullptr,
-we would be accessing restricted memory. OS would terminate program
-
-The proces of stepping through a linked list can be thought as being analogous
-to a for loop. We initialize a temporary pointer with the liste head
-We continue iterating until the pointer equals nullptr
-With each step we set the pointe to point to the next object
-
-for(Node *ptr = head(); ptr != nullptr; ptr = ptr->next() )
- Be careful of removing the front node in a linked list. Sometimes
-you may have problems deleting it properly
-
-Stacks: parsing code (matching parenthesis, XML), tracking function calls,
-dealing with undo / redo operations, reverse-polish calculators, assembly language
-Can be implemented using a singly liked list or one-ended array
-
-XMHTML : a markup language is a means of annotating a document to given context
-to the text/ The annotations give information about the structure or
-presentation of the text
-
-Nesting indicates that any closing tag must match the most recent opening tag
-Strategy for pasing XHTML:
-	-read through the xmhtml linearly
-	-place the opening tags in a stack
-	-when a closing tag is encountered, check that it matches what is on top
-	of the stack and oop
-Reverse Polish Notation Prefix
-
-Queue: FIFO
-Linked List array (Queue is best used for Breadth Frist Search)
-Circular arrays
-
--place the root directory into a Queue
--while the queue is not empty:
-  dequeue the directory at the front of the Queue
-  enqueue all of its subdirectories into the queue
-
-Depth first traversal:
-use a Stack: create a stack and push the root node onto the Stack
-while the stack is not empty:
-  pop the top Node
-  push all of the children of that node to the top of the stack in reverse order
-run time is O(n)
-the object on the stack are all unvisted siblings from the root to be current Node
-if each node has a maximum of two children, the memory required is O(h):
-the height of the tree
-
-Depth first traversals are used whenever the parent needs information
-about all its children or descendants, or the children require information
-about its parents or ancestors
-
-In designing a depth-first traversal: it is necessary to consider:
-before the children are traversed, what initializations, operations, and calculations must be performed?
-in recursively traversing the children:
-  what information must be passed to the children during the recursive call?
-  what information must the children pass back, and how must this information be collated?
-Once all children have been traversed, what operations and calculations depend on information
-collated during the recursive traversals?
-
-Perfect binary Trees
-Number of Nodes: 2^(h+1) - 1
-number of leaf nodes: 2^(h)
-Height : lg(n + 1 ) - 1
-
-lect 9 - lecture 13
-Binary search tree:
-given a nodes
-  all objects in the left sub-tree are less than the nodes
-  all objects in the right sub-tree are greater than the nodes
-  and both-subtrees are also binary search trees
-
-binary  min heap:
-given a node,
-  all strict descendants are greater than the node,
-  and both sub-trees are also binary heaps
-
-  Review graphs
-
-Breadth first: Queue
-depth first : stack
-Topological sort
-
-perfect binary tees:
-number of nodes: 2^(h + 1) - 1
-number of leaf nodes: 2^(h)
-
-Tree traversals:
-In-order: left -> root -> right
-Pre-order: root -> left -> right
-Post-order: left -> right -> root
-
-Double-ended queues are sequence containers
-with dynamic sizes that can be expanded or contracted
-on both ends (either its front or its back)
-Deques are not guaranteed to store all of its
-elements in contiguous storage locations:
-accessing elements in a deque by offsetting a
-pointer to another element causes undefined behavior
-
+---- ENDED HERE 
 A pointer in C is a way to share a memory address among
 different contexts (prmarily functions). They
 are primarily used whenever a function needs to modify the content
@@ -276,13 +127,53 @@ Inline functions are useful when function is small and we want to
 avoid function call overhead
 
 Destructors can be private
+Inlines functions are useful if function is small and we want to avoid function call
+overhead.
 
 C++
 C++ constructors 10/21
 References 0/6
 Class and object 10/17
 Destructors 2/4
+Static Keywork 3/6
+C++ misc 5/15
+friend function 1/ 4
+Overloading operator 6/11
+Virtual functions 5/14
 
+
+Virtual function in C++
+must be declared in public sections of class
+Virtual function should be accessed using pointers
+Virtual function is defined in base class
+Virtual functions cannot be static
+
+In C++ polymorhism requires: inheritance, virtual functions and references
+Polymorphism means having many forms. Polymorphism occurs when there
+is a hierarchy of classes and they are related by  which
+include virtual functions and references
+
+Method over-riding can be prevented by using final as a modifier
+at the start of the method declaration
+
+#includ <iostream>
+using namespace std;
+int x = 1;
+void fun()
+{
+  int x = 2;
+  {
+    int x = 3;
+    cout << ::x << endl;
+  }
+}
+int main()
+{
+  fun();
+  /* The value of ::x is 1. The scope resolution operator when
+   used with a variable name, always refers to global variable.*/
+  return 0;
+}
 
 
 
@@ -584,3 +475,517 @@ TwoNumberSum.cpp:27:10: warning: generalized initializer lists are a C++11 exten
                        ^~
 TwoNumberSum.cpp:27:10: error: non-aggregate type 'vector<int>' cannot be initialized with an initializer list
                 return {};
+-----------------------------------------
+#include <iostream>
+using namespace std;
+
+class Test
+{
+    static int x;
+public:
+    Test() { x++; }
+    static int getX() {return x;}
+};
+
+int Test::x = 0;
+
+int main()
+{
+    cout << Test::getX() << " ";
+    Test t[5];
+    cout << Test::getX();
+    // output - 0 5
+    // static functions can be called without any object.
+    // The call to Test::GetX() is fine. Since x is initialized as 0, the first
+    // call to getX(0 returns 0. When an array of 5 objects is created,
+  // the constructor is called 5 times. So X is incremented to 5 before the next call
+ //to get X )
+}
+
+#include <iostream>
+using namespace std;
+
+class Player
+{
+private:
+    int id;
+    static int next_id;
+public:
+    int getID() { return id; }
+    Player()  {  id = next_id++; }
+};
+int Player::next_id = 1;
+
+int main()
+{
+  Player p1;
+  Player p2;
+  Player p3;
+  cout << p1.getID() << " ";
+  cout << p2.getID() << " ";
+  cout << p3.getID();
+  return 0;
+
+  // output = 1 2 3
+  /* if a member variable is delcared as static, all objects of that class
+  have access to a single instance of that variable. Static variables
+  are sometimes called class variables, class fields, or class-wide
+  fields because they do not belong to a specific object;
+  They blong to the class.
+
+  //Static methods can only access static members (data and methods)
+  //static members are accessible in non-static functions, so no
+  // problem with accessing count in fun(). Also note that
+  // fun() returns the same object by reference
+  */
+}
+
+
+#include<iostream>
+using namespace std;
+
+class Test
+{
+private:
+    static int count;
+public:
+    Test& fun();
+};
+
+int Test::count = 0;
+
+Test& Test::fun()
+{
+    Test::count++;
+    cout << Test::count << " ";
+    return *this;
+}
+
+int main()
+{
+    Test t;
+    t.fun().fun().fun().fun(); // 1 2 3 4
+    return 0;
+}
+
+// ---------------- \\
+
+#include <iostream>
+using namespace std;
+union A
+{
+  int a;
+  unsigned int b ;
+  A() { a = 10; }
+  unsigned int getB() { return b; }
+};
+int main()
+{
+  A obj;
+  cout << obj.getB(); // output = 10
+  return 0;
+}
+
+/* Like struct and class, union can have methods. Like struct and
+unlike class, members of union are public by default. Since
+data members of union share memory, the value of b becomes same as a
+*/
+
+Inline functions do type checking for parameters, macros do not
+Macros are processed by pre-processor and inline functions are
+processed in larger stages of compilation
+macros cannot have return statement, inline functions can
+macros are not prone to bugs and errors, inline functions are not.
+
+How can we make a C++ class such that objects of it can only be created using
+new operator? If user tries to create an object directly,
+the program produces compiler error.
+
+By making the destructor private
+
+// Objects of test can only be created using new
+class Test
+{
+private:
+    ~Test() {}
+friend void destructTest(Test* );
+};
+
+// Only this function can destruct objects of Test
+void destructTest(Test* ptr)
+{
+    delete ptr;
+}
+
+int main()
+{
+    // create an object
+    Test *ptr = new Test;
+
+    // destruct the object
+    destructTest (ptr);
+
+    return 0;}
+
+
+--------------------------------------
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class a
+{
+public :
+    ~a()
+    {
+        cout << "destroy";
+    }
+};
+int main()
+{
+   vector <a*> *v1  = new vector<a*>;
+   vector <a> *v2  = new vector<a>;
+   return 0;
+}
+// no destructor call
+
+------------------------------------
+#include <iostream>
+using namespace std;
+int x[100];
+int main()
+{
+  cout << x[99] << endl; // 0
+  // In C++ all uninitalized global variables are initialized to 0 ß
+}
+
+------------------------------------
+The associativity of which of the following operators is left
+to Right in C++? Array element access
+A member function can always access the data in the class of which it is member
+(in C++)
+
+A memeber function can access it's class member variables, irrespective of the
+access specifier in which the member variable is declared. So a member function
+can always access the data in the class of which it is a member
+
+----------------
+
+#include <iostream>
+using namespace std;
+class A
+{
+protected:
+    int x;
+public:
+    A() {x = 0;}
+    friend void show();
+};
+
+class B: public A
+{
+public:
+    B() : y (0) {}
+private:
+    int y;
+};
+
+void show()
+{
+    A a;
+    B b;
+    cout << "The default value of A::x = " << a.x << " ";
+    cout << "The default value of B::y = " << b.y;
+}
+
+/* Compiler error in show() because y is private in class B
+Please note that show() is a friend of class A, so there should not be any compiler error in accessing any member of A in show(). Class B is inherited from A, the important point to note here is friendship is not inherited. So show() doesn't become a friend of B and therefore can't access private members of B. */
+
+If a function is friend of class:
+A function can only be declared a friend by a friend itself
+Friend functions are not members of a class, they are associated with it
+It can have access to all members of the class, even priate ones
+
+Friend of class can be member of some other class but Friend functions
+are not the members of a particular class
+
+All member functions of the class granted friendship
+have unrestricted access to the members of the class granting
+the friendship
+
+When a class grants friend status to another class then
+all member functions of the class granted friendship have
+unrestircted access to the members of the class granting the frienship
+Class friendship is not recprocal to each other
+
+How can we restrict dynamic allocation of objects of a class using new?
+By making an empty private new and new[] operators
+
+If we declare new and [] new operators, then the objects cannot be created anywhere (within the class and outside the class) See the following example. We can not allocate an object of type Test using new.
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+
+class Test {
+private:
+    void* operator new(size_t size) {}
+    void* operator new[](size_t size) {}
+};
+
+int main()
+{
+    Test *obj = new Test;
+    Test *arr = new Test[10];
+    return 0;
+}
+
+Following operators cannot be overloaded
+. (member access or dot operator)
+?: (ternary or conditional operator)
+:: (scope resolution operator)
+.* (pointer-to-member operator)
+
+Which of the following operators are overloaded by default by the compiler in
+every user defined class een if user has not written?
+1) comparison operator ( == )
+1) assignment operator ( = )
+
+Assign operator is by default available in all user defined classes even if user has not implemented. The default assignement does shallow copy. But comparison operator "==" is not overloaded.
+
+cout is an object of ostream class which is a compiler defined class. When we do "cout << obj" where obj is an object of our class, the compiler first looks for an operator function in ostream, then it looks for a global function. One way to overload insertion operator is to modify ostream class which may not be a good idea. So we make a global method. Following is an example.
+
+#include <iostream>
+using namespace std;
+
+class Complex
+{
+private:
+    int real;
+    int imag;
+public:
+    Complex(int r = 0, int i =0)
+    {
+        real = r;
+        imag = i;
+    }
+    friend ostream & operator << (ostream &out, const Complex &c);
+};
+
+ostream & operator << (ostream &out, const Complex &c)
+{
+    out << c.real;
+    out << "+i" << c.imag;
+    return out;
+}
+
+int main()
+{
+    Complex c1(10, 15);
+    cout << c1;
+    return 0;
+}
+
+
+How doe a C++ compiler differ between overloaded postfix and prefix
+operators?
+A postfix ++ has a dummy parameter
+
+Virutal functions are functions that can be overridden in derived class
+with the same signature
+Virtual functions enable run-time polymorphim in a
+inheritance hierarchy
+If a function is "virtual" in the base class, the most deri-ved
+class's implementation of the function is called according to the
+actual type of the object referred to, regardless of the declared type
+of pointer or reference. In non-virutal functions,
+the functions are called according to the type of reference or poiinter
+
+include<iostream>
+using namespace std;
+
+class Base
+{
+public:
+    virtual void show() { cout<<" In Base n"; }
+};
+
+class Derived: public Base
+{
+public:
+    void show() { cout<<"In Derived n"; }
+};
+
+int main(void)
+{
+    Base *bp = new Derived;
+    bp->show(); // In dericed
+
+    Base &br = *bp;
+    br.show(); // In derived
+
+    return 0;
+}
+// since show is virtual in base class, it is called
+//according to the type of object being referred or pointed, rather than
+// the type of pointer pr reference
+
+
+if a class has a pure virtual function, then the class becomes abstract
+class and an instance of this class cannot be created.
+
+
+
+#include<iostream>
+using namespace std;
+
+class Base
+{
+public:
+    virtual void show() = 0;
+};
+
+int main(void)
+{
+    Base b; //< There is a compiler error in line "base B"
+    Base *bp;
+    return 0;
+}
+
+Since base B has a pure virtual function, it becomes an abstract class
+and an instance of it cannot be created.
+
+
+#include<iostream>
+using namespace std;
+class Base
+{
+public:
+    virtual void show() = 0;
+};
+
+class Derived : public Base { };
+
+int main(void)
+{
+    Derived q; //< Compiler error: derived is abstract
+    return 0;
+}
+If we do not override the pure virtual function in derived class ,
+then derived class also becomes an abstract class
+
+#include<iostream>
+using namespace std;
+
+class Base
+{
+public:
+    virtual void show() = 0;
+};
+
+class Derived: public Base
+{
+public:
+    void show() { cout<<"In Derived n"; }
+};
+
+int main(void)
+{
+    Derived d;
+    Base &br = d;
+    br.show(); // "in Derived"
+    return 0;
+}
+
+A constructor cannot be virtual. Making a constructor does not make snese as
+a constructor is responsible for creating an object
+and it cannot be delegated to any other object by virtual keyword means
+
+#include<iostream>
+using namespace std;
+class Base  {
+public:
+    Base()    { cout<<"Constructor: Base"<<endl; }
+    virtual ~Base()   { cout<<"Destructor : Base"<<endl; }
+};
+class Derived: public Base {
+public:
+    Derived()   { cout<<"Constructor: Derived"<<endl; }
+    ~Derived()  { cout<<"Destructor : Derived"<<endl; }
+};
+int main()  {
+    Base *Var = new Derived();
+    delete Var;
+    return 0;
+}
+
+Constructor: Base
+Constructor: Derived
+Destructor : Derived
+Destructor : Base
+
+Static functions cannot be virtual. Static functions are class specific
+and may not be called on objects.
+
+
+
+#include <iostream>
+using namespace std;
+
+class A
+{
+public:
+    virtual void fun();
+};
+
+class B
+{
+public:
+   void fun();
+};
+
+int main()
+{
+    int a = sizeof(A), b = sizeof(B);
+    if (a == b) cout << "a == b";
+    else if (a > b) cout << "a > b";
+    else cout << "a < b";
+    return 0;
+}
+
+// Output ( A > b)
+Class A has a VPTR which is not there in class B. In a typical implementation of virtual functions, compiler places a VPTR with every object. Compiler secretly adds some code in every constructor to this.
+
+
+#include <iostream>
+using namespace std;
+
+class A
+{
+public:
+    virtual void fun() { cout << "A::fun() "; }
+};
+
+class B: public A
+{
+public:
+   void fun() { cout << "B::fun() "; }
+};
+
+class C: public B
+{
+public:
+   void fun() { cout << "C::fun() "; }
+};
+
+int main()
+{
+    B *bp = new C;
+    bp->fun();
+    return 0;
+} // A::fun()
+
+The important thing to note here is B::fun() is virtual even if we have not uses virtual keyword with it. When a class has a virtual function, functions with same signature in all descendant classes automatically become virtual. We don't need to use virtual keyword in declaration of fun() in B and C. They are anyways virtual.
+
+A base class function can be accessed with scope resolution operator even if the function is virtual.
