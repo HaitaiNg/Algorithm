@@ -1,3 +1,14 @@
+C++
+C++ constructors 10/21
+References 0/6
+Class and object 10/17
+Destructors 2/4
+Static Keywork 3/6
+C++ misc 5/15
+friend function 1/ 4
+Overloading operator 6/11
+Virtual functions 5/14
+
 A union is a class type that can hold only one of its
 non-static data members at a time.
 A union can have member functions (constructors and destructors)
@@ -25,7 +36,7 @@ Sequence is : file (filename.cpp) -> preprocessor -> compiler (g++)
 Templates: Abstract way to implement algorithms:
 increases the reusability (one of the main reasons of OOP);
 Templates can be used with any data structures
----- ENDED HERE 
+
 A pointer in C is a way to share a memory address among
 different contexts (prmarily functions). They
 are primarily used whenever a function needs to modify the content
@@ -41,7 +52,6 @@ void increment(int *v)
 {
   (*v)++;
 }
-
 int main()
 {
   int a;
@@ -50,19 +60,15 @@ int main()
   printf("%d", a);
   return 0;
 }
-
------------------
-
+//-------------------- \\
 #include <stdio.h>
 #include <cmath>
-
 void update(int *a,int *b) {
     int sum = *a + *b;
     int absDifference = *a - *b > 0 ? *a - *b : -(*a - *b);
     *a = sum;
     *b = absDifference;
 }
-
 int main() {
     int a, b;
     int *pa = &a, *pb = &b;
@@ -71,7 +77,8 @@ int main() {
     printf("%d\n%d", a, b);
     return 0;
 }
-------------
+
+//-------------------- \\
 
 int main() {
     int a; long b; char c; float d; double e;
@@ -80,23 +87,15 @@ int main() {
     return 0;
 }
 
-Sorting algorithm for a linked list with minimum time complexity : mergesort
-Arrays have better cache locality that can make them better in terms of
-performance.
-Easy to insert / delete in a linked list. Random access is now allowed
-in a typical linkedl list ( you have to iterate through all nodes)
-Size of an array has to be pre-determined. Linked lists can change
-their size at any runtime
 
-Automatically added to every class:
+These are automatically added to every class:
 copy constructor, assignment operator, a constructor without any parameters
-Compiler creates a default constructor, copy constructor, and an assignment operator
-
+Compiler creates a default constructor, copy constructor,
+and an assignment operator
 Copy constructor is called: when an object of the class is returned by value;
 when an object of the class is passed (to a function) by value as an argument
 When an object is constructed based on another object of the same class
 when compiler generates a temporary object
-
 Copy constructor uses references: A copy construcotr is called
 when an object is passed by value. Copy constructor itself is a
 function. So if we pass argument by value in a cpy constructor,
@@ -109,45 +108,25 @@ When deriving a struct from a class / struct, default access specifier for a
 base class /struct is a public and when deriving a class,
 default access specifier is private
 
-Difference between compile error and run time error?
-
 Objects of a class do not share non static members. Every object has
 its own copy. Every object maintains a copy of non-static
 data members. Static members are shared among obkects. All
 objects share codes of al examples.
 
-A membe function can always access the data in (the class of which it is a
-member) in C++
-
-A member function can access it's class member variables irrespective
-of the access specifier in which the member variable is declared. So a member
-function can always access the data in the class of which it is a member
+A member function can always access the data in (the class of which it is a
+member) in C++. A member function can access it's class member variables
+irrespective of the access specifier in which the member variable is declared.
+So a member function can always access the data in the class of which it is
+a member
 
 Inline functions are useful when function is small and we want to
 avoid function call overhead
-
 Destructors can be private
-Inlines functions are useful if function is small and we want to avoid function call
-overhead.
 
-C++
-C++ constructors 10/21
-References 0/6
-Class and object 10/17
-Destructors 2/4
-Static Keywork 3/6
-C++ misc 5/15
-friend function 1/ 4
-Overloading operator 6/11
-Virtual functions 5/14
-
-
-Virtual function in C++
-must be declared in public sections of class
+Virtual function in C++ must be declared in public sections of class
 Virtual function should be accessed using pointers
 Virtual function is defined in base class
 Virtual functions cannot be static
-
 In C++ polymorhism requires: inheritance, virtual functions and references
 Polymorphism means having many forms. Polymorphism occurs when there
 is a hierarchy of classes and they are related by  which
@@ -174,11 +153,7 @@ int main()
    used with a variable name, always refers to global variable.*/
   return 0;
 }
-
-
-
-
-
+// ------------------ \\
 #include <iostream>
 using namespace std;
 class A
@@ -212,29 +187,12 @@ destructor for id 3
 destructor for id 2
 destructor for id 1
 
-Stack data structure applications
-Managing function calls, stock span problem, artihmetic expression evaluation
-If a stack is implemented using a linked list, to keep it LIFO ( if nodes)
-are appended to the beginning (push), then to remove nodes (pop) must occur
-at the beginning of the linked list
-If nodes are pushed at the end (push), then nodes have to be removed from the end
-(pop)
-
-When you visit a website, the web server
-hosting that site could be anywhere in the world.
-In order for you to find the location of the
-web server, your browser will first connect
-to a domain name server (DNS) server
-A DNS is like a phone book
-
 If a lambda captures a local by reference, which negative outcome may happen?
 The value may go out of scope before lambda uses it
 What does the #include directive do?
 Locates symbols in target file and allows their use of the current line
-
 When can functions be overloaded?
 When there is a diferent number of parmeters and/or types of parameters
-
 If a function returns **this then the return type should be by reference
 '\n' vs std::endl  :: std::endl is slower because of the flush
 
@@ -252,8 +210,7 @@ try
   cerr << "Type: " << typeid(e).name() << endl;
 };
 
-// INvalid tring position, class std::out_of_range exception is thrown
-
+// Invalid tring position, class std::out_of_range exception is thrown
 std::accumulate(begin(numbers), end(numbers), 0); // 0 is the starting point
 //value for the local
 
@@ -269,28 +226,6 @@ To save the cost of a copy
 What is the purpose of c_str() member function of std::string?
 It provides a char* to pass to legacy code tha doesn't know std::string
 
-
-#include <iostream>
-using namespace std;
-double x=1.0;
-void f()
-{
-  int y=2;
-  {
-    float z=3.0f;
-    y = (int)z;
-  }
-  cout << "end of f";
-}
-int main()
-{
-  f();
-  return 0;
-}
-
-// x and y are still in scope at the cout statement
-
-
 int x = 1;
 switch(x)
 {
@@ -300,15 +235,12 @@ switch(x)
    break;
    default: // code
 }
-
 //the code for the first three test cases will execute
 //In orer to make an efective case / switch statement, you must include "break"
 //statements
 
 Class D is derived from class B. Given the following: catch (const B *)
 {} if a type D+ is thrown, what will happen? The exception will be caught
-
-
 What will the final values of x, y, and z be?
 int x = 0; int y = ++x; int z = x++;  // x = 2, y = 1, z = 1
 
@@ -335,40 +267,22 @@ animal->respond();
 // The code will output (greetings)
 
 A void pointer can be cast (at your own risk) to: any kind of pointer
-Linked list: faster than vector for adding new elements \ Slower than vector for accessing elements
-
-
-Sexy ass lambda code
-vector<double> dv;
-transform(v.begin(), v.end(), back_inserter(dv) [](int n) -> double
-{
-	if(na%2 == 0)
-	{
-		return n*n*n;
-	}
-	else{
-		return n / 2.0;
-	}
-}};
+Linked list: faster than vector for adding new elements \ Slower than vector
+for accessing elements
 
 What is a lambda? represent an operation or function object
 Compiler generates an anonymous function object:
 overrides (operator - the function call)
 	parameters are the () of the lambda
 	return type is after the -> of the lambda
-Look up lambdas C++
 
 Lambdas make for_each and other standard library functions suddenly usable
 Open the doors for interesting parallel and functional work
 Parallel for_eaches on the CPU and GPU, take the exact same parameters
-and you can parallelized across the CPU / GPU.
+and you can parallelize across the CPU / GPU.
 C++11 Lambdas offer more control than other languages
 	/ capture by value or reference
 	/C++ is all about power and performance.
-
-Simplest way to handle expected errors is to test for them
-Deal with them rigth where they are discovered
-Sometimes the code that finds the problem cannot deal with it
 
 One approach
 Have the function return an indication of trouble
@@ -379,7 +293,6 @@ A try block can have multiple catch statements
 Only the first exception will be executed
 Catch more specific exceptions first
 Catch exceptions by reference
-
 
 using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
@@ -414,9 +327,6 @@ logic_error:
 	-out_of_range
 
 Unwinding the stack
-When an exception is thrown
-
-Unwinding the stack
 If in a try, everything local to try goes out of scope:
 	destructors go off
 	control goes to the catch
@@ -440,7 +350,6 @@ catch ( exception& e)
 	//react
 }
 
-
 //Better solution
 // Stack will call destructor and delete X after
 // the exception is thrown
@@ -462,20 +371,7 @@ using exceptions make neater code that runs faster
 when everything runs nicely
 
 typedef: used to define your own types
-
-Feature of C++ 2011
-TwoNumberSum.cpp:16:12: warning: generalized initializer lists are a C++11 extension [-Wc++11-extensions]
-                                return {array[leftPointer], array[rightPointer]};
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TwoNumberSum.cpp:16:12: error: non-aggregate type 'vector<int>' cannot be initialized with an initializer list
-                                return {array[leftPointer], array[rightPointer]};
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TwoNumberSum.cpp:27:10: warning: generalized initializer lists are a C++11 extension [-Wc++11-extensions]
-                return {};
-                       ^~
-TwoNumberSum.cpp:27:10: error: non-aggregate type 'vector<int>' cannot be initialized with an initializer list
-                return {};
------------------------------------------
+// ----------------------- \\
 #include <iostream>
 using namespace std;
 
@@ -600,8 +496,6 @@ macros are not prone to bugs and errors, inline functions are not.
 How can we make a C++ class such that objects of it can only be created using
 new operator? If user tries to create an object directly,
 the program produces compiler error.
-
-By making the destructor private
 
 // Objects of test can only be created using new
 class Test
