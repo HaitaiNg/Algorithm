@@ -8,6 +8,7 @@ C++ misc 5/15
 friend function 1/ 4
 Overloading operator 6/11
 Virtual functions 5/14
+Templates
 
 A union is a class type that can hold only one of its
 non-static data members at a time.
@@ -16,7 +17,7 @@ but not virtual functions.
 A union can have base classes and cannot be used as a base class
 A union cannot have non-static data members of reference types
 
-In C++, it is not possible to pass the entire block of memory represented by an
+GIn C++, it is not possible to pass the entire block of memory represented by an
 array to a function directly as an argument.
 But what can be passed instead is its address. In practice, this has
 almost the same effect, and it is a much faster and more efficient operation.
@@ -883,3 +884,240 @@ int main()
 The important thing to note here is B::fun() is virtual even if we have not uses virtual keyword with it. When a class has a virtual function, functions with same signature in all descendant classes automatically become virtual. We don't need to use virtual keyword in declaration of fun() in B and C. They are anyways virtual.
 
 A base class function can be accessed with scope resolution operator even if the function is virtual.
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    const char* p = "12345"; // pointer to a constant
+    const char **q = &p; // pointer to a pointer
+    *q = "abcde"; // changes p to point to "abcde"
+    const char *s = ++p; // assigns addresses of literal 'bcde" to s
+    p = "XYZWVU";
+    cout << *++s; // c
+    return 0;
+}
+
+In C++, const qualifer can be applied to: member functions of a class;
+function arguments; to a class data member which is declared as static;
+reference variables. When a function is declaread as const, it
+cannot modify data members of its class. When we do not want to
+modify an argument and pass it as reference or pointer, we use const qualifier
+so that the argument is not accidentally modified in function
+
+Class data members members can be declaread as both const and static for
+class wide constants.
+
+#include <iostream>
+using namespace std;
+class Point
+{
+    int x, y;
+public:
+ Point(int i = 0, int j =0)
+   { x = i; y = j;  }
+   int getX() const { return x; }
+   int getY() {return y;}
+};
+
+int main()
+{
+    const Point t;
+    cout << t.getX() << " ";
+    cout << t.gety(); //< there is compiler error. A const object can only call
+                      // const functions
+    return 0;
+}
+
+
+// --------------- \\
+#include <stdio.h>
+int main()
+{
+   const int x;
+   x = 10;
+   printf("%d", x);
+   return 0;
+   /* Compiler error: one cannot change the value of 'const' variable
+   except at the time of initialization. Compiler does check this */
+}x
+
+// ------------ \\
+#include <iostream>
+int const s = 9;
+int main()
+{
+  std::cout << s;
+  return 0;
+}
+
+Template is a feature of C++ that allows us to write one code
+for different data types
+We can write one function that can be used for all data types including
+user defined types. Like sort(), max(), min()
+We can write one class or struct that can be used for all data types
+including user defined types. Like linked lists, stack, queue
+
+#include <iostream>
+using namespace std;
+
+template <typename T>
+void fun(const T&x)
+{
+    static int count = 0;
+    cout << "x = " << x << " count = " << count << endl;
+    ++count;
+    return;
+}
+
+int main()
+{
+    fun<int> (1);
+    cout << endl;
+    fun<int>(1);
+    cout << endl;
+    fun<double>(1.1);
+    cout << endl;
+    return 0;
+}
+
+/* x = 1 count = 0
+   x = 1 count = 1
+   x = 1.1 count = 0
+
+   Compiler creates a new instance of a template function for every data type
+   So compiler creates two functions in the above example, one for int,
+   one for double. Every instance has its own copy of static variable.
+   The int instance of function is called twice, so count is incremented for
+   the second call
+*/
+
+#include <iostream>
+using namespace std;
+
+template <class T>
+class Test
+{
+private:
+    T val;
+public:
+    static int count;
+    Test()  {   count++;   }
+};
+
+template<class T>
+int Test<T>::count = 0;
+
+int main()
+{
+    Test<int> a;
+    Test<int> b;
+    Test<double> c;
+    cout << Test<int>::count   << endl; // 2
+    cout << Test<double>::count << endl; // 1
+    return 0;
+}
+
+/*
+  There are two classes created by the template
+  Test and test
+  Since each count is a static member, every class
+  has its own copy of it.
+  Also counts get incremented in constructor
+*/
+
+
+Assume that the size of char is 1 byte and size of int is 4 bytes, and there is no alignment done by the compiler.
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+template<class T, class U>
+class A  {
+    T x;
+    U y;
+    static int count;
+};
+
+int main()  {
+   A<char, char> a;
+   A<int, int> b;
+   cout << sizeof(a) << endl; // 2
+   cout << sizeof(b) << endl; // 8 
+   return 0;
+}
+
+//C++ STL 
+#include <vector> 
+#include <algorithm> // sort(A.begin(), A.end()); 
+binary_search(A.begin(), A.end(), 3);  //O(log(n))
+A.push_back(100); 
+
+vector<int>::iterator it = lower_bound(A.begin(), A.end(), 100); //first element binary search 
+vector<int>::iterator it = upper_bound(A.begin(), A.end(), 100); //last element binary search 
+
+auto it = lower_bound(A.begin(), A.end(), 100); 
+
+//Sorting in reverse order
+bool f(int x, int y)
+{
+return x > y; }
+
+sort(A.begin(), A.end(), f); 
+
+vector<int>::iterator it3; 
+for(it3 = A.begin(); it3 != A.end(); it3++)
+{
+	cout << *it3 << "\n"; 
+}
+
+for(int &x: A) //references 
+{
+	x++; // since you are doing by reference. you are modifying the contents of the vector 
+	cout << x << " "; 
+} 
+
+#include <set>
+set<int> s;
+s.insert(1);
+s.insert(5); 
+s.insert(-10); 
+
+for(int x : S) //set will print in sorted order 
+{
+	cout << x << " ": 
+}
+
+
+auto it = s.find(-1); 
+
+mapDemo 
+#include <map> 
+map<int, int> A;
+A[1] = 100;
+A[2] = -1; 
+A[3] = 200; 
+A[1324213] = 1; 
+
+map<char,int > cnt; 
+string x = "test"; 
+for(char c : x)
+{
+	cnt[c]++; 
+} 
+A.find(key); // log(n) 
+A.erase(key); // log(n) 
+
+Unodered sets have O(1) average time
+Set uses less memory than unordered_set to store the same number of elements
+For a small number of elements, looksups in a set might be faster than 
+lookups in an unordered set 
+Even though many operations are faster in the average case 
+for unordered_set_ they are often guranted to hae better worse case 
+complexities for set
+The set sorts the element is useful if you want to access them in order 
+
+
+
+
+
