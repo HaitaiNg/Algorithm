@@ -3,9 +3,7 @@
 
 using namespace std;
 
-// Feel free to add new properties and methods to the class.
 class MinMaxStack {
-
 	public:
 		vector<unordered_map<string, int>> minMaxStack = {};
 		vector<int> stack = {};
@@ -38,12 +36,8 @@ class MinMaxStack {
   }
 
 // O(1) time | O(1) space
-  int getMin() { return minMaxStack[minMaxStack.size() - 1]["min"];
-    // Write your code here.
-  }
+  int getMin() { return minMaxStack[minMaxStack.size() - 1]["min"];}
 
-// O(1) time | O(1) space 
-  int getMax() { return minMaxStack[minMaxStack.size() - 1]["max"];
-    // Write your code here.r
-  }
+// O(1) time | O(1) space
+  int getMax() { return minMaxStack[minMaxStack.size() - 1]["max"];}
 };

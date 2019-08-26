@@ -3,6 +3,13 @@ Every node has a pointer to the next node
 Doubly linked list to the next node / previous node
 Head = beginning of the linked list (only 1 pointer to the next node)
 Tail = final node (only 1 pointer to the previous node)
+Sorting algorithm for a linked list with minimum time complexity: mergesort
+Arrays have better cache locality that can make them better in terms of
+performance.
+Easy to insert / remove in a linked list. Random access takes linar time
+since you have to iterate through all the nodes.
+The size of an array has to be pre-determined. Linked Lists can
+adjust their size at any runtime.
 
 The process of stepping through a linked list can be thought as being analogous
 to a for loop. We initialize a temporary pointer with the list head
@@ -18,6 +25,13 @@ Stacks: parsing code (matching parenthesis, XML), tracking function calls,
 dealing with undo / redo operations, reverse-polish calculators,
 assembly language. Can be implemented using a singly liked
 list or one-ended array
+Stack data structure applications
+Managing function calls, stock span problem, artihmetic expression evaluation
+If a stack is implemented using a linked list, to keep it LIFO ( if nodes)
+are appended to the beginning (push), then to remove nodes (pop) must occur
+at the beginning of the linked list
+If nodes are pushed at the end (push), then nodes have to be removed from the end
+(pop)
 
 Depth first search: Create a stack and push the root node onto the stack
 while the stack is not empty:

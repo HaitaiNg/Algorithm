@@ -1,4 +1,4 @@
-/*
+/
 #Three number sum (ideal algorithm)
 # Sort the array
 # Use two loops and iterate through the array
@@ -20,7 +20,7 @@
 using namespace std;
 vector<vector<int> > threeNumberSum(vector<int> array, int targetSum) {
 	vector<vector<int>> triplets;
-  sort( array.begin(), array.end());
+ 	 sort( array.begin(), array.end());
 	for(int i = 0; i < array.size() - 2; i++)
 	{
 		int left = i + 1;
