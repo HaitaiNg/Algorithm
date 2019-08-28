@@ -28,13 +28,13 @@ public:
   // Each node will have a key, value, and a number.
   // Number is to keep track of history.
   struct Node{
-    string key, value, number;
+    string key, value, size;
     Node *next;
     Node(string k, string v, int n)
     {
       key = k;
       value = v;
-      number = n;
+      size = n;
       next = NULL;
     }
     public:
@@ -48,7 +48,7 @@ public:
 
     // array of pointers
     Node* pointerArray[100000];
-    int number = 0 ; //< number of elements in the hashmap
+    int size = 0 ; //< number of elements in the hashmap
 
     /// Constructor: Intialize and set all indices set to NULL
     CustomHashMap()
@@ -70,8 +70,17 @@ public:
     }
 
     void clear();
-    void containsKey();
-    void isEmpty();
+
+    bool containsKey(string key)
+    {
+      int index = hashingFunction(key);
+      // contine tomorrow
+      return false;
+    }
+
+
+    bool isEmpty(){return size == 0 ? true : false; };
+
     string get(string key)
     {
       int index = hashingFunction(key);
@@ -80,18 +89,15 @@ public:
       {
         while(targetNode != NULL)
         {
-          cout << "K " << targetNode->key << "\n";
+          cout << "K " << targetNode->key << "  " << key << "\n";
           cout << "KD " << targetNode->getKey() << "\n";
           cout << "V " << targetNode->value << "\n";
           cout << "VD " << targetNode->getValue() << "\n";
-
-
-
           if(key == targetNode->getKey())
           {
           //  cout << targetNode->getValue() << "\n";
           //  cout << targetNode->value << "\n";
-            cout <<"hitting break";
+            cout <<"hitting break" << "\n";
             return "";
           }
           else
@@ -117,7 +123,9 @@ public:
           // once you find the node with the same key
           if(key == linkedListNode->getKey())
           {
+            cout << "SETTING THIS " << value << "\n";
             linkedListNode->setValue(value);
+            cout << " GTTIN VALUE " << linkedListNode->getValue() << "\n";
             return;
           }
           else
@@ -128,12 +136,12 @@ public:
         // If there is no value associated with that index, then create a new
         // pointer and place it in the arrayPointer. The pointer at the
         // index will point to a linked list of Nodes
-        Node *newNode = new Node(key, value, number);
+        Node *newNode = new Node(key, value, size);
         newNode->next = pointerArray[index];
         pointerArray[index] = newNode;
-        number++;
-        cout << "insert " << index << " " << key << " " << value;
-        cout << " " << number << "\n";
+        size++;
+        cout << "creating node " << index << " " << key << " " << value;
+        cout << " " << size << "\n";
      }
 
     void remove();
@@ -144,9 +152,9 @@ int main()
 {
   cout << "Initializing & Creating Hash Map \n";
   CustomHashMap* object = new CustomHashMap();
-  object->put("test", "this");
+  object->put("mockKey", "mockValue");
   object->put("123", "mock");
   object->get("123");
-  object->get("test");
+  object->get("mockKey");
   return 0;
 }
