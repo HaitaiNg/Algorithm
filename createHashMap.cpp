@@ -73,9 +73,7 @@ public:
 
     bool containsKey(string key)
     {
-      int index = hashingFunction(key);
-      // contine tomorrow
-      return false;
+      return get(key) != "" ? true : false;
     }
 
 
@@ -106,7 +104,7 @@ public:
           }
         }
       }
-      cout << "Unable to find value associated with key";
+      cout << "Unable to find value associated with key "  << key << "\n" ;
       return "";
     }
 
@@ -144,7 +142,34 @@ public:
         cout << " " << size << "\n";
      }
 
-    void remove();
+    void remove(string key)
+    {
+      int index = hashingFunction(key);
+      Node *linkedListNode = pointerArray[index];
+      if(linkedListNode == NULL)
+      {
+        return;
+      }
+      else if(linkedListNode != NULL && key ==linkedListNode->getKey())
+      {
+        pointerArray[index] = linkedListNode->next;
+        delete linkedListNode;
+        return;
+      }
+
+      Node *temporaryNode;
+      while(linkedListNode != NULL)
+      {
+        if(linkedListNode->next->getKey() == key)
+        {
+          temporaryNode = linkedListNode->next;
+          linkedListNode = temporaryNode->next;
+          delete temporaryNode;
+          return;
+        }
+        linkedListNode = linkedListNode->next; 
+      }
+    }
 };
 
 
@@ -156,5 +181,7 @@ int main()
   object->put("123", "mock");
   object->get("123");
   object->get("mockKey");
+  object->containsKey("123");
+  object->containsKey("FDFD");
   return 0;
 }
