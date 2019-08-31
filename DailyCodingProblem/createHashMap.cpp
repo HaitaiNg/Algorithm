@@ -1,21 +1,24 @@
 
 /*
  * The purpose of this class is to create a custom hash map
- * without using the hash map library
+ * without using the hash map library.
+ *
  * Traits and characteristics of this data structure
  * (Key, value) : Key must be unique
  * Unordered
  * Dynamic allocation
  * O(1) access time
- * Methods that must be supported: clear, containsKey, isEmpty, get, put,
-
+ * Methods that must be supported: clear; containsKey; containsValue;
+ * isEmpty; get; keySet; put; remove; size; values
+ *
  * This hash map will be built off an array (vector)
  * where (hashFunction(key)) = indice
- * key + hashing function -> array -> at indice (hashFunction(key))  pointer to linked list -> value
+ * key + hashing function -> array -> at indice (hashFunction(key))
+ * pointer to linked list -> value.
+ * Chaining and Linked List
  *
- *
+ * Written by Haitai Ng (20190830)
 */
-// getKeys, getValues,
 
 #include <algorithm>
 #include <cstddef>
@@ -31,14 +34,11 @@ public:
   // Each node will have a key, value, and a number.
   // Number is to keep track of history.
   struct Node{
-    string key, value, numberOfItems;
+    string key, value, number;
     Node *next;
     Node(string k, string v, int n)
     {
-      key = k;
-      value = v;
-      numberOfItems = n;
-      next = NULL;
+      key = k; value = v; number = n; next = NULL;
     }
     public:
       string getKey() {return key;}
@@ -55,15 +55,24 @@ public:
     int numberOfItems = 0 ; //< number of elements in the hashmap
     vector<string> listOfKeys;
     vector<string> listOfValues;
-    /// Constructor: Intialize and set all indices set to NULL
+
+    /*
+     * Constructor: Intialize and set all indices set to NULL
+     */
     CustomHashMap()
     {
       cout << "Initializing & Creating Hash Map \n";
       for(int i = 0; i < 100000; i++){pointerArray[i] = NULL;}
     }
 
-    // Hashing function (convert string to ASCII)
-    // ASCII will be used as the key
+    /*
+     * Name: hashingFunction
+     * Input: string key
+     * Output: int index
+     * Descrption: Given a key, generate and return a unique index.
+     * The index will be the location in the pointerArray where the
+     * pointer to the Linked List will be stored.
+     */
     int hashingFunction(string key)
     {
 	     //return (key -> ASCII -> number) // merkle tree (no duplicates)
@@ -75,24 +84,58 @@ public:
     	return index;
     }
 
+    /*
+     * Name: clear
+     * Descrption: Delete everything in the hash map. Reset all data structures
+     */
     void clear()
     {
-      cout << "Deleting Hash Map" << "\n";
       CustomHashMap();
       numberOfItems = 0;
+      listOfKeys.clear();
+      listOfValues.clear();
     };
 
+    /*
+     * Name: containsKey
+     * Input: string key
+     * Output: boolean
+     * Descrption: Given a key, return a boolean on whether
+     * that particular key exists in the hash map
+     */
     bool containsKey(string key)
     {
       return get(key) != "" ? true : false;
     }
+
+    /*
+     * Name: containsValue
+     * Input: string value
+     * Output: boolean
+     * Descrption: Given a value, return a boolean on whether
+     * that particular value exists in the hash map
+     */
     bool containsValue(string value)
     {
       return std::count(listOfValues.begin(), listOfValues.end(), value);
     }
 
+    /*
+     * Name: isEmpty
+     * Output: boolean
+     * Descrption: Return the number of items (keys) in HashMap
+     */
     bool isEmpty(){ return numberOfItems == 0 ? true : false; };
 
+    /*
+     * Name: get
+     * Input: string key
+     * Output: string
+     * Descrption: Given a key, pass the key to the hashing function
+     * to generate the index. Using that index, iterate through
+     * the pointer array to find the corresponding value associated
+     * to that key
+     */
     string get(string key)
     {
       int index = hashingFunction(key);
@@ -101,14 +144,9 @@ public:
       {
         while(targetNode != NULL)
         {
-          cout << "Key " << targetNode->getKey() << "\n";
-          cout << "Value " << targetNode->getValue() << "\n";
           if(key == targetNode->getKey())
           {
-          //  cout << targetNode->getValue() << "\n";
-          //  cout << targetNode->value << "\n";
-            cout <<"hitting break" << "\n";
-            return "";
+            return targetNode->getValue();
           }
           else
           {
@@ -116,29 +154,51 @@ public:
           }
         }
       }
-      cout << "Unable to find value associated with key "  << key << "\n" ;
-      return "";
+      return "Unable to find value associated with key " + key + "\n";
     }
 
+    /*
+     * Name: size
+     * Output: int
+     * Descrption: Return the number of items in the hashmap
+     */
     int size()
     {
       return numberOfItems;
     }
 
+    /*
+     * Name: values
+     * Output: vector<string>
+     * Descrption: Return a list (vector) of all values in all the hashmap
+     */
     vector<string> values()
     {
       return listOfValues;
     }
+    /*
+     * Name: keySet
+     * Output: vector<string>
+     * Descrption: Return a list (vector) of all keys in all the hashmap
+     */
     vector<string> keySet()
     {
       return listOfKeys;
     }
 
+    /*
+     * Name: put
+     * Input: string key, string value
+     * Output: string
+     * Descrption: Given a key, pass the key to the hashing function
+     * to generate the index. Using that index, iterate through
+     * the pointer array to find the linked list where you will
+     * insert and append to that list iwth the value
+     */
     void put(string key, string value){
        listOfKeys.push_back(key);
        listOfValues.push_back(value);
 	     int index = hashingFunction(key);
-       //cout << "Position Index " << index;
        Node *linkedListNode = pointerArray[index];
 
        // Check to see if there is already a value associated to that index
@@ -169,6 +229,14 @@ public:
         cout << "Creating Node: Index: " << index << " : Key: " << key << " : Value: " << value << "\n";
      }
 
+     /*
+      * Name: remove
+      * Input: string key
+      * Descrption: Given a key, pass the key to the hashing function
+      * to generate the index. Using that index, iterate through
+      * the pointer array to find the corresponding linked list, then remove
+      * that entry 
+      */
     void remove(string key)
     {
       int index = hashingFunction(key);
