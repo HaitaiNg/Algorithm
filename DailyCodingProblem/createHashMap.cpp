@@ -15,10 +15,13 @@
  *
  *
 */
+// getKeys, getValues,
 
 #include <algorithm>
 #include <cstddef>
 #include <iostream>
+#include <set>
+#include <vector>
 
 using namespace std;
 
@@ -28,13 +31,13 @@ public:
   // Each node will have a key, value, and a number.
   // Number is to keep track of history.
   struct Node{
-    string key, value, size;
+    string key, value, numberOfItems;
     Node *next;
     Node(string k, string v, int n)
     {
       key = k;
       value = v;
-      size = n;
+      numberOfItems = n;
       next = NULL;
     }
     public:
@@ -42,23 +45,26 @@ public:
       string getValue() {return value;}
       void setValue(string v) {value = v;}
       Node* getNext() {return next;}
-
-
     };
 
+
+
+/// ------------------------------------------ \\
     // array of pointers
     Node* pointerArray[100000];
-    int size = 0 ; //< number of elements in the hashmap
-
+    int numberOfItems = 0 ; //< number of elements in the hashmap
+    vector<string> listOfKeys;
+    vector<string> listOfValues;
     /// Constructor: Intialize and set all indices set to NULL
     CustomHashMap()
     {
+      cout << "Initializing & Creating Hash Map \n";
       for(int i = 0; i < 100000; i++){pointerArray[i] = NULL;}
     }
 
     // Hashing function (convert string to ASCII)
     // ASCII will be used as the key
-    int  hashingFunction(string key)
+    int hashingFunction(string key)
     {
 	     //return (key -> ASCII -> number) // merkle tree (no duplicates)
       int index = 0;
@@ -69,15 +75,23 @@ public:
     	return index;
     }
 
-    void clear();
+    void clear()
+    {
+      cout << "Deleting Hash Map" << "\n";
+      CustomHashMap();
+      numberOfItems = 0;
+    };
 
     bool containsKey(string key)
     {
       return get(key) != "" ? true : false;
     }
+    bool containsValue(string value)
+    {
+      return std::count(listOfValues.begin(), listOfValues.end(), value);
+    }
 
-
-    bool isEmpty(){return size == 0 ? true : false; };
+    bool isEmpty(){ return numberOfItems == 0 ? true : false; };
 
     string get(string key)
     {
@@ -87,10 +101,8 @@ public:
       {
         while(targetNode != NULL)
         {
-          cout << "K " << targetNode->key << "  " << key << "\n";
-          cout << "KD " << targetNode->getKey() << "\n";
-          cout << "V " << targetNode->value << "\n";
-          cout << "VD " << targetNode->getValue() << "\n";
+          cout << "Key " << targetNode->getKey() << "\n";
+          cout << "Value " << targetNode->getValue() << "\n";
           if(key == targetNode->getKey())
           {
           //  cout << targetNode->getValue() << "\n";
@@ -108,7 +120,23 @@ public:
       return "";
     }
 
+    int size()
+    {
+      return numberOfItems;
+    }
+
+    vector<string> values()
+    {
+      return listOfValues;
+    }
+    vector<string> keySet()
+    {
+      return listOfKeys;
+    }
+
     void put(string key, string value){
+       listOfKeys.push_back(key);
+       listOfValues.push_back(value);
 	     int index = hashingFunction(key);
        //cout << "Position Index " << index;
        Node *linkedListNode = pointerArray[index];
@@ -134,12 +162,11 @@ public:
         // If there is no value associated with that index, then create a new
         // pointer and place it in the arrayPointer. The pointer at the
         // index will point to a linked list of Nodes
-        Node *newNode = new Node(key, value, size);
+        Node *newNode = new Node(key, value, numberOfItems);
         newNode->next = pointerArray[index];
         pointerArray[index] = newNode;
-        size++;
-        cout << "creating node " << index << " " << key << " " << value;
-        cout << " " << size << "\n";
+        numberOfItems++;
+        cout << "Creating Node: Index: " << index << " : Key: " << key << " : Value: " << value << "\n";
      }
 
     void remove(string key)
@@ -167,21 +194,22 @@ public:
           delete temporaryNode;
           return;
         }
-        linkedListNode = linkedListNode->next; 
+        linkedListNode = linkedListNode->next;
       }
     }
 };
 
-
 int main()
 {
-  cout << "Initializing & Creating Hash Map \n";
   CustomHashMap* object = new CustomHashMap();
-  object->put("mockKey", "mockValue");
-  object->put("123", "mock");
-  object->get("123");
-  object->get("mockKey");
-  object->containsKey("123");
-  object->containsKey("FDFD");
+  object->put("123", "mockValue");
+  object->put("132", "mock");
+  object->put("23123", "fuck");
+  cout << object->size() << "\n";
+//  object->clear();
+  cout << object->isEmpty() << "\n";
+  cout << object->size() << "\n";
+  object->values();
+
   return 0;
 }
