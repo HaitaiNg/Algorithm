@@ -61,27 +61,8 @@ public:
      */
     CustomHashMap()
     {
-      cout << "Initializing & Creating Hash Map \n";
+      cout << "Initializing & Creating New Hash Map \n";
       for(int i = 0; i < 100000; i++){pointerArray[i] = NULL;}
-    }
-
-    /*
-     * Name: hashingFunction
-     * Input: string key
-     * Output: int index
-     * Descrption: Given a key, generate and return a unique index.
-     * The index will be the location in the pointerArray where the
-     * pointer to the Linked List will be stored.
-     */
-    int hashingFunction(string key)
-    {
-	     //return (key -> ASCII -> number) // merkle tree (no duplicates)
-      int index = 0;
-      for(char c : key)
-      {
-        index += (int) c;
-      }
-    	return index;
     }
 
     /*
@@ -158,6 +139,25 @@ public:
     }
 
     /*
+     * Name: hashingFunction
+     * Input: string key
+     * Output: int index
+     * Descrption: Given a key, generate and return a unique index.
+     * The index will be the location in the pointerArray where the
+     * pointer to the Linked List will be stored.
+     */
+    int hashingFunction(string key)
+    {
+       //return (key -> ASCII -> number) // merkle tree (no duplicates)
+      int index = 0;
+      for(char c : key)
+      {
+        index += (int) c;
+      }
+      return index;
+    }
+
+    /*
      * Name: size
      * Output: int
      * Descrption: Return the number of items in the hashmap
@@ -209,9 +209,8 @@ public:
           // once you find the node with the same key
           if(key == linkedListNode->getKey())
           {
-            cout << "SETTING THIS " << value << "\n";
+            cout << "Setting : (Key = " << key << ", Value = " << value << ")  \n";
             linkedListNode->setValue(value);
-            cout << " GTTIN VALUE " << linkedListNode->getValue() << "\n";
             return;
           }
           else
@@ -235,7 +234,7 @@ public:
       * Descrption: Given a key, pass the key to the hashing function
       * to generate the index. Using that index, iterate through
       * the pointer array to find the corresponding linked list, then remove
-      * that entry 
+      * that entry
       */
     void remove(string key)
     {
@@ -266,18 +265,3 @@ public:
       }
     }
 };
-
-int main()
-{
-  CustomHashMap* object = new CustomHashMap();
-  object->put("123", "mockValue");
-  object->put("132", "mock");
-  object->put("23123", "fuck");
-  cout << object->size() << "\n";
-//  object->clear();
-  cout << object->isEmpty() << "\n";
-  cout << object->size() << "\n";
-  object->values();
-
-  return 0;
-}
