@@ -40,6 +40,7 @@ void print(string statement, string functionReturn)
 {
   cout << statement << " " << functionReturn << "\n";
 }
+
 /*
  * Name: newTest
  * Descrption: Prints out a message indicating a new test is starting.
@@ -47,6 +48,33 @@ void print(string statement, string functionReturn)
 void newTest()
 {
   cout << "\n ---- Executing Test ---- \n";
+}
+
+/*
+ * Name: instantiateHashMap
+ * Descrption: instantiates hash map with some mock keys, and values
+ */
+void instantiateHashMap(CustomHashMap* object)
+{
+  object->put("123", "valueForKey123");
+  object->put("132", "valueForKey132");
+  object->put("231", "valueForKey231");
+  object->put("213", "valueForKey213");
+  object->put("312", "valueForKey312");
+  object->put("321", "valueForKey321");
+  object->put("AAAA", "winner");
+  object->put("BBBB", "winner");
+  object->put("CCCC", "winner");
+  object->put("alpha", "a");
+  object->put("bravo", "b");
+  object->put("charlie", "c");
+  object->put("3.141964", "pi");
+  object->put("0x000", "unique");
+  object->put("101011", "test");
+  object->put("1111", "breakers");
+  object->put("#1A4gh", "abcdefg");
+  object->put("0x1A4MNP", "abcdefg");
+  object->put("59JMLHO", "abcdefg");
 }
 
 /// -------------------------------------------------------------------------
@@ -57,17 +85,13 @@ void newTest()
  * equivalent, where ( key once converted to ASCII = index. The index
  * defines the position of
  * pointer to the linked list. This test validates whether the vector of pointers
- * to a linked list can successfully retrieve the popular value
+ * to a linked list can successfully retrieve the popular value. Test Chaining with
+ * linked list (hash map)
  */
 void comprehensiveTestOne()
 {
   CustomHashMap* object = new CustomHashMap();
-  object->put("123", "valueForKey123");
-  object->put("132", "valueForKey132");
-  object->put("231", "valueForKey231");
-  object->put("213", "valueForKey213");
-  object->put("312", "valueForKey312");
-  object->put("321", "valueForKey321");
+  instantiateHashMap(object);
   print("Size : ", to_string(object->size()));
   printElementsFromFunctionReturn("Keys : ", object->keySet());
   printElementsFromFunctionReturn("Values : ", object->values());
@@ -81,9 +105,7 @@ void comprehensiveTestOne()
   void comprehensiveTestTwo()
   {
     CustomHashMap* object = new CustomHashMap();
-    object->put("AAAA", "winner");
-    object->put("0x000", "unique");
-    object->put("101011", "test");
+    instantiateHashMap(object);
     print("Contains Key (0x000) : 1 =", to_string(object->containsKey("0x000")));
     print("Contains Key (1111) : 0 =", to_string(object->containsKey("0x000")));
     print("Contains Value (\"unique\") : 1 =" , to_string(object->containsValue("unique")));
@@ -91,7 +113,7 @@ void comprehensiveTestOne()
     print("Is Empty : 0 =", to_string(object->isEmpty()));
     print("Size : ", to_string(object->size()));
     print("Clear Hash Map", " "); object->clear();
-    print("Is Empty : 1 =", to_string(object->isEmpty()));
+    print("Is Empty : 0 !=", to_string(object->isEmpty()));
     print("Size : ", to_string(object->size()));
   }
 
@@ -108,9 +130,7 @@ void comprehensiveTestOne()
    void comprehensiveTestThree()
    {
      CustomHashMap* object = new CustomHashMap();
-     object->put("#1A4gh", "abcdefg");
-     object->put("0x1A4MNP", "abcdefg");
-     object->put("59JMLHO", "abcdefg");
+     instantiateHashMap(object);
      print("Size : ", to_string(object->size()));
      printElementsFromFunctionReturn("Keys : ", object->keySet());
      printElementsFromFunctionReturn("Values : ", object->values());
@@ -120,6 +140,8 @@ void comprehensiveTestOne()
      printElementsFromFunctionReturn("Keys : ", object->keySet());
      printElementsFromFunctionReturn("Values : ", object->values());
      print("Test Get (59JMLHO) = ", object->get("59JMLHO"));
+     print("Test Get (231) = ", object->get("231"));
+     print("Test Get (312) = ", object->get("312"));
    }
 
 
@@ -137,15 +159,16 @@ void comprehensiveTestOne()
      print("Test Get (101011) = ", object->get("101011"));
      print("Is Empty : 0 =", to_string(object->isEmpty()));
      print("Size :", to_string(object->size()));
-     object->remove("AAAA");
-     object->remove("0x000");
-     object->remove("101011");
+     print("Remove AAAA, 0x000", "");
+     object->remove("AAAA"); object->remove("0x000");
      print("Test Get (AAAA) = ", object->get("AAAA"));
      print("Test Get (0x000) = ", object->get("0x000"));
      print("Test Get (101011) = ", object->get("101011"));
-     print("Is Empty : 0 =", to_string(object->isEmpty()));
+     print("Is Empty : 0 !=", to_string(object->isEmpty()));
      print("Size: ", to_string(object->size()));
-     // cout << "IsEmpty : " <<
+     print("Remove 101011", ""); object->remove("101011");
+     print("Test Get (101011) = ", object->get("101011"));
+     print("Size: ", to_string(object->size()));
    }
 
 
