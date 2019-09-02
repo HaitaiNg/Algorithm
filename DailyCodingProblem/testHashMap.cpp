@@ -18,7 +18,6 @@
 #include <set>
 #include <vector>
 #include "createHashMap.cpp"
-
 using namespace std;
 
 /*
@@ -49,6 +48,8 @@ void newTest()
 {
   cout << "\n ---- Executing Test ---- \n";
 }
+
+/// -------------------------------------------------------------------------
 
 /*
  * Description: Test constructor, put, size, keyset, values, get
@@ -131,12 +132,19 @@ void comprehensiveTestOne()
      object->put("AAAA", "winner");
      object->put("0x000", "unique");
      object->put("101011", "test");
-     printElementsFromFunctionReturn("Keys : ", object->keySet());
-     printElementsFromFunctionReturn("Values : ", object->values());
-     object->remove("AAAA");
-     printElementsFromFunctionReturn("Keys : ", object->keySet());
-     printElementsFromFunctionReturn("Values : ", object->values());
+     print("Test Get (AAAA) = ", object->get("AAAA"));
+     print("Test Get (0x000) = ", object->get("0x000"));
+     print("Test Get (101011) = ", object->get("101011"));
      print("Is Empty : 0 =", to_string(object->isEmpty()));
+     print("Size :", to_string(object->size()));
+     object->remove("AAAA");
+     object->remove("0x000");
+     object->remove("101011");
+     print("Test Get (AAAA) = ", object->get("AAAA"));
+     print("Test Get (0x000) = ", object->get("0x000"));
+     print("Test Get (101011) = ", object->get("101011"));
+     print("Is Empty : 0 =", to_string(object->isEmpty()));
+     print("Size: ", to_string(object->size()));
      // cout << "IsEmpty : " <<
    }
 

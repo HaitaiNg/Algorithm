@@ -135,7 +135,7 @@ public:
           }
         }
       }
-      return "Unable to find value associated with key " + key + "\n";
+      return "Unable to find value associated with key : " + key;
     }
 
     /*
@@ -248,6 +248,7 @@ public:
       {
         pointerArray[index] = linkedListNode->next;
         delete linkedListNode;
+        numberOfItems--;
         return;
       }
 
@@ -259,6 +260,7 @@ public:
           temporaryNode = linkedListNode->next;
           linkedListNode = temporaryNode->next;
           delete temporaryNode;
+          // numberOfItems--;
           return;
         }
         linkedListNode = linkedListNode->next;
