@@ -53,8 +53,8 @@ public:
     // array of pointers
     Node* pointerArray[100000];
     int numberOfItems = 0 ; //< number of elements in the hashmap
-    vector<string> listOfKeys;
-    vector<string> listOfValues;
+    set<string> setOfKeys;
+
 
     /*
      * Constructor: Intialize and set all indices set to NULL
@@ -73,8 +73,7 @@ public:
     {
       CustomHashMap();
       numberOfItems = 0;
-      listOfKeys.clear();
-      listOfValues.clear();
+      setOfKeys.clear();
     };
 
     /*
@@ -98,7 +97,7 @@ public:
      */
     bool containsValue(string value)
     {
-      return std::count(listOfValues.begin(), listOfValues.end(), value);
+      return std::count(values().begin(), values().end(), value);
     }
 
     /*
@@ -164,7 +163,7 @@ public:
      */
     int size()
     {
-      return numberOfItems;
+      return setOfKeys.size();
     }
 
     /*
@@ -174,6 +173,11 @@ public:
      */
     vector<string> values()
     {
+      vector<string> listOfValues;
+      for(string key: setOfKeys)
+      {
+        listOfValues.push_back(get(key));
+      }
       return listOfValues;
     }
     /*
@@ -181,9 +185,9 @@ public:
      * Output: vector<string>
      * Descrption: Return a list (vector) of all keys in all the hashmap
      */
-    vector<string> keySet()
+    set <string> keySet()
     {
-      return listOfKeys;
+      return setOfKeys;
     }
 
     /*
@@ -196,8 +200,7 @@ public:
      * insert and append to that list iwth the value
      */
     void put(string key, string value){
-       listOfKeys.push_back(key);
-       listOfValues.push_back(value);
+       setOfKeys.insert(key);
 	     int index = hashingFunction(key);
        Node *linkedListNode = pointerArray[index];
 
@@ -260,7 +263,6 @@ public:
           temporaryNode = linkedListNode->next;
           linkedListNode = temporaryNode->next;
           delete temporaryNode;
-          // numberOfItems--;
           return;
         }
         linkedListNode = linkedListNode->next;

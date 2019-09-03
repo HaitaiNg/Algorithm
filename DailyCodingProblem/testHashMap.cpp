@@ -36,6 +36,15 @@ void printElementsFromFunctionReturn(string name, vector<string> elements)
   }
   cout << "\n";
 }
+void printElementsFromFunctionReturn(string name, set<string> elements)
+{
+  cout << name << " ";
+  for(auto it = elements.begin(); it != elements.end(); ++it)
+  {
+    cout << *it << " ";
+  }
+  cout << "\n";
+}
 void print(string statement, string functionReturn)
 {
   cout << statement << " " << functionReturn << "\n";
@@ -122,8 +131,8 @@ void comprehensiveTestOne()
    * a hash map with (key, value). Modify one of the key's values, and
    * check that the changes are reflected in the output.
    *
-   * *** FAIL (getValues returns the wrong value. After I modify a key with a new value,
-   * keySet() & values() do not get updated ith the new change.
+   * Check that if modify a key with a new value,
+   * keySet() & values() get updated
    *
    *
    */
@@ -137,6 +146,7 @@ void comprehensiveTestOne()
      print("Size : ", to_string(object->size()));
      print("Test Get (59JMLHO) = ", object->get("59JMLHO"));
      object->put("59JMLHO", "wxyz"); //< change the value of the key
+     object->put("312", "3"); //< change the value of the key
      printElementsFromFunctionReturn("Keys : ", object->keySet());
      printElementsFromFunctionReturn("Values : ", object->values());
      print("Test Get (59JMLHO) = ", object->get("59JMLHO"));
