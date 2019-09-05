@@ -35,7 +35,6 @@ class Solution {
         for(;sum != 0; sum /= 10)
         {
             int digit = sum % 10;
-
             // Continously add nodes to the linked list
             ListNode newNode = new ListNode(digit);
             if(head == null)

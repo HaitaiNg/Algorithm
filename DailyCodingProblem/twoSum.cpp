@@ -15,5 +15,4 @@ public:
             mapObject[nums[i]] = i;
         }
         return {};
-
     }
