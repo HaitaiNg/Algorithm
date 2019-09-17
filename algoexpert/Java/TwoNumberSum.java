@@ -1,50 +1,25 @@
-
-// Sort the array using an algorithm such as quickSort.
-// Use two pointers ( one pointer at the left hand side, another pointer on the right hand side)
-// Take the TargetSum - (value pointed at left || right side) == value pointed at left || right side 
-// O(n) space , O(n) time 
-
-
-import java.util.Arrays; 
-import java.util.HashMap; 
-
+import java.util.*;
 class Program {
   public static int[] twoNumberSum(int[] array, int targetSum) {
-		Arrays.sort(array); // sort the array (small values -> large values) 
-		int[] returnArray = new int[2]; 
-		int difference; 
-		int leftHandIndex = 0;
-		int rightHandIndex = array.length - 1; 
-		while(true)
+    Arrays.sort(array);
+		int leftHandPointer = 0;
+		int rightHandPointer = array.length - 1;
+		while(leftHandPointer < rightHandPointer)
 		{
-		int leftHandSide = array[leftHandIndex]; 
-		int rightHandSide = array[rightHandIndex]; 
-		
-			if(leftHandIndex == rightHandIndex)
+			int summ =  array[leftHandPointer] + array[rightHandPointer];
+			if(summ == targetSum)
 			{
-				break; 
+				return new int[] {array[leftHandPointer], array[rightHandPointer]};
 			}
-			
-			difference = leftHandSide + rightHandSide; 
-			if(difference == targetSum)
+			else if( summ > targetSum)
 			{
-				returnArray[0] = leftHandSide;
-				returnArray[1] = rightHandSide; 
-				return returnArray; 
-			}
-			
-			if(targetSum > difference)
-			{
-				leftHandIndex++; 
+				rightHandPointer--;
 			}
 			else
 			{
-				rightHandIndex--; 
+				leftHandPointer++;
 			}
-			
-			
 		}
-		
-    return new int[0]; 
+		return new int[0];
   }
 }
