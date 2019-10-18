@@ -1,23 +1,4 @@
-C++
-C++ constructors 10/21
-References 0/6
-Class and object 10/17
-Destructors 2/4
-Static Keywork 3/6
-C++ misc 5/15
-friend function 1/ 4
-Overloading operator 6/11
-Virtual functions 5/14
-Templates
-
-A union is a class type that can hold only one of its
-non-static data members at a time.
-A union can have member functions (constructors and destructors)
-but not virtual functions.
-A union can have base classes and cannot be used as a base class
-A union cannot have non-static data members of reference types
-
-GIn C++, it is not possible to pass the entire block of memory represented by an
+In C++, it is not possible to pass the entire block of memory represented by an
 array to a function directly as an argument.
 But what can be passed instead is its address. In practice, this has
 almost the same effect, and it is a much faster and more efficient operation.
@@ -1043,81 +1024,76 @@ int main()  {
    A<char, char> a;
    A<int, int> b;
    cout << sizeof(a) << endl; // 2
-   cout << sizeof(b) << endl; // 8 
+   cout << sizeof(b) << endl; // 8
    return 0;
 }
 
-//C++ STL 
-#include <vector> 
-#include <algorithm> // sort(A.begin(), A.end()); 
+//C++ STL
+#include <vector>
+#include <algorithm> // sort(A.begin(), A.end());
 binary_search(A.begin(), A.end(), 3);  //O(log(n))
-A.push_back(100); 
+A.push_back(100);
 
-vector<int>::iterator it = lower_bound(A.begin(), A.end(), 100); //first element binary search 
-vector<int>::iterator it = upper_bound(A.begin(), A.end(), 100); //last element binary search 
+vector<int>::iterator it = lower_bound(A.begin(), A.end(), 100); //first element binary search
+vector<int>::iterator it = upper_bound(A.begin(), A.end(), 100); //last element binary search
 
-auto it = lower_bound(A.begin(), A.end(), 100); 
+auto it = lower_bound(A.begin(), A.end(), 100);
 
 //Sorting in reverse order
 bool f(int x, int y)
 {
 return x > y; }
 
-sort(A.begin(), A.end(), f); 
+sort(A.begin(), A.end(), f);
 
-vector<int>::iterator it3; 
+vector<int>::iterator it3;
 for(it3 = A.begin(); it3 != A.end(); it3++)
 {
-	cout << *it3 << "\n"; 
+	cout << *it3 << "\n";
 }
 
-for(int &x: A) //references 
+for(int &x: A) //references
 {
-	x++; // since you are doing by reference. you are modifying the contents of the vector 
-	cout << x << " "; 
-} 
+	x++; // since you are doing by reference. you are modifying the contents of the vector
+	cout << x << " ";
+}
 
 #include <set>
 set<int> s;
 s.insert(1);
-s.insert(5); 
-s.insert(-10); 
+s.insert(5);
+s.insert(-10);
 
-for(int x : S) //set will print in sorted order 
+for(int x : S) //set will print in sorted order
 {
-	cout << x << " ": 
+	cout << x << " ":
 }
 
 
-auto it = s.find(-1); 
+auto it = s.find(-1);
 
-mapDemo 
-#include <map> 
+mapDemo
+#include <map>
 map<int, int> A;
 A[1] = 100;
-A[2] = -1; 
-A[3] = 200; 
-A[1324213] = 1; 
+A[2] = -1;
+A[3] = 200;
+A[1324213] = 1;
 
-map<char,int > cnt; 
-string x = "test"; 
+map<char,int > cnt;
+string x = "test";
 for(char c : x)
 {
-	cnt[c]++; 
-} 
-A.find(key); // log(n) 
-A.erase(key); // log(n) 
+	cnt[c]++;
+}
+A.find(key); // log(n)
+A.erase(key); // log(n)
 
 Unodered sets have O(1) average time
 Set uses less memory than unordered_set to store the same number of elements
-For a small number of elements, looksups in a set might be faster than 
-lookups in an unordered set 
-Even though many operations are faster in the average case 
-for unordered_set_ they are often guranted to hae better worse case 
+For a small number of elements, looksups in a set might be faster than
+lookups in an unordered set
+Even though many operations are faster in the average case
+for unordered_set_ they are often guranted to hae better worse case
 complexities for set
-The set sorts the element is useful if you want to access them in order 
-
-
-
-
-
+The set sorts the element is useful if you want to access them in order
