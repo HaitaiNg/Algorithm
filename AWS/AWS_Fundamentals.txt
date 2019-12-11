@@ -1,0 +1,52 @@
+A Lightsail instance’s launch script is similar to Amazon EC2 component? User Data
+-A launch script is optional, and can be a shell script which will run at the time of launch, much like user data for an EC2 instance
+
+When thinking of AWS Elastic Beanstalk, which statement is true: Worker tiers pull jobs from SQS
+
+Elastic beanstalk installs a deamon on each Amazon EC2 instance in the Auto Scaling group to process Amazon SQS messages in the worker environment. The daemon pulls data off the Amazon SQS queue, inserts it into the message body of an HTTP POST request and sends it to the user-configurable URL path on the local host
+
+AWS Lambda: A trigger is compiled code that AWS lambda runs when invoked
+
+Clusters are scalable,
+Clusters are monitored using cloud watch
+Clusters are scheduled across a cluster
+Clusters are not Zone Specific
+
+Lambda function event source: An AWS service which Lambda monitors for specific operations
+
+With AWS Lambda, you pay for compute time you consume, there is no charge when your code is not running.
+
+If you want to receive alerts when your containers, managed with Amazon ECS need to scale up or down, you can use Amazon CloudWatch. You can monitor average, and aggregate CPU and memory utilization of running tasks as grouped by Task Definition, Service or Cluster through Amazon CloudWatch.
+
+Cloud Benefits: security, flexibility, cost efficiency, scalability
+
+AWS Storage
+Data stored in blocks, blocks are stored on a volume and attached to a single instance.
+File Store: Data is stored as separate files with a series of directories.
+Data is stored in a file system.
+
+Amazon Simple Storage Service (S3)
+Uses buckets (unique name)
+There are multiple storage classes:
+Main difference is availability.
+Data stored high frequency: Standard and Reduced Redundancy Storage (RRS)
+
+Each Bucket has set access controls (written in JSON). Permissions can be very specific using policy conditions
+Access Control Lists: List of users for people outside of the AWS account (public access).
+
+Infrequently Accessed: STANDARD-IA and ONE ZONE I-A
+One ZONE-IA does not replicate data across multiple availability zones
+ONE ZONE-IA is cheaper than STANDARD-IA
+
+Intelligent Tiering
+Used for unpredictable access patterns.
+Automatically moves data into appropriate tier based on access pattern
+
+Before selecting data: How critical is my data, how often will i need to access it?
+How reproducible is the data?
+
+Data Management:
+allows for multiple versions of the same object to exist
+Versioning is not enabled by default
+
+AWS CloudTrail keeps track of all API calls. It stores them in S3 Buckets

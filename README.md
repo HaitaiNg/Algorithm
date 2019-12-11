@@ -1,1 +1,1 @@
-# algoexpert by Haitai Ng
+Repository for coding questions and practice 
