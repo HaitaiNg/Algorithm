@@ -1,4 +1,4 @@
-/
+/*
 #Three number sum (ideal algorithm)
 # Sort the array
 # Use two loops and iterate through the array
