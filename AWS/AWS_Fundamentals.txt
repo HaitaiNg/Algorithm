@@ -1,7 +1,7 @@
 A Lightsail instance’s launch script is similar to Amazon EC2 component? User Data
 -A launch script is optional, and can be a shell script which will run at the time of launch, much like user data for an EC2 instance
 
-When thinking of AWS Elastic Beanstalk, which statement is true: Worker tiers pull jobs from SQS
+AWS Elastic Beanstalk: Worker tiers pull jobs from SQS
 
 Elastic beanstalk installs a deamon on each Amazon EC2 instance in the Auto Scaling group to process Amazon SQS messages in the worker environment. The daemon pulls data off the Amazon SQS queue, inserts it into the message body of an HTTP POST request and sends it to the user-configurable URL path on the local host
 
@@ -17,8 +17,6 @@ Lambda function event source: An AWS service which Lambda monitors for specific 
 With AWS Lambda, you pay for compute time you consume, there is no charge when your code is not running.
 
 If you want to receive alerts when your containers, managed with Amazon ECS need to scale up or down, you can use Amazon CloudWatch. You can monitor average, and aggregate CPU and memory utilization of running tasks as grouped by Task Definition, Service or Cluster through Amazon CloudWatch.
-
-Cloud Benefits: security, flexibility, cost efficiency, scalability
 
 AWS Storage
 Data stored in blocks, blocks are stored on a volume and attached to a single instance.
@@ -50,3 +48,20 @@ allows for multiple versions of the same object to exist
 Versioning is not enabled by default
 
 AWS CloudTrail keeps track of all API calls. It stores them in S3 Buckets
+Amazon Non-relational databases: No table schema required; fully supports unstructured data
+Amazon Dynamo DB (Speed & Performance): Good for high volume, internet traffic. 
+Amazon Dynamo DB supports both document and key store object, runs as a web service; flexible service 
+Amazon Elasticache: A managed data cache service built from the open source redis and memchaced
+Cache: Fast access copy of data that is being read a lot (values speed over persistence)
+REDIS: complex data types: Strings, HashMaps. Lists, Sets, Sorted Sets, BitMaps replicate your cached data. 
+MEMCACHE: Simplest model possible. Ability to scale out/ in adding or removing nodes as demand
+on your system increases/ decreases. 
+Amazon Neptune: Lots of queries and lookups. Optimized for storing data relationships, native graph database, AWS graph database engine. 
+
+Amazon EC2 Instance Store Volumes: They are all available for all instance types. Instance store
+volumes offer very high speed I/O speed. The storage cost is included in the EC2 instance price. 
+Amazon does not use a file system. It is an object store with buckets and objects.
+
+Descriptions of non-relational databases: Each non-relational database table must include a primary key; They can scale faster than relational databases.
+Non-relational databases scale faster than relational databases, and can store unstructured data, which allows multiple data types to be stored within the same table without updating table fields. While relational tables are able to build relationships between different tables based on many different factors, non-relational database tables all include a primary key which is essential to performing table operations such as create, update, read, and delete. 
+
