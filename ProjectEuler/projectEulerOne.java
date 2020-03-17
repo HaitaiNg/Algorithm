@@ -86,11 +86,49 @@ public class projectEulerOne{
         return palindromicValue; 
     }
 
+    // V: Smallest multiple: find number that is divisible by all numbers [1,20]
+    public static int smallestMultiple()
+    {
+        int x = 1; 
+        while(true){
+            for(int i = 1; i <= 20; i++){
+                if(x % i == 0){
+                    if(i == 20) return x;  
+                }
+                else{
+                    break;
+                }
+            }
+            x++; 
+        }
+    }
+
+    // VI: Sum Square Difference 
+    public static long sumSquareDifference(){
+        long sumOfSquaresOfFirstHundredNumbers = 0; 
+        long i = 1; 
+        while(i <= 100){
+            sumOfSquaresOfFirstHundredNumbers += i * i; 
+            i++; 
+        }
+        long sumOfSquareSum = 0; 
+        long j = 1; 
+        while(j <= 100){
+            sumOfSquareSum += j; 
+            j++; 
+        }
+        sumOfSquareSum = sumOfSquareSum * sumOfSquareSum; 
+        return Math.abs(sumOfSquaresOfFirstHundredNumbers - sumOfSquareSum); 
+        // The sum of all natural numbers can be expressed as : n(n+1)/2 
+        // The sum of squares of the first n natural numbers is : n(n+1)(2n-1)/6 
+    }
 
     public static void main(String[] args){
         // multiplesOfThreeAndFive();
         //evenFibonacciNumbers();
         //largestPrimeFactorsOfAVeryLargeNumber();
-        largestPalindromeProduct();
+        //largestPalindromeProduct();
+        //smallestMultiple();
+        //sumSquareDifference()// ANSWER: 25164150
     }
 }
