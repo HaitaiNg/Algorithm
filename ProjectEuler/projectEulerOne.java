@@ -32,10 +32,65 @@ public class projectEulerOne{
         return sumOfNumbers;
     }
 
+    //III: Largest prime factors of a very large number (review) 
+    public static long largestPrimeFactorsOfAVeryLargeNumber()
+    {
+        long n = 13195;
+        long maxPrime = 1; 
+        //Count the number of 2's that divide into it 
+        while(n % 2 == 0){
+            maxPrime = 2; 
+            n >>= 1; 
+        }
+        // N must be odd at this point, thus skip the even numbers and iterate only for odd integers
+        for(int i = 3; i <= Math.sqrt(n); i+= 2) {
+            while(n % i == 0){
+                maxPrime = i; 
+                n = n /i; 
+            }
+        }
+        // Handles the case when n is a prime number greater than 2 
+        if(n > 2) maxPrime = n; 
+        System.out.println(maxPrime);
+        return maxPrime; 
+    }
+
+    //IV: Largest 3 digit palindromic number 
+    public static boolean isPalindrome(int x){
+        //Negative numbers, multiples of 10 (excluding 0) are not palindromes 
+        if(x < 0 || (x != 0 && x % 10 == 0)) return false; 
+        int remain = 0; 
+        while(x > remain){
+            int temp = x % 10; 
+            remain = remain * 10 + temp; 
+            x /= 10; 
+        }// Check even palindrome 
+        // Check odd palindrome 
+        return (x == remain || x == remain / 10); 
+    }
+    public static int largestPalindromeProduct(){
+        int startingIndex = 100; 
+        int endingIndex = 999; 
+        int palindromicValue = -1; 
+        for(int i = startingIndex; i < endingIndex; i++)
+        {
+            for(int j = startingIndex; j < endingIndex; j++)
+            {
+                int product = i * j; 
+                if(isPalindrome(product)){
+                    if(product > palindromicValue) palindromicValue = product; 
+                }
+            }
+        }
+        System.out.println(palindromicValue);
+        return palindromicValue; 
+    }
 
 
     public static void main(String[] args){
         // multiplesOfThreeAndFive();
-        evenFibonacciNumbers();
+        //evenFibonacciNumbers();
+        //largestPrimeFactorsOfAVeryLargeNumber();
+        largestPalindromeProduct();
     }
 }
