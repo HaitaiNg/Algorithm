@@ -1,5 +1,8 @@
 import java.util.*; 
 import java.util.Random; 
+
+/* Description: Project Euler Set [I, X] */ 
+
 public class projectEulerOne{
 
     //I: Sum up all values that divide by 3 & 5 : [1,1000]
@@ -123,12 +126,85 @@ public class projectEulerOne{
         // The sum of squares of the first n natural numbers is : n(n+1)(2n-1)/6 
     }
 
+    //VII: 1001st Prime Number 
+    public static long bigPrimeNumber(){
+        int nthPrime = 2; 
+        int value = 4; 
+        Set<Integer> primeSet = new HashSet<Integer>(); 
+        primeSet.add(2); 
+        primeSet.add(3); 
+        int primeFlag = 1; // assume that the number is prime
+        Iterator<Integer> it = primeSet.iterator(); 
+        while(nthPrime < 10001){
+            primeFlag = 1; 
+            while(it.hasNext()){
+                int aPrimeNumber = it.next(); 
+                if(value % aPrimeNumber == 0){
+                    primeFlag = 0; 
+                    break; 
+                }
+            }
+            if(primeFlag == 1){
+                primeSet.add(value); 
+                nthPrime++;
+            }
+            it = primeSet.iterator(); 
+            value++;
+        }
+        List<Integer> primeNumberList = new ArrayList<Integer>(primeSet); 
+        Collections.sort(primeNumberList); 
+        System.out.println(primeNumberList.get(primeNumberList.size() - 1)); 
+        return primeNumberList.get(primeNumberList.size() - 1); 
+    }
+
+    // IX Pythagorean Triplet 
+    public static int pythagoreanTriplet(){
+        int a = 0, b = 0, c = 0; 
+        int s = 1000; 
+        boolean found = false; 
+        for(a = 1; a < s/3; a++){
+            for(b = a; b < s/2; b++){
+                c = s - a - b; 
+                if( a*a + b*b == c*c){
+                    found = true;
+                    break; 
+                }
+            }
+            if(found) break; 
+        }
+        System.out.println(a + " " + b + " " + c);
+        return a; 
+    }
+
+    // X : Summation of Primes 
+    public static long summationOfPrimes()
+    {
+        long sum = 0 ;
+        for(int i = 1; i < 2000000; i++){
+            if(isPrime(i)) sum += i; 
+        }
+        System.out.println(sum);
+        return sum; 
+    }
+
+    public static boolean isPrime(long n){
+        if (n < 2) return false; 
+        else if( n == 2) return false; 
+        for(int i = 2; i < Math.pow(n, 0.5) + 1; i++){
+            if (n % i == 0) return false; 
+        }
+        return true; 
+    }
+
     public static void main(String[] args){
-        // multiplesOfThreeAndFive();
-        //evenFibonacciNumbers();
-        //largestPrimeFactorsOfAVeryLargeNumber();
-        //largestPalindromeProduct();
-        //smallestMultiple();
-        //sumSquareDifference()// ANSWER: 25164150
+        // multiplesOfThreeAndFive(); //< Solution: 223168 
+        // evenFibonacciNumbers(); //< Solution:  4613732 
+        // largestPrimeFactorsOfAVeryLargeNumber(); //< Solution: 20 
+        // largestPalindromeProduct(); //< Solution: 906609 
+        // smallestMultiple(); //< Solution: 232792560 
+        // sumSquareDifference() //< Solution: 25164150
+        // bigPrimeNumber(); //< Solution: 104743 
+        // pythagoreanTriplet(); //< Solution: 200, 375, 425 
+        // summationOfPrimes(); //< Solution 142913828920
     }
 }
