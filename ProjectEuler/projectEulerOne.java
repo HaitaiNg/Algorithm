@@ -2,7 +2,6 @@ import java.util.*;
 import java.util.Random; 
 
 /* Description: Project Euler Set [I, X] */ 
-
 public class projectEulerOne{
 
     //I: Sum up all values that divide by 3 & 5 : [1,1000]
