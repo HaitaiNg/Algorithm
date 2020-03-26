@@ -1,8 +1,8 @@
 import java.util.*; 
 import java.math.*; 
+import java.math.BigInteger; 
 
 public class projectEulerTwo{
-
 
 	//< XII 
 	/* returns the nth triangle number; that is, the sum of all the natural numbers less than, or equal to, n */
@@ -66,6 +66,7 @@ public class projectEulerTwo{
 		return 0; 
 	}
 
+	//< XV1 
 	public static int powerDigitSum()
 	{
 		BigInteger two = new BigInteger("2"); 
@@ -86,15 +87,34 @@ public class projectEulerTwo{
 		return sum; 
 	}
 
+	//> XVIII 
+	public static int maximumPathSum()
+	{
+		return 0; 
+	}
 
+	//> XX 
+	public static long factorialDigitSum()
+	{
+		BigInteger num = BigInteger.ONE; 
+		for(int i = 1; i <= 100; i++){
+			num = num.multiply(BigInteger.valueOf(i)); 
+		}
+		final String bignumber = num.toString(); 
+		long result = 0; 
+		for(int i = 0; i < bignumber.length(); i++)
+		{
+			result += Integer.valueOf(String.valueOf(bignumber.charAt(i))); 
+		}
+		System.out.println(result); 
+		return result; 
+	}
 	public static void main(String[] args){
 		// highlyDivisibleTriangularNumber(); //< Solution: 76576500
 		// longestCollatzSequence(); //< Solution: 837799 (Collatz's Conjecture) 
-		LatticePaths(); 
-		powerDigitSum();
-
-
+		// LatticePaths(); 
+		// powerDigitSum(); //< Solution: 1366 
+		// maximumPathSum();
+		// factorialDigitSum(); //< Solution: 648 
 	} 
-
-
 }
