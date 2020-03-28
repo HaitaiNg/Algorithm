@@ -110,11 +110,11 @@ public class projectEulerTwo{
 		return result; 
 	}
 	public static void main(String[] args){
-		// highlyDivisibleTriangularNumber(); //< Solution: 76576500
-		// longestCollatzSequence(); //< Solution: 837799 (Collatz's Conjecture) 
+		// highlyDivisibleTriangularNumber(); //< Solution: 76576500 (12) 
+	 	// longestCollatzSequence(); //< Solution: 837799 (Collatz's Conjecture)  (14) 
 		// LatticePaths(); 
-		// powerDigitSum(); //< Solution: 1366 
+		// powerDigitSum(); //< Solution: 1366 (16) 
 		// maximumPathSum();
-		// factorialDigitSum(); //< Solution: 648 
+		// factorialDigitSum(); //< Solution: 648 (20) 
 	} 
 }

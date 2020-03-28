@@ -1,4 +1,7 @@
-import java.util.*; 
+import java.util.*;
+
+import jdk.internal.agent.resources.agent;
+
 import java.math.*;
 import java.io.*; 
 
@@ -74,9 +77,93 @@ public class projectEulerThree{
 		return nameScores;
 	}  
 
+	public static int nonAbundantSums()
+	{
+		return 0 ; 
+	}
+	public static int lexicographicPermuations()
+	{
+		return 0; 
+	}
+
+	// XXV (25) 
+	public static BigInteger oneThousandthFibonacciNumber()
+	{
+		List<BigInteger> fibonacciList = new ArrayList<BigInteger>(Arrays.asList( BigInteger.ONE, BigInteger.ONE)); 
+		BigInteger index = BigInteger.TWO; 
+		BigInteger upperLimit = BigInteger.TEN; 
+		upperLimit = upperLimit.pow(999); 
+		while(true)
+		{
+			BigInteger mostRecentNumber = fibonacciList.get(1); 
+			if( upperLimit.compareTo(mostRecentNumber) == -1)
+			{
+				System.out.println(index); 
+				return index; 
+			}
+			else{
+				BigInteger newNumber = fibonacciList.get(0).add(fibonacciList.get(1)); 
+				fibonacciList.set(0, fibonacciList.get(1)); 
+				fibonacciList.set(1, newNumber); 
+			}
+			index = index.add(BigInteger.ONE); 
+		}
+	}
+
+	//< XXV1 (26)
+	public static int reciprocalCycles(){
+		return 0; 
+	}
+
+	//< XXVII (27) 
+	public static int quadraticPrimes(){
+		return 0;
+	}
+
+	//< XXVIII (28) 
+	public static int numberSpiralDiagonals()
+	{
+		return 0; 
+	}
+
+	//<XXXIV (29) 
+	public static int distinctPowers()
+	{
+		return 0; 
+	}
+
+	//< XXX 
+	public static int digitFifthPowers()
+	{
+		int result = 0; 
+		for(int i = 2; i < 355000; i++){
+			int sumOfPowers = 0; 
+			int number = i; 
+			while(number > 0){
+				int d = number % 10; 
+				number = number / 10; 
+				int temp = d; 
+				for(int j = 1; j < 5; j++)
+				{
+					temp *= d; 
+				}
+				sumOfPowers += temp; 
+			}
+			if(sumOfPowers == i)
+			{
+				result += i; 
+			}
+
+		}
+		System.out.println(result);
+		return result; 
+	}
+
 	public static void main(String[] args) throws Exception{
 		//  amicableNumbers(); //< Solution: 852810
 		//  namesScores(); //< Solution: 871198282
+		// oneThousandthFibonacciNumber(); //< Problem 25: Solution: 4782 
+		digitFifthPowers();
 		}
 
 }

@@ -4,17 +4,17 @@ import java.util.Random;
 /* Description: Project Euler Set [I, X] */ 
 public class projectEulerOne{
 
-    //I: Sum up all values that divide by 3 & 5 : [1,1000]
+    //I: Sum up all values that divide by 3 & 5 : [1,1000] 
     public static int multiplesOfThreeAndFive(){
         int target = 1000; 
         int returnValue = 0;
-        for(int i = 3; i < 1000; i++){
+        for(int i = 3; i < target ; i++){
             if(i % 3 == 0 || i % 5 == 0) returnValue = returnValue + i; 
         }
         System.out.println(returnValue); 
         return returnValue; 
     }
-    //II: Fibonacci Numbers: sum up all even-valued terms 
+    //II: Even Fibonacci Numbers: sum up all even-valued terms 
     public static int fibonacciNumbers(int n ){
         if(n <= 1) return n; 
         return fibonacciNumbers(n - 1) + fibonacciNumbers(n - 2); 
@@ -196,14 +196,14 @@ public class projectEulerOne{
     }
 
     public static void main(String[] args){
-        // multiplesOfThreeAndFive(); //< Solution: 223168 
-        // evenFibonacciNumbers(); //< Solution:  4613732 
-        // largestPrimeFactorsOfAVeryLargeNumber(); //< Solution: 20 
-        // largestPalindromeProduct(); //< Solution: 906609 
-        // smallestMultiple(); //< Solution: 232792560 
-        // sumSquareDifference() //< Solution: 25164150
-        // bigPrimeNumber(); //< Solution: 104743 
-        // pythagoreanTriplet(); //< Solution: 200, 375, 425 
-        // summationOfPrimes(); //< Solution 142913828920
+        // multiplesOfThreeAndFive(); //< Solution: 223168 (1)
+        // evenFibonacciNumbers(); //< Solution:  4613732 (2) 
+        // largestPrimeFactorsOfAVeryLargeNumber(); //< Solution: 20 (3)
+        // largestPalindromeProduct(); //< Solution: 906609  (4) 
+        // smallestMultiple(); //< Solution: 232792560  (5) 
+        // sumSquareDifference() //< Solution: 25164150 (6) 
+        // bigPrimeNumber(); //< Solution: 104743 (7)
+        // pythagoreanTriplet(); //< Solution: 200, 375, 425 (8) 
+        // summationOfPrimes(); //< Solution 142913828920 (10) 
     }
 }
