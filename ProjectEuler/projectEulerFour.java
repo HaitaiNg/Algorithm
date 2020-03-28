@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class projectEulerFive{
+public class projectEulerFour{
 
     // (50) 
 

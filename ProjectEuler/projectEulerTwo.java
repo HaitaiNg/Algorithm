@@ -1,120 +1,179 @@
-import java.util.*; 
-import java.math.*; 
-import java.math.BigInteger; 
+import java.util.*;
+import jdk.internal.agent.resources.agent;
+import java.math.*;
+import java.io.*; 
 
 public class projectEulerTwo{
 
-	//< XII 
-	/* returns the nth triangle number; that is, the sum of all the natural numbers less than, or equal to, n */
-	public static int triangleNumber(int n) {
-			int sum = 0;
-			for (int i = 0; i <= n; i++)
-				sum += i;
-			return sum;
-		}
-	public static int highlyDivisibleTriangularNumber()
-	{
-		int j = 0, n = 0, numberOfDivisors = 0; 
-		while(numberOfDivisors <= 500){
-			numberOfDivisors = 0; 
-			j++; 
-			n = triangleNumber(j); 
-			//count the number of divisors from 1 to sqrt(n) 
-			for (int i = 1; i <= Math.sqrt(n); i++){
-				if (n % i == 0)
-				numberOfDivisors++;
+	//XXI : Amicable Numbers. (Medium) 
+	public static long divisorEquation(long target){
+		long sumOfDivisorsOfTarget = 0 ;
+		for(long i = 1; i <= (target/2); i++){
+			if(target % i == 0 && (i * i != target)){
+				sumOfDivisorsOfTarget += i; 
 			}
-		
-		// 1 to the square root of the number holds exactly half of the divisors
-		// so multiply it by 2 to include the other corresponding half
-		numberOfDivisors *= 2;
 		}
-		System.out.println(n);
-		return n; 
+		return sumOfDivisorsOfTarget;
 	}
-
-	//< XIV 
-	public static long longestCollatzSequence()
-	{
-		long longestSequence = 0, integerWithLargestSequence = 0; 
-		for(long i = 1000000; i >= 0; i--)
-		{
-			long sequence = 0; 
-			long j = i; 
-			while(j > 1){
-				if(j % 2 == 0){
-					j = j/2; 
-				}else{
-					j = 3*j + 1;
+	public static int amicableNumbers(){
+		long a, b, start = 1, sum = 0 ; 
+		HashMap<Long, Long> mappingOfAmicableNumbers = new HashMap<Long, Long>(); 
+		while( start <= 100000){
+			a = divisorEquation(start);
+			b = divisorEquation(a); 
+			if(( start == b ) && ( a != b ))
+			{
+				if(a > b)
+				{
+					mappingOfAmicableNumbers.put(b, a );
 				}
-				sequence++; 
+				else
+				{
+					mappingOfAmicableNumbers.put(a, b); 
+				}
 			}
-			if(sequence > longestSequence){
-				longestSequence = sequence; 
-				integerWithLargestSequence = i;
-			}
+			start++; 
 		}
-		System.out.println("Longest Sequence: " + longestSequence); 
-		System.out.println("Number With Largest Sequence: " + integerWithLargestSequence); 
-		return longestSequence; 
-	}
-
-	//< XV  (Similar to Amazon question) ( Look this Up and watch Tutorials on how to solve )
-	public static int LatticePaths()
-	{
-		//How many such routes are there in a 20x20 grid 
-		return 0; 
-	}
-
-	//< XV1 
-	public static int powerDigitSum()
-	{
-		BigInteger two = new BigInteger("2"); 
-		BigInteger target = two.pow(1000); 
-		System.out.println(target + " " + sumDigits(target)); 
-		return sumDigits(target); 
-		
-	}
-
-	public static int sumDigits(BigInteger input){
-		int sum = 0; 
-		BigInteger[] divideAndRemainder; 
-		while(input.compareTo(BigInteger.ZERO) > 0){
-			divideAndRemainder = input.divideAndRemainder(BigInteger.TEN); 
-			input = divideAndRemainder[0]; 
-			sum += divideAndRemainder[1].intValue(); 
-		}
-		return sum; 
-	}
-
-	//> XVIII 
-	public static int maximumPathSum()
-	{
-		return 0; 
-	}
-
-	//> XX 
-	public static long factorialDigitSum()
-	{
-		BigInteger num = BigInteger.ONE; 
-		for(int i = 1; i <= 100; i++){
-			num = num.multiply(BigInteger.valueOf(i)); 
-		}
-		final String bignumber = num.toString(); 
-		long result = 0; 
-		for(int i = 0; i < bignumber.length(); i++)
+		for(long key: mappingOfAmicableNumbers.keySet())
 		{
-			result += Integer.valueOf(String.valueOf(bignumber.charAt(i))); 
+			System.out.println(key + " " + mappingOfAmicableNumbers.get(key)); 
+			sum += key + mappingOfAmicableNumbers.get(key); 
 		}
-		System.out.println(result); 
-		return result; 
+		System.out.println("Solution:" + sum ); 
+		return 0; 
 	}
-	public static void main(String[] args){
-		// highlyDivisibleTriangularNumber(); //< Solution: 76576500 (12) 
-	 	// longestCollatzSequence(); //< Solution: 837799 (Collatz's Conjecture)  (14) 
-		// LatticePaths(); 
-		// powerDigitSum(); //< Solution: 1366 (16) 
-		// maximumPathSum();
-		// factorialDigitSum(); //< Solution: 648 (20) 
-	} 
+
+	//XXII: Names Scores (Easy) 
+	public static BigInteger namesScores() throws Exception {
+		 File file = new File("/Users/haitai/Downloads/p022_names.txt");
+		 FileReader fileReader = new FileReader(file); 
+		 BufferedReader br = new BufferedReader(fileReader); 
+		 StringBuilder fileContent = new StringBuilder(); 
+		 String line; 
+		 while((line = br.readLine()) != null) fileContent.append(line); 
+		 String[] fileContentList = fileContent.toString().split(",");
+		 Arrays.sort(fileContentList);
+		 List<Character> alphabetList = new ArrayList<Character>(Arrays.asList('A','B','C','D','E','F','G',
+		 'H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z')); 
+		 HashMap<Character, Integer> alphabetMap = new HashMap<Character, Integer>(); 
+		 alphabetMap.put('"', 0); 
+		 for(int i = 0; i < alphabetList.size(); i++)
+		 {
+			 alphabetMap.put( alphabetList.get(i), i + 1); 
+		 }
+		 BigInteger nameScores = BigInteger.ZERO; 
+		 int index = 1; 
+		 for(String name: fileContentList){
+			long temporarySum = 0; 
+			for(char character : name.toCharArray()){
+				temporarySum += alphabetMap.get(character); 
+			}
+			nameScores = nameScores.add(BigInteger.valueOf(temporarySum * index )); 
+			index++; 
+		}
+		System.out.println(nameScores); 
+		return nameScores;
+	}  
+	
+	//XXIII: Non-abundant sums (hard)
+	public static boolean isAbundantNumber(int value){
+		var sqrt = (int) Math.sqrt(value); 
+		var list = new HashSet<Integer>(); 
+		var sum = 0; 
+		list.add(1); 
+		for(var v = 2; v <= sqrt; v++ )
+		{
+			if(value % v == 0){
+				list.add(v);
+				list.add(value / v); 
+			}
+		}
+		for(var d: list){
+			sum += d; 
+		}
+		return sum > value; 
+	}
+	public static List<Integer> aList(int limit){
+		var list = new ArrayList<Integer>(); 
+		for(var v = 12; v <= limit; v++)
+		{
+			if(isAbundantNumber(v)){
+				list.add(v); 
+			}
+		}
+		return list; 
+	}
+	public static int nonAbundantSums()
+	{
+		return 0 ; 
+	}
+
+
+
+
+
+	public static int lexicographicPermuations()
+	{
+		return 0; 
+	}
+
+	// XXV (25) 
+	public static BigInteger oneThousandthFibonacciNumber()
+	{
+		List<BigInteger> fibonacciList = new ArrayList<BigInteger>(Arrays.asList( BigInteger.ONE, BigInteger.ONE)); 
+		BigInteger index = BigInteger.TWO; 
+		BigInteger upperLimit = BigInteger.TEN; 
+		upperLimit = upperLimit.pow(999); 
+		while(true)
+		{
+			BigInteger mostRecentNumber = fibonacciList.get(1); 
+			if( upperLimit.compareTo(mostRecentNumber) == -1)
+			{
+				System.out.println(index); 
+				return index; 
+			}
+			else{
+				BigInteger newNumber = fibonacciList.get(0).add(fibonacciList.get(1)); 
+				fibonacciList.set(0, fibonacciList.get(1)); 
+				fibonacciList.set(1, newNumber); 
+			}
+			index = index.add(BigInteger.ONE); 
+		}
+	}
+
+	//< XXV1 (26)
+	public static int reciprocalCycles(){
+		return 0; 
+	}
+
+	//< XXVII (27) 
+	public static int quadraticPrimes(){
+		return 0;
+	}
+
+	//< XXVIII (28) 
+	public static int numberSpiralDiagonals()
+	{
+		return 0; 
+	}
+
+	//<XXXIV (29) 
+	public static int distinctPowers()
+	{
+		return 0; 
+	}
+
+	//< XXX 
+	public static int digitFifthPowers()
+	{
+		return 0; 
+	}
+
+	public static void main(String[] args) throws Exception{
+		//  amicableNumbers(); //< Solution: 852810
+		//  namesScores(); //< Solution: 871198282
+		// oneThousandthFibonacciNumber(); //< Problem 25: Solution: 4782 
+		// digitFifthPowers();
+		}
+
 }
