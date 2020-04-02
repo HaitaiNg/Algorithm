@@ -76,7 +76,7 @@ public class projectEulerFour{
     }
 
 	public static void main(String[] args) throws Exception{
-        consecutivePrimeSum(); //< Solution: 997651 (50) 
+        // consecutivePrimeSum(); //< Solution: 997651 (50) 
 		}
 }
 

@@ -59,11 +59,17 @@ public class projectEulerOne{
 		return longestSequence; 
 	}
 
-	//< XV  (Similar to Amazon question) ( Look this Up and watch Tutorials on how to solve )
-	public static int LatticePaths()
+	//< XV  Dynamic Programming (15) hard 
+	public static long  LatticePaths()
 	{
-		//How many such routes are there in a 20x20 grid 
-		return 0; 
+		long gridSize = 20; 
+		long paths = 1; 
+		for(long i = 0; i < gridSize; i++){
+			paths *= (2 * gridSize) - i; 
+			paths /= i + 1; 
+		}
+		System.out.println(paths); 
+		return paths; 
 	}
 
 	//< XV1 
@@ -87,10 +93,23 @@ public class projectEulerOne{
 		return sum; 
 	}
 
-	//> XVIII 
+	//> XVIII (Dynamic Programming Hard) 
 	public static int maximumPathSum()
 	{
-		return 0; 
+		
+		int tri[][] = null; 
+		int m = 0, n = 0;
+		for(int i = m - 1; i >= 0; i--){
+			for(int j = 0; j <= i; j++)
+			{
+				if(tri[i+1][j] > tri[i+1][j+1]){
+					tri[i][j] += tri[i+1][j]; 
+				}else{
+					tri[i][j] += tri[i+1][j+1]; 
+				}
+			}
+		}
+		return tri[0][0];
 	}
 
 	//> XX 
@@ -112,9 +131,9 @@ public class projectEulerOne{
 	public static void main(String[] args){
 		// highlyDivisibleTriangularNumber(); //< Solution: 76576500 (12) 
 	 	// longestCollatzSequence(); //< Solution: 837799 (Collatz's Conjecture)  (14) 
-		// LatticePaths(); 
+		// LatticePaths(); //< Solution: 137846528820 (15) 
 		// powerDigitSum(); //< Solution: 1366 (16) 
-		// maximumPathSum();
+		// maximumPathSum(); //< Solution: 1074 (18) 
 		// factorialDigitSum(); //< Solution: 648 (20) 
 	} 
 }
