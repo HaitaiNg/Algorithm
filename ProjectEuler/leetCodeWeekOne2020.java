@@ -44,6 +44,31 @@ public class leetCodeWeekOne2020{
         return largestSum; 
     }
     //4.4.20
+    public void moveZeroes(int[] nums) {
+        int[] zeroArray = new int[nums.length]; 
+        int position = 0; 
+        for(int i : nums){
+            if(i != 0){
+                zeroArray[position] = i; 
+                position++; 
+            }
+        }
+        if(position != nums.length - 1){
+            for(int i = position; i < nums.length; i++)
+            {
+                zeroArray[i] = 0;
+            }
+        }
+        nums = zeroArray; 
+        for(int x: nums)
+        {
+            System.out.print(x + " "); 
+        }
+        
+    }
+
+
+
     //4.5.20
     //4.6.20
     //4.7.20 
@@ -57,6 +82,8 @@ public class leetCodeWeekOne2020{
         object.isHappy(19); 
         //4.4.20 // < Solution = 6 (input =[-2,1,-3,4,-1,2,1,-5,4]) : [4,-1,2,1] has the largest sum = 6.
         object.maxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,-4}); 
+        //4.5.20 //< Solution = [1,3,12,0,0] : Input: [0,1,0,3,12]
+        object.moveZeroes(new int[] {0,1,0,3,12});
 
     }
 }
