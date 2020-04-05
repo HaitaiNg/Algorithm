@@ -45,6 +45,8 @@ public class leetCodeWeekOne2020{
     }
     //4.4.20
     public void moveZeroes(int[] nums) {
+        // 1.) We must do this in-place without making a copy of the array 
+        // 2.) minimize the total number of operations 
         int[] zeroArray = new int[nums.length]; 
         int position = 0; 
         for(int i : nums){
@@ -59,17 +61,21 @@ public class leetCodeWeekOne2020{
                 zeroArray[i] = 0;
             }
         }
-        nums = zeroArray; 
-        for(int x: nums)
+        for(int i = 0; i < nums.length; i++)
         {
-            System.out.print(x + " "); 
-        }
-        
+            nums[i] = zeroArray[i]; 
+        } 
     }
 
-
-
-    //4.5.20
+    //4.5.20 Best Time To Buy And Sell Stock II
+    public int maxProfit(int[] prices) {
+        int profit = 0; 
+        for(int i = 1; i < prices.length; i++)
+        {
+            profit += Math.max(0, prices[i] - prices[i - 1]); 
+        }
+        return profit; 
+    }
     //4.6.20
     //4.7.20 
 
@@ -80,10 +86,12 @@ public class leetCodeWeekOne2020{
         object.singleNumber(new int[] {4,1,2,1,2}); 
         //4.2.20 // < Solution = true 
         object.isHappy(19); 
-        //4.4.20 // < Solution = 6 (input =[-2,1,-3,4,-1,2,1,-5,4]) : [4,-1,2,1] has the largest sum = 6.
+        //4.3.20 // < Solution = 6 (input =[-2,1,-3,4,-1,2,1,-5,4]) : [4,-1,2,1] has the largest sum = 6.
         object.maxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,-4}); 
-        //4.5.20 //< Solution = [1,3,12,0,0] : Input: [0,1,0,3,12]
+        //4.4.20 //< Solution = [1,3,12,0,0] : Input: [0,1,0,3,12]
         object.moveZeroes(new int[] {0,1,0,3,12});
+        //4.5.20
+        object.maxProfit((new int[] {7,6,4,3,1})); 
 
     }
 }
