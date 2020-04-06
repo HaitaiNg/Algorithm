@@ -170,9 +170,9 @@ public class projectEulerTwo{
 	}
 
 	public static void main(String[] args) throws Exception{
-		//  amicableNumbers(); //< Solution: 852810
-		//  namesScores(); //< Solution: 871198282
-		// oneThousandthFibonacciNumber(); //< Problem 25: Solution: 4782 
+		//  amicableNumbers(); //< Solution: 852810 (21)
+		//  namesScores(); //< Solution: 871198282 (22)
+		// oneThousandthFibonacciNumber(); //< Problem 25: Solution: 4782 (25)  
 		// digitFifthPowers();
 		}
 

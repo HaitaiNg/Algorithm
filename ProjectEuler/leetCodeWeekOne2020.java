@@ -47,24 +47,17 @@ public class leetCodeWeekOne2020{
     public void moveZeroes(int[] nums) {
         // 1.) We must do this in-place without making a copy of the array 
         // 2.) minimize the total number of operations 
-        int[] zeroArray = new int[nums.length]; 
         int position = 0; 
         for(int i : nums){
             if(i != 0){
-                zeroArray[position] = i; 
+                nums[position] = i; 
                 position++; 
             }
         }
-        if(position != nums.length - 1){
-            for(int i = position; i < nums.length; i++)
-            {
-                zeroArray[i] = 0;
-            }
-        }
-        for(int i = 0; i < nums.length; i++)
+        for(int j = position; j < nums.length; j++)
         {
-            nums[i] = zeroArray[i]; 
-        } 
+            nums[j] = 0; 
+        }
     }
 
     //4.5.20 Best Time To Buy And Sell Stock II
