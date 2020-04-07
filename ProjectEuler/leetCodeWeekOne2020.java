@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Arrays;
 
 public class leetCodeWeekOne2020{
 
@@ -69,7 +70,37 @@ public class leetCodeWeekOne2020{
         }
         return profit; 
     }
-    //4.6.20
+    //4.6.20 Group Anagrams 
+    public static String sortString(String text) {
+        char[] chars = text.toCharArray(); 
+        Arrays.sort(chars);
+        return new String(chars);
+    }
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> mapOfAnagramsAndIndexes = new HashMap<String, List<String>>(); 
+        List<List<String>> returnList = new ArrayList<List<String>>(); 
+        for(String s : strs)
+        {
+            if(mapOfAnagramsAndIndexes.containsKey(sortString(s)))
+            {
+                List<String> temporaryList = mapOfAnagramsAndIndexes.get(sortString(s));
+                temporaryList.add(s); 
+                mapOfAnagramsAndIndexes.put(sortString(s), temporaryList); 
+            }
+            else
+            {
+                List<String> temporaryList = new ArrayList<String>(); 
+                temporaryList.add(s); 
+                mapOfAnagramsAndIndexes.put(sortString(s), temporaryList); 
+            }
+        }
+        for(String K :mapOfAnagramsAndIndexes.keySet())
+        {
+            returnList.add(mapOfAnagramsAndIndexes.get(K)); 
+        }
+        return returnList; 
+    }
     //4.7.20 
 
     public static void main(String[] args){
@@ -85,6 +116,9 @@ public class leetCodeWeekOne2020{
         object.moveZeroes(new int[] {0,1,0,3,12});
         //4.5.20
         object.maxProfit((new int[] {7,6,4,3,1})); 
+        //4.6.20
+        String[] arguments = {"eat", "tea", "tan", "ate", "nat", "bat"}; 
+        object.groupAnagrams(arguments); 
 
     }
 }
