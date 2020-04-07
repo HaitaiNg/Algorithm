@@ -1,6 +1,5 @@
 import java.util.*;
 import java.util.Arrays;
-
 public class leetCodeWeekOne2020{
 
     // 4.1.20 Single Number 
@@ -115,7 +114,6 @@ public class leetCodeWeekOne2020{
     }
 
     public static void main(String[] args){
-
         leetCodeWeekOne2020 object = new leetCodeWeekOne2020(); 
         //4.1.20 //< Solution = 4; 
         object.singleNumber(new int[] {4,1,2,1,2}); 
@@ -125,13 +123,12 @@ public class leetCodeWeekOne2020{
         object.maxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,-4}); 
         //4.4.20 //< Solution = [1,3,12,0,0] : Input: [0,1,0,3,12]
         object.moveZeroes(new int[] {0,1,0,3,12});
-        //4.5.20   Best Time to Buy and Sell Stock II //<  Solution : 0 
+        //4.5.20 //<  Solution : 0 
         object.maxProfit((new int[] {7,6,4,3,1})); 
         //4.6.20
         String[] arguments = {"eat", "tea", "tan", "ate", "nat", "bat"}; 
         object.groupAnagrams(arguments); 
-        //4.7.20 
+        //4.7.20 //< Solution = 3 
         object.countElements(new int[] {1,3,2,3,5,0});
-
     }
 }
