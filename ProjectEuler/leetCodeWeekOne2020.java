@@ -44,7 +44,7 @@ public class leetCodeWeekOne2020{
         }
         return largestSum; 
     }
-    //4.4.20
+    //4.4.20 Move Zeroes
     public void moveZeroes(int[] nums) {
         // 1.) We must do this in-place without making a copy of the array 
         // 2.) minimize the total number of operations 
@@ -101,7 +101,18 @@ public class leetCodeWeekOne2020{
         }
         return returnList; 
     }
-    //4.7.20 
+    //4.7.20 Count Elements 
+    public int countElements(int[] arr) {
+        Map<Integer, Integer> numberMap = new HashMap<Integer, Integer>(); 
+        for(int entry: arr){
+            numberMap.put(entry, entry + 1); 
+        }
+        int numberOfValidCounts = 0; 
+        for(int x: arr){
+            if(numberMap.containsKey(x + 1)) numberOfValidCounts++;
+        }
+        return numberOfValidCounts; 
+    }
 
     public static void main(String[] args){
 
@@ -114,11 +125,13 @@ public class leetCodeWeekOne2020{
         object.maxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,-4}); 
         //4.4.20 //< Solution = [1,3,12,0,0] : Input: [0,1,0,3,12]
         object.moveZeroes(new int[] {0,1,0,3,12});
-        //4.5.20
+        //4.5.20   Best Time to Buy and Sell Stock II //<  Solution : 0 
         object.maxProfit((new int[] {7,6,4,3,1})); 
         //4.6.20
         String[] arguments = {"eat", "tea", "tan", "ate", "nat", "bat"}; 
         object.groupAnagrams(arguments); 
+        //4.7.20 
+        object.countElements(new int[] {1,3,2,3,5,0});
 
     }
 }
