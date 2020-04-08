@@ -1,11 +1,10 @@
 import java.util.*;
-import jdk.internal.agent.resources.agent;
 import java.math.*;
 import java.io.*; 
 
 public class projectEulerTwo{
 
-	//XXI : Amicable Numbers. (Medium) 
+	//XXI : Amicable Numbers. (Medium) (21)
 	public static long divisorEquation(long target){
 		long sumOfDivisorsOfTarget = 0 ;
 		for(long i = 1; i <= (target/2); i++){
@@ -43,7 +42,7 @@ public class projectEulerTwo{
 		return 0; 
 	}
 
-	//XXII: Names Scores (Easy) 
+	//XXII: Names Scores (Easy)  (22)
 	public static BigInteger namesScores() throws Exception {
 		 File file = new File("/Users/haitai/Downloads/p022_names.txt");
 		 FileReader fileReader = new FileReader(file); 
@@ -75,7 +74,7 @@ public class projectEulerTwo{
 		return nameScores;
 	}  
 	
-	//XXIII: Non-abundant sums (hard)
+	//XXIII: Non-abundant sums (hard) (23)
 	public static boolean isAbundantNumber(int value){
 		var sqrt = (int) Math.sqrt(value); 
 		var list = new HashSet<Integer>(); 
@@ -108,16 +107,13 @@ public class projectEulerTwo{
 		return 0 ; 
 	}
 
-
-
-
-
+	// XXIV Lexicographic Permutations (24)
 	public static int lexicographicPermuations()
 	{
 		return 0; 
 	}
 
-	// XXV (25) 
+	// XXV 1000-digit Fibonacci Number (25) 
 	public static BigInteger oneThousandthFibonacciNumber()
 	{
 		List<BigInteger> fibonacciList = new ArrayList<BigInteger>(Arrays.asList( BigInteger.ONE, BigInteger.ONE)); 
@@ -141,17 +137,17 @@ public class projectEulerTwo{
 		}
 	}
 
-	//< XXV1 (26)
+	//< XXV1 Reciprocal Cycles (26)
 	public static int reciprocalCycles(){
 		return 0; 
 	}
 
-	//< XXVII (27) 
+	//< XXVII Quadratic Primes(27) 
 	public static int quadraticPrimes(){
 		return 0;
 	}
 
-	//< XXVIII (28) 
+	//< XXVIII Number Spiral diagonals (28) 
 	public static int numberSpiralDiagonals()
 	{
 		return 0; 
@@ -160,20 +156,45 @@ public class projectEulerTwo{
 	//<XXXIV (29) 
 	public static int distinctPowers()
 	{
-		return 0; 
+		double temporaryPower = 0; 
+		ArrayList<Double> distinctTerms = new ArrayList<Double>(); 
+		for(int i = 2; i <= 100; i++){
+			for(int j = 2; j <= 100; j++)
+			{
+				temporaryPower = Math.pow(i, j); 
+				if(distinctTerms.contains(temporaryPower) == false) distinctTerms.add(temporaryPower); 
+			}
+		}
+		return distinctTerms.size(); 
 	}
 
-	//< XXX 
+	//< XXX (30) 
 	public static int digitFifthPowers()
 	{
-		return 0; 
+		int sum = 0; 
+		for (int i = 2; i < 1000000; i++){
+			if( i == fifthPowerDigitSum(i)) sum += i; 
+		}
+		return sum;
+	}
+
+	public static int fifthPowerDigitSum(int x)
+	{
+		int sum = 0 ; 
+		while( x != 0){
+			int y = x % 10; 
+			sum += y * y * y * y; 
+			x /= 10;
+		}
+		return sum; 
 	}
 
 	public static void main(String[] args) throws Exception{
 		//  amicableNumbers(); //< Solution: 852810 (21)
 		//  namesScores(); //< Solution: 871198282 (22)
-		// oneThousandthFibonacciNumber(); //< Problem 25: Solution: 4782 (25)  
-		// digitFifthPowers();
+		// oneThousandthFibonacciNumber(); //< Solution: 4782 (25)  
+		// distinctPowers(); //< Soluition: 9183 (29)
+		//digitFifthPowers(); //< Solution : 19316 (30)
 		}
 
 }
