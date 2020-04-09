@@ -12,7 +12,6 @@ public class leetCodeWeekTwoApril2020{
          ListNode next;
          ListNode(int x) { val = x; }
      }
-    
     public ListNode middleNode(ListNode head) {
         ListNode copyOfCurrentHead = head; 
         int numberOfNodes = 0; 
@@ -38,7 +37,6 @@ public class leetCodeWeekTwoApril2020{
     public boolean backspaceCompare(String S, String T) { 
         return backSpaceCompareHelper(S).equals(backSpaceCompareHelper(T)); 
    }
-   
    public String backSpaceCompareHelper(String S)
    {
        String s = ""; 
@@ -56,11 +54,10 @@ public class leetCodeWeekTwoApril2020{
        }
        return sStack.toString();
    }
-   
 
     public static void main(String[] args){
         leetCodeWeekTwoApril2020 object = new leetCodeWeekTwoApril2020(); 
-        System.out.println(object.backspaceCompare("ab#c", "ad#c"));
-    }
+        System.out.println(object.backspaceCompare("ab#c", "ad#c")); //< 4.9 
+   }
 
 }
