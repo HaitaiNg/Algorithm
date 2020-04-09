@@ -4,6 +4,11 @@ import java.math.BigInteger;
 
 public class projectEulerThree{
 
+        ///< XXXI Coin Sums (31) : Dynamioc Progrmaming 
+        public int coinSums()
+        {
+                return 0 ;
+        }
         //< XXXII Pandigital Products (32) 
         public int pandigitalProducts()
         {

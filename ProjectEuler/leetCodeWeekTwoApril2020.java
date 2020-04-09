@@ -34,8 +34,33 @@ public class leetCodeWeekTwoApril2020{
         return head; 
     }
 
+    // 4.9 Backspace String Compare
+    public boolean backspaceCompare(String S, String T) { 
+        return backSpaceCompareHelper(S).equals(backSpaceCompareHelper(T)); 
+   }
+   
+   public String backSpaceCompareHelper(String S)
+   {
+       String s = ""; 
+       Stack sStack = new Stack<Character>(); 
+       for(int i = 0 ; i < S.length(); i++)
+       {
+           char character = S.charAt(i); 
+           if(character == '#'){
+               if(sStack.size() > 0) sStack.pop(); 
+           } 
+           else
+           {
+               sStack.add(character); 
+           }
+       }
+       return sStack.toString();
+   }
+   
+
     public static void main(String[] args){
         leetCodeWeekTwoApril2020 object = new leetCodeWeekTwoApril2020(); 
+        System.out.println(object.backspaceCompare("ab#c", "ad#c"));
     }
 
 }
