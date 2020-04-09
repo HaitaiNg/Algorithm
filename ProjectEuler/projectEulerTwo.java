@@ -74,45 +74,6 @@ public class projectEulerTwo{
 		return nameScores;
 	}  
 	
-	//XXIII: Non-abundant sums (hard) (23)
-	public static boolean isAbundantNumber(int value){
-		var sqrt = (int) Math.sqrt(value); 
-		var list = new HashSet<Integer>(); 
-		var sum = 0; 
-		list.add(1); 
-		for(var v = 2; v <= sqrt; v++ )
-		{
-			if(value % v == 0){
-				list.add(v);
-				list.add(value / v); 
-			}
-		}
-		for(var d: list){
-			sum += d; 
-		}
-		return sum > value; 
-	}
-	public static List<Integer> aList(int limit){
-		var list = new ArrayList<Integer>(); 
-		for(var v = 12; v <= limit; v++)
-		{
-			if(isAbundantNumber(v)){
-				list.add(v); 
-			}
-		}
-		return list; 
-	}
-	public static int nonAbundantSums()
-	{
-		return 0 ; 
-	}
-
-	// XXIV Lexicographic Permutations (24)
-	public static int lexicographicPermuations()
-	{
-		return 0; 
-	}
-
 	// XXV 1000-digit Fibonacci Number (25) 
 	public static BigInteger oneThousandthFibonacciNumber()
 	{
@@ -137,7 +98,7 @@ public class projectEulerTwo{
 		}
 	}
 
-	//< XXV1 Reciprocal Cycles (26) : Nayuki Minase 
+	//< XXV1 Reciprocal Cycles (26) : Hard
 	public static int reciprocalCycles(){
 		int sequenceLength = 0;
 		for(int i = 1000; i > 1; i--)
@@ -159,19 +120,6 @@ public class projectEulerTwo{
 		}
 		System.out.println(sequenceLength);
 		return sequenceLength;
-	}
-
-
-
-	//< XXVII Quadratic Primes(27) 
-	public static int quadraticPrimes(){
-		return 0;
-	}
-
-	//< XXVIII Number Spiral diagonals (28) 
-	public static int numberSpiralDiagonals()
-	{
-		return 0; 
 	}
 
 	//<XXXIV (29) 
@@ -213,8 +161,8 @@ public class projectEulerTwo{
 	public static void main(String[] args) throws Exception{
 		//  amicableNumbers(); //< Solution: 852810 (21)
 		//  namesScores(); //< Solution: 871198282 (22)
-		// oneThousandthFibonacciNumber(); //< Solution: 4782 (25)  
-		reciprocalCycles();
+		// oneThousandthFibonacciNumber(); //< Solution: 4782 (25) 
+		// reciprocalCycles(); //< Solution: 982  (26) 
 		// distinctPowers(); //< Soluition: 9183 (29)
 		//digitFifthPowers(); //< Solution : 19316 (30)
 		}
