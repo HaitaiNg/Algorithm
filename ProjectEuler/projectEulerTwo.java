@@ -137,10 +137,31 @@ public class projectEulerTwo{
 		}
 	}
 
-	//< XXV1 Reciprocal Cycles (26)
+	//< XXV1 Reciprocal Cycles (26) : Nayuki Minase 
 	public static int reciprocalCycles(){
-		return 0; 
+		int sequenceLength = 0;
+		for(int i = 1000; i > 1; i--)
+		{
+			if(sequenceLength >= i) break; 
+			int[] foundRemainders = new int[i]; 
+			int value = 1; 
+			int position = 0 ; 
+			while(foundRemainders[value] == 0 && value != 0)
+			{
+				foundRemainders[value] = position; 
+				value *= 10;
+				value %= i; 
+				position++; 
+			}
+			if(position - foundRemainders[value] > sequenceLength){
+				sequenceLength = position - foundRemainders[value]; 
+			}
+		}
+		System.out.println(sequenceLength);
+		return sequenceLength;
 	}
+
+
 
 	//< XXVII Quadratic Primes(27) 
 	public static int quadraticPrimes(){
@@ -193,6 +214,7 @@ public class projectEulerTwo{
 		//  amicableNumbers(); //< Solution: 852810 (21)
 		//  namesScores(); //< Solution: 871198282 (22)
 		// oneThousandthFibonacciNumber(); //< Solution: 4782 (25)  
+		reciprocalCycles();
 		// distinctPowers(); //< Soluition: 9183 (29)
 		//digitFifthPowers(); //< Solution : 19316 (30)
 		}
