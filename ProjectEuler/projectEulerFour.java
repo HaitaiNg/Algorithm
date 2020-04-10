@@ -1,12 +1,91 @@
 import java.util.*;
-
+import java.lang.*; 
 public class projectEulerFour{
-
-    // (49) Prime Permutations
-    public static int primerPermutations()
+    
+    // XL (40) Champernownes Constant  
+    public static int champernownesConstant()
     {
-        return 0; 
+        StringBuilder sb = new StringBuilder(); 
+        for(int i = 1; i < 10000000; i++)
+        {
+            sb.append(i); }
+            int prod = 1; 
+            for(int i = 0; i <= 6; i++)
+            {
+                prod *= sb.charAt( (int ) Math.pow(10, i) - 1)- '0';
+                 
+            }
+            System.out.println(prod);
+        return prod; 
     }
+
+    // XLI (41) Pandigital Prime
+    public static int pandigitalPrime()
+    {
+        int target = 0; 
+        for(target = 987654321; target > 0; target--)
+        {
+            if(isPandigital(target))
+            {
+                if(isPrime(target))
+                {
+                    return target; 
+                }
+            }
+        }
+        return target; 
+    } 
+
+    public static Set<Integer> createNumberSet(int x)
+    {
+        Set<Integer> numberSet = new HashSet<Integer>(); 
+        int numberOfDigits = 0;
+        while(x > 0){
+            numberOfDigits++; 
+            x /= 10; 
+        }
+        for(int i = 1; i <= numberOfDigits; i++)
+        {
+            numberSet.add(i); 
+        }
+        return numberSet;
+    }
+
+    public static boolean isPandigital(int i)
+    {
+        Set<Integer> numberSet = createNumberSet(i);  
+        while(i > 0)
+        {
+            int digit = i % 10; 
+            if(numberSet.contains(digit)) numberSet.remove(digit); 
+            else{
+                return false; 
+            }
+            i /= 10; 
+        }
+        if(!numberSet.isEmpty()) return false;
+        return true; 
+    }
+    
+    static boolean isPrime(int n) 
+    { 
+        // Corner cases 
+        if (n <= 1) 
+            return false; 
+        if (n <= 3) 
+            return true; 
+  
+        // This is checked so that we can skip 
+        // middle five numbers in below loop 
+        if (n % 2 == 0 || n % 3 == 0) 
+            return false; 
+  
+        for (int i = 5; i * i <= n; i = i + 6) 
+            if (n % i == 0 || n % (i + 2) == 0) 
+                return false; 
+  
+        return true; 
+    } 
 
     // (50) (Very Hard)
     // Had to get help from this source:
@@ -76,6 +155,8 @@ public class projectEulerFour{
     }
 
 	public static void main(String[] args) throws Exception{
+        // champernownesConstant(); //< Solution: 210 (40)
+        // pandigitalPrime(); //< Solution: 7652413 (41)
         // consecutivePrimeSum(); //< Solution: 997651 (50) 
 		}
 }

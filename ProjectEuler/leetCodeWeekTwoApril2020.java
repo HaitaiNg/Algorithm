@@ -13,24 +13,37 @@ public class leetCodeWeekTwoApril2020{
          ListNode(int x) { val = x; }
      }
     public ListNode middleNode(ListNode head) {
-        ListNode copyOfCurrentHead = head; 
-        int numberOfNodes = 0; 
-        while(copyOfCurrentHead.next != null){
-            numberOfNodes++; 
-            copyOfCurrentHead = copyOfCurrentHead.next; 
-        }
-        if(numberOfNodes % 2 == 0)
+        //Two pointer approach 
+        ListNode A = head; 
+        ListNode B = head; 
+        while(B != null)
         {
-            numberOfNodes = numberOfNodes / 2; 
-        }else
-        {
-            numberOfNodes = numberOfNodes / 2  + 1;             
+            B = B.next;
+            if(B == null) return A; 
+            A = A.next;
+            B = B.next; 
         }
-        while(numberOfNodes > 0){
-            head = head.next; 
-            numberOfNodes--; 
-        }
-        return head; 
+        return A; 
+
+        // Naive implementation and solution 
+        // ListNode copyOfCurrentHead = head; 
+        // int numberOfNodes = 0; 
+        // while(copyOfCurrentHead.next != null){
+        //     numberOfNodes++; 
+        //     copyOfCurrentHead = copyOfCurrentHead.next; 
+        // }
+        // if(numberOfNodes % 2 == 0)
+        // {
+        //     numberOfNodes = numberOfNodes / 2; 
+        // }else
+        // {
+        //     numberOfNodes = numberOfNodes / 2  + 1;             
+        // }
+        // while(numberOfNodes > 0){
+        //     head = head.next; 
+        //     number,OfNodes--; 
+        // }
+        // return head; 
     }
 
     // 4.9 Backspace String Compare
@@ -53,6 +66,30 @@ public class leetCodeWeekTwoApril2020{
            }
        }
        return sStack.toString();
+   }
+
+   //4.10 Min Stack 
+   public class MinStack{
+       ArrayList<Integer> stack; 
+       public MinStack() {
+           stack = new ArrayList<Integer>() ;   
+        }
+        public void push(int x) {
+            stack.add(x); 
+        }
+        public void pop() {
+            stack.remove(stack.size() - 1); 
+        }
+        public int top() {
+            return stack.get(stack.size() - 1); 
+        }
+        public int getMin() {
+            int min = stack.get(0);
+            for(int s : stack){
+                if(s < min) min = s; 
+        }
+            return min; 
+        }
    }
 
     public static void main(String[] args){
