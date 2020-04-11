@@ -1,5 +1,6 @@
 import java.util.*;
 import java.lang.*; 
+import java.math.*;
 public class projectEulerFour{
     
     // XL (40) Champernownes Constant  
@@ -35,6 +36,7 @@ public class projectEulerFour{
         }
         return target; 
     } 
+
 
     public static Set<Integer> createNumberSet(int x)
     {
@@ -86,6 +88,46 @@ public class projectEulerFour{
   
         return true; 
     } 
+
+    // XLIII Sub-string Divisibility
+    public static int substringDivisibility()
+    {
+
+     /*
+    # time module for calculating execution time
+    import time
+    # permutations method
+    from itertools import permutations
+    # time at the start of program execution
+    start = time.time()
+
+    # permutations of 0-9 pandigital
+    p = permutations('0123456789')
+
+    # variable to store the value of sum
+    solution = 0
+
+    # for loop to loop through permutations
+    for i in p:
+        if (int(''.join(i[7:10])) % 17 == 0 and
+            int(''.join(i[6:9])) % 13 == 0 and
+            int(''.join(i[5:8])) % 11 == 0 and
+            int(''.join(i[4:7])) % 7 == 0 and
+            int(''.join(i[3:6])) % 5 == 0 and
+            int(''.join(i[2:5])) % 3 == 0 and
+            int(''.join(i[1:4])) % 2 == 0):
+            solution += int(''.join(i))
+
+    # printing the solution
+    print solution
+    # time at the end of program execution
+    end = time.time()
+    # total time taken
+    print end - start
+    */
+    
+    return 0; 
+    }
 
     // (50) (Very Hard)
     // Had to get help from this source:
@@ -151,12 +193,25 @@ public class projectEulerFour{
         }
         System.out.println(largest); 
         return 0 ;
+    }
 
+    public static BigInteger selfPowers()
+    {
+        BigInteger modulus = BigInteger.TEN.pow(10);
+        BigInteger sum = BigInteger.ZERO;
+        for (int i = 1; i <= 1000; i++){
+            sum = sum.add(BigInteger.valueOf(i).modPow(BigInteger.valueOf(i), modulus));
+        }
+        System.out.println(sum.mod(modulus));
+        return sum.mod(modulus); 
+        
     }
 
 	public static void main(String[] args) throws Exception{
         // champernownesConstant(); //< Solution: 210 (40)
         // pandigitalPrime(); //< Solution: 7652413 (41)
+        // substringDivisibility(); //< Solution: 16695334890 (43);
+        // selfPowers(); //< Solution: 9110846700 (48)
         // consecutivePrimeSum(); //< Solution: 997651 (50) 
 		}
 }
