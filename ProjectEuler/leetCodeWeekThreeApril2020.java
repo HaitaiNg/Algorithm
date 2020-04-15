@@ -263,10 +263,11 @@ public class leetCodeWeekTwoApril2020{
 }
 
     public static void main(String[] args){
-        leetCodeWeekTwoApril2020 object = new leetCodeWeekTwoApril2020(); 
+        // leetCodeWeekTwoApril2020 object = new leetCodeWeekTwoApril2020(); 
         // object.backspaceCompare("ab#c", "ad#c"); //< 4.9
         // object.lastStoneWeight(new int[] {2,7,4,1,8,1}); //< 4.12 Solution : 1 
         // object.stringShift("abc", new int[][] {{0,1}, {1,2}}); //< 4.15 Solution : cab 
    }
 
 }
+
