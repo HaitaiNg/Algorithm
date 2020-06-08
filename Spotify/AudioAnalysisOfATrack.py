@@ -28,6 +28,7 @@ if token:
     sp.trace = False
     ranges = ['short_term', 'medium_term', 'long_term']
 
+    ''' 
     #Get the list of the top tracks for a user 
     for range in ranges:
         print("range:", range)
@@ -35,19 +36,30 @@ if token:
         for i, item in enumerate(results['items']):
             artist, songName, spotifyURL = iterateThroughListContents(item['artists']), item["name"], item["external_urls"]["spotify"]
             print(songName + " :: " + artist + " :: " + spotifyURL)
-        print("\n") 
+        print("\n") '''
         
     genreTypesAndFrequency = {} 
     
     #Get the list of the top artists for a user 
-    '''
+    
     for range in ranges:
         print("range:", range)
-        results = sp.current_user_top_artists(time_range=range, limit=20)
+        results = sp.current_user_top_artists(time_range=range, limit=50)
         for i, item in enumerate(results['items']):
-            artist, genre, spotifyURL = item['name'], item['genres'], item['external_urls']['spotify']
-            print(artist + " :: " + str(genre))
-        print("\n") ''' 
+            artist, genres, spotifyURL = item['name'],  [ f.encode('ascii', 'ignore') for f in item['genres']], item['external_urls']['spotify']
+            print(artist + " :: " + str(genres))
+
+            for genre in genres: 
+                if genre in genreTypesAndFrequency.keys():
+                    genreTypesAndFrequency[genre] +=1 
+                else:
+                    genreTypesAndFrequency[genre] = 1 
+
+        print("\n")  
+    print("\n")
+    for k in sorted(genreTypesAndFrequency.keys()):
+        print(k + " " + str(genreTypesAndFrequency[k]))
+
 
 else:
     print("Can't get token for", username)
