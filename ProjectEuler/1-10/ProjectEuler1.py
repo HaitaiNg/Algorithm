@@ -1,8 +1,6 @@
-#!/bin/python3 
-
 """ 
 Description: Find the sum of all multiples 
-of 3 or 5 below N. Completed using Python III.  
+of 3 or 5 below N. Completed using Python 3.7.3.  
 
 Naive solution is to use module operator 
 This will result in a timeout for test cases 
@@ -48,7 +46,7 @@ Solution = S3 + S5 - S15
 
 """
 
-
+#!/bin/python3
 import sys
 
 def sum(n, k):
