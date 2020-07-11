@@ -1,4 +1,5 @@
-""" Description: Calculate the Nth prime number. Completed using 
+""" 
+Description: Calculate the Nth prime number. Completed using 
 Python 3.6.5. 
 
 This problem is very tricky since the solution

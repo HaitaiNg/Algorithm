@@ -1,10 +1,10 @@
-"""
+/*
 Description: What is the smallest number that can be divided by 
 each of the numbers from  to without any remainder. 
 What is the smallest positive number that 
 is evenly divisible(divisible with no remainder) 
 by all of the numbers from  to? Completed using Java 8 
-"""
+*/
 
 import java.io.*;
 import java.util.*;

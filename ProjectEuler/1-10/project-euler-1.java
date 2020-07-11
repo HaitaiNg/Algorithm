@@ -1,4 +1,4 @@
-""" 
+/* 
 Description: Find the sum of all multiples 
 of 3 or 5 below N. Completed using Java 8. 
 
@@ -30,8 +30,7 @@ S15 = 15 + 30 + 45 ... + 15i
     = [ 15 * (n / 15)( n /15 + 1)] / 2 
 
 Solution = S3 + S5 - S15 
-
-"""
+*/
 
 import java.io.*;
 import java.util.*;

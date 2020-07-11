@@ -1,9 +1,8 @@
-"""
+/*
 Description: Considering the terms in the Fibonacci Sequence whose 
 values do not exceed N, find the sum of even valued terms.
 Completed using Java 8 
-
-"""
+*/
 
 import java.io.*;
 import java.util.*;

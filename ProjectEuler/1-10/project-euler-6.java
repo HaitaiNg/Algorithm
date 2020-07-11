@@ -1,7 +1,7 @@
-"""
+/*
 Description: Find the absolute difference between the sum of the squares of the
 first natural numbers and the square of the sum. Completed using Java 8 
-"""
+*/
 
 import java.io.*;
 import java.util.*;

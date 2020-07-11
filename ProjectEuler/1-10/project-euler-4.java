@@ -1,9 +1,9 @@
-"""
+/*
 Description: Largest palindrome product. Find 
 the largest palindrome made from the product 
 of two 3-digit numbers which is less than N.
 Completed using Java 8. 
-"""
+*/ 
 
 import java.io.*;
 import java.util.*;
