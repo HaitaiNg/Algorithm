@@ -1,47 +1,43 @@
-import java.io.*;
+/* 
+Description: Calculate the Nth prime number. Completed using 
+Python 8. This solution is from interviewQuizAndAnswersBlogspot.
+I tried solving this myself but I kept getting run time errors / 
+time limit exceeded.
+
+https://interviewquizandanswers.blogspot.com/2020/04/project-euler-7-10001st-prime.html
+ */ 
+
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
 
 public class Solution {
 
-    public static List<Integer> prime(int n, List<Integer> listOfPrimeNumbers)
-    {
-        int mostRecentValue = listOfPrimeNumbers.get(listOfPrimeNumbers.size() - 1); 
-        while(listOfPrimeNumbers.size() - 1 < n)
-        {
-            mostRecentValue += 2; 
-            int y = (int) Math.floor( Math.pow(mostRecentValue, 0.5)); 
-            for(int primeNumber: listOfPrimeNumbers)
-            {
-                if(primeNumber > y)
-                {
-                    listOfPrimeNumbers.add(primeNumber); 
-                    break; 
-                }
-                if(mostRecentValue % primeNumber == 0)
-                {
-                    break; 
-                }
-            }
-        }
-        return listOfPrimeNumbers; 
-    }
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        int[] arr = new int[10000000];
+        for(int i=2;i<10000000;i++)
+        {
+            arr[i]=i;
+        }
+        for(int i=2;i<10000000;i++)
+            for(int j=i+i;j<10000000;j+=i)
+                arr[j]=0;
+
         int t = in.nextInt();
-        List<Integer> listOfPrimeNumbers = new ArrayList<Integer>(); 
-        listOfPrimeNumbers.add(2);
-        listOfPrimeNumbers.add(3); 
         for(int a0 = 0; a0 < t; a0++){
             int n = in.nextInt();
-            if(listOfPrimeNumbers.size() < n)
+            int count=0;
+            for(int j=2;j<10000000;j++)
             {
-                listOfPrimeNumbers = prime(n, listOfPrimeNumbers); 
+                if(arr[j]!=0)
+                {
+                    count++;
+                    if(count==n)
+                    {
+                        System.out.println(j);
+                        break;
+                    }
+                }
             }
-            System.out.println(listOfPrimeNumbers.get(n - 1));
         }
     }
 }
