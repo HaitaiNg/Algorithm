@@ -2,7 +2,6 @@
 Description: Considering the terms in the Fibonacci Sequence whose 
 values do not exceed N, find the sum of even valued terms. 
 Completed using Python 3.7.3
-
 """
 
 #!/bin/python3
