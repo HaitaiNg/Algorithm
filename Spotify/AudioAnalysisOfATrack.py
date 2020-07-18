@@ -1,3 +1,10 @@
+#Refresh date: 07.17.2020 
+#Description: Execute and display a user's top artists {long term, medium term, short term) 
+#Instructions: export SPOTIPY_Client_Id 
+#export SPOTIFY_SECRET 
+#python AudioAnalysisOfATrack <spotify username> }
+
+
 import sys
 import spotipy
 import spotipy.util as util
