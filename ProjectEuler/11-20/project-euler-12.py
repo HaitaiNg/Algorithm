@@ -6,34 +6,11 @@ The 7th triangle number would be:
 28 is the first triangle number to have over 
 five divisors 
 
-What is the value of the first triangle number
-to have over N divisors?
-def highlyDivisibleTriangularNumber(divisors):
-    sumOfNaturalNumbers = 0 
-    naturalNumber = 1
-    while(True):
-        divisorCount = divisors 
-        divisorList = [] 
-        for i in range(1, sumOfNaturalNumbers + 1):
-            if(divisorCount == 0):
-                print(sumOfNaturalNumbers)
-                return sumOfNaturalNumbers
-            if(sumOfNaturalNumbers % i  == 0):
-                divisorCount -= 1 
-                divisorList.append(i) 
-        sumOfNaturalNumbers += naturalNumber
-        naturalNumber += 1 
-
-t = int(input())
-for a0 in range(t):
-    n = int(input())
-    highlyDivisibleTriangularNumber(n)
-
-""" 
+**Note this experiences a time out for tests 5-8 
 import math
 def highlyDivisibleTriangularNumber(divisors):
     sumOfNaturalNumbers = 1 
-    naturalNumber = 2
+    naturalNumber = 2a
     while(True):
         divisorCount = 0 
         divisorList = [] 
@@ -45,9 +22,11 @@ def highlyDivisibleTriangularNumber(divisors):
                 print(sumOfNaturalNumbers)
                 return sumOfNaturalNumbers
         sumOfNaturalNumbers += naturalNumber
-        naturalNumber += 1 
+        naturalNumber += 1
 
-highlyDivisibleTriangularNumber(1)
-highlyDivisibleTriangularNumber(2)
-highlyDivisibleTriangularNumber(3)
-highlyDivisibleTriangularNumber(4)
+t = int(input())
+for a0 in range(t):
+    n = int(input())
+    highlyDivisibleTriangularNumber(n)
+
+"""
