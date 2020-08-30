@@ -2,14 +2,6 @@ import java.util.*;
 import java.util.Arrays;
 public class leetCodeWeekOne2020{
 
-    // 4.1.20 Single Number 
-    public int singleNumber(int[] nums){
-        int x = 0; 
-        for(int i : nums){
-            x ^= i; 
-        }
-        return x; 
-    }
 
     // 4.2.20 Happy Number 
     public boolean isHappyNumberHelper(int n, Set<Integer> numberSet)
