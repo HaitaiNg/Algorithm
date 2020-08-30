@@ -17,7 +17,9 @@ class Solution {
     public boolean isValidBST(TreeNode root) {
         return helper(root, null, null); 
     }
-    
+   
+    // O(n) time | O(n) space 
+    // Java 8 
     public boolean helper(TreeNode node, Integer lower, Integer upper)
     {
         if(node == null) return true; 

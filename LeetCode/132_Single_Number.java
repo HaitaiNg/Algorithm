@@ -1,6 +1,7 @@
 class Solution {
 
     // O(n) time | O(n) space 
+    // Java 8 
     public int singleNumber(int[] nums) {
         HashSet<Integer> hashSet = new HashSet<Integer>(); 
         for(int num: nums)

@@ -1,4 +1,6 @@
 // Kadane's Algorithm 
+// O(n) space | O(1) time 
+// Java 8 
 class Solution {
     public int maxSubArray(int[] nums) {
         if(nums.length == 0) return Integer.MIN_VALUE; 

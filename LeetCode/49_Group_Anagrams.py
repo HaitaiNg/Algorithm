@@ -1,3 +1,4 @@
+# Python 3.6.5 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         mapOfLetters = {}

@@ -1,5 +1,7 @@
 import java.lang.*;
 
+// O(n) time / O(n) space 
+// Java 8 
 class Solution {
     public boolean isHappy(int n) {
         Set<Integer> pastValues = new HashSet<Integer>(); 
