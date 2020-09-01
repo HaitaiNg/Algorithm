@@ -23,27 +23,7 @@ public class leetCodeWeekTwoApril2020{
             A = A.next;
             B = B.next; 
         }
-        return A; 
-
-        // Naive implementation and solution 
-        // ListNode copyOfCurrentHead = head; 
-        // int numberOfNodes = 0; 
-        // while(copyOfCurrentHead.next != null){
-        //     numberOfNodes++; 
-        //     copyOfCurrentHead = copyOfCurrentHead.next; 
-        // }
-        // if(numberOfNodes % 2 == 0)
-        // {
-        //     numberOfNodes = numberOfNodes / 2; 
-        // }else
-        // {
-        //     numberOfNodes = numberOfNodes / 2  + 1;             
-        // }
-        // while(numberOfNodes > 0){
-        //     head = head.next; 
-        //     number,OfNodes--; 
-        // }
-        // return head; 
+        return A;
     }
 
     // 4.9 Backspace String Compare
