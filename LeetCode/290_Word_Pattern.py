@@ -17,4 +17,5 @@ class Solution:
             if mapIndex[char_key] != mapIndex[char_word]:
                 return False 
         return True 
+
         
