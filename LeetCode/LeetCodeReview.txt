@@ -29,6 +29,7 @@ Longest Common Prefix
 Rotting Oranges 
 Contains Duplicate III
 Product Except Self 
+Word Pattern
 
 Secure Hash Algorithm 
 Diffie-Hellman Algorithm 
