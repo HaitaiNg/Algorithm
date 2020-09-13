@@ -1,4 +1,3 @@
-//4.29.30 Binary Tree Maximum Path Sum 
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -33,5 +32,3 @@ class Solution {
     return root.val + Math.max(leftGain, rightGain); 
     }
 }
-
-//4.30.20 Check if a string is valid 
