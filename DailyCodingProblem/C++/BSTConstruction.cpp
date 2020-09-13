@@ -1,8 +1,3 @@
-// Copyright 2019 AlgoExpert, LLC. All rights reserved.
-
-// This problem is hard. This is one solution of how to create a Binary
-// search tree
-
 #include <vector>
 using namespace std;
 

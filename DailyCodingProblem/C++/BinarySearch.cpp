@@ -4,7 +4,7 @@
 using namespace std;
 
 // O(log(n)) time | O(log(n)) space
-int binaryHelper(vector<int> array, int target, int left, int right)
+int binarySearch(vector<int> array, int target, int left, int right)
 {
 	while(left <= right)
 	{
@@ -26,5 +26,6 @@ int binaryHelper(vector<int> array, int target, int left, int right)
 }
 
 int binarySearch(vector<int> array, int target) {
-	return binaryHelper(array, target, 0, array.size() - 1);
+	return binarySearch(array, target, 0, array.size() - 1);
 }
+
