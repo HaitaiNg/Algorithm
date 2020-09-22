@@ -1,0 +1,29 @@
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        List<Integer> returnList = new ArrayList<Integer>(); 
+        HashMap<Integer, Integer> mapCount = new HashMap<>(); 
+        int targetCount = nums.length / 3; 
+        for(int num : nums)
+        {
+            if(mapCount.containsKey(num))
+            {
+                mapCount.put(num, mapCount.get(num) + 1); 
+            }
+            else
+            {
+                mapCount.put(num, 1); 
+            }
+            
+            if (!returnList.contains(num))
+            {
+                if(mapCount.get(num) > targetCount)
+                {
+                    returnList.add(num); 
+                }
+            }
+            
+        }
+        return returnList; 
+        
+    }
+}
