@@ -14,7 +14,6 @@ numberOfYears = 0
 while(limak <= bob):
     limak *= 3
     bob *= 2
-    numberOfYears += 1
-    
+    numberOfYears += 1    
 print(numberOfYears)
     
