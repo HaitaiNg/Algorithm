@@ -15,6 +15,7 @@ f.sort()
 
 minimumDifference = float('inf')
 count = m
+print(f)
 for i in range(0, len(f), 1):
     temp = i 
     for j in range(i + 1, len(f), n):
