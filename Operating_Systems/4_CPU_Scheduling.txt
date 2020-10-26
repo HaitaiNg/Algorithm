@@ -1,0 +1,26 @@
+Vectors are good for read access, insertion, and deletion at the beginning / end 
+
+CPU Utilization in a real time system should only be at 40% light load.
+90% heavy load. 
+
+Throughput: # number of processes that complete their execution per unit time 
+Starvation: indefinite blocking 
+
+Scheduling Algorithms 
+FCFS (First Come First Serve): CPU executes job that arrived First
+SJF (Shortest Job First): CPU executes job with shortest time remaining to completion (shortest CPU burst) 
+Priority Scheduling: CPU executes process with highest priority 
+Round Robin (RR): Similar to FCFS but with limited time slices 
+Multilevel-Queue: Similar to RR but with multiple queues for waiting processes (waiting queues) 
+Multilevel feedback queue : like multilevel queue, except that jobs can migrate from one queue to another 
+Nonpreemptive: once a process starts it will terminate once it reaches the end or a wait state 
+
+FCFS: 
+run threads to completion in order of submission
+simple
+short jobs can get stuck behind long jobs 
+
+RR: 
+Gives each thread a small amount of CPU time when it executes: cycle between all ready threads 
+better for short jobs 
+poor when jobs are the same length 

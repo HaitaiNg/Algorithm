@@ -51,9 +51,6 @@ class Program {
 	    }
 
 
-
-
-
 	    public List<Integer> sortArray(int[] nums) {
 	        quickSort(nums, 0, nums.length - 1 );
 	        List<Integer> temp = new ArrayList<Integer>(nums.length);

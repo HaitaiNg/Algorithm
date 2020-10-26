@@ -1,0 +1,25 @@
+Types Of Attacks 
+
+DDOS: increased bandwidth usage. Send and flood by sending a 
+large number of packets or connections to or from a particular host.
+Scanning: atypical flow patterns at the application layer, transport layer, network layer
+Worms: host communicate with each other when they normally do not. Worms can destroy a network and wreck havoc. They do not require a particular host
+A worm is a process that uses fork / spawn process to make copies of itself in order to wreck havoc on a system. Worms consume system resources, often blocking out other legitimate processes. Worms that propagate over networks can especially be problematic as they can tie up vast amounts of network resources and bring down large scale systems. 
+
+Trojan Horses: Innocent program that contains code that will perform an unexpected and undesirable function. To fix this use integrity checking
+Viruses: local attacks, and local configuration changes.malicious piece of executable code that propagates typically by attaching itself to a host document that will generally be an executable file. If you PC supports 3rd party applications, it can be exposed to viruses. 
+
+*Viruses are more likely to infect PCs rather than unix or multi-user systems because programs in the latter systems have limited authority to modify other programs to access critical system structures. 
+*The permissions of unix / linux makes it difficult for viruses to wreck havoc on such machines. 
+
+Network Behavior Analysis: Detects attacks with high bandwidth. 
+Examines network traffic, statistics on a network traffic, unusual traffic flows. 
+Helper Method: A method that helps another method perform its task by managing a subtle task. 
+
+Private Key Encryption: encryption algorithm that can be easily reversed. Given the correct key (hard to reverse without the key) 
+Public Key: Encrypt then decrypt 
+Access Control List: Stores all permissions for all users with each object 
+Boot Sector: when you turn on your computer it starts executing instructions at the designated memory address that points to the BIOS ROM in the computer. Those instructions tell the system what device to use for booting. Boot sector code is executed automatically. 
+
+
+

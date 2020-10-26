@@ -16,6 +16,5 @@ for i in range(0, m):
         currentDifference = min(currentDifference, puzzles[i + n - 1] - puzzles[i])
     else:
         break 
-
 print(currentDifference) 
         

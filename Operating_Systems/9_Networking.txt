@@ -1,0 +1,17 @@
+IP Protocols know two device types: hosts and routers 
+Hosts send packets directly to devices on the same router 
+Routers can forward packets to machines on other networks 
+
+IP Address: Defined as four 8 bit numbers 
+IP Address: network address + host address 
+
+TCP is more the most reliable communication network Protocols
+TCP establishes connection : 3-way handshake 
+1.) Client sends SYN message to the server 
+2.) Server sends ACK back to the client 
+3.) Client sends "SYN-ACK" back to the client 
+Connection is established, traffic may flow in both directions 
+TCP uses packet acknowledgement and uses CRC codes. 
+
+UDP: No connection establishment. Host sends data to a 
+listening port and prays for the best. 

@@ -1,0 +1,163 @@
+File System 
+A file system consists: 
+Disk Management: organizes disks blocks into files 
+Naming: provides file names and directories to users, instead of track and sector numbers 
+Protection: keeps information secure from other users 
+Reliability: protects information loss due to system crashes 
+
+Contiguous allocation: file blocks are stored contiguously on disk. User specifies the file size in advance, and the file system will search the disk allocation bitmap according to various allocation policies (first fit, best fit policies). to locate the space for the file. Contiguous allocation provides fast sequential access 
+
+Linked list allocation: each file block on disk is associated with a pointer to the next blocks. One advantage of the linked list approach is the files that can grow dynamically with incremental allocation of blocks. 
+Disk Management Policies 
+
+A file contains a file header (associates the file with disk sectors) 
+File system needs a disk allocation bitmap to represent free space on disk, one bit per block. 
+
+Contiguous allocation: file blocks are stored contiguously on disk. A user specifies the file size in advance, and the file system will search the disk allocation bit map according to various allocation policies (First Fit vs Best Fit). Contiguous allocation allows fast sequential access. 
+
+Linked list allocation: each file block on disk is associated with a pointer to the next block (ex: MS-DOS). One advantage of the linked list approach is the files can grow dynamically with incremental allocation of blocks. Sequential access may suffer since blocks may not be contiguous. 
+
+Segment based allocation uses a segment table to allocate multiple regions of contiguous blocks 
+
+Indexed allocation: uses an index to directly track the file block locations. A user declares the maximum file size, and the file system allocates a file headers with an array of pointers big enough to point to all file blocks. Indexed allocation provides fast disk location lookups for random access, file blocks may be scattered all over the disk. 
+
+Multilevel indexed allocation: Linux uses this. 
+Simple, file scan easily expand, small files are cheap and easy
+Bad: lots of seeks; very large files must read indirect block 
+
+
+Disk scheduling has multiple algorithms: 
+SCAN : implements an elevator algorithm; take the closest request in the direction of travel. 
+
+How to organize files on disk?
+Goals
+	-maximize sequential performance 
+	-easy random access to file 
+	-easy management of file (growth, truncation)
+Continuous Allocation
+	-Use continuous range of blocks in logical block space 
+
+
+how do we access file?
+-Unix calls this the “inode”: Inodes are global resources identified by index (“number”). 
+
+Directories: a relation used for naming: just a table of ( file name, number) pairs 
+How are directories constructed?
+Directories are often stored in files 
+	-reuse of existing mechanism
+	-directory named by node / number like other files 
+Needs to be quickly searchable
+	-simple list or HashTable 
+	-can be cached into memory in easier form to search 
+
+How are directories modified?
+	-Direct read / write of special file 
+	-System calls for manipulation : mkdir, rmdir 
+	-Ties to file creation / destruction 
+
+Where are the inodes stored?
+They used to be stored in a special array in outermost cylinder 
+
+Later version of unix moved the header information to be closer to the data blocks:
+iNode for file stored in same “cylinder group” as parent directory of the files (makes an ls of that directory run fast) 
+If your data crashes, your data for the node can be reconstructed. 
+
+Conclusion: 
+Multilevel indexed scheme: 
+inode contains file info, direct pointers to blocks, 
+indirect blocks, doubly indirect ,etc. 
+iNode holds set of disk ranges, similar to segmentation 
+Naming: act of translating from user-visible names to actual system resources 
+
+The DBMS  manages a whole (physical) disk-drive (or a dedicated partition) and effectively assumes much of the OS’s role in managing access, security, and backup facilities. 
+
+File Management has a number of goals
+-support storage, searching, and modification of user data; 
+-to guarantee the correctness and integrity of the data 
+-optimize both overall throughput ( from the OS’s global view) and response time (from the user’s view) 
+-provide “transparent” access to many different device types such as hard disks, CD-ROMS, and floppy disks 
+-to provide a standardized set of I/O interface routines 
+
+
+Contiguous Allocation Method
+Pro: Simple; Linear & Sequential access with the same ease 
+Con:: Does not allow simple expansion of files; risk of external fragmentation; solving the fragmentation problem requires compaction (time consuming); kernel must allocate and reserve contiguous space when the file is first created 
+
+Linked Allocation Method 
+Pro: No External fragmentation. Any free block can be used to satisfy the request. A file can expand. No need to declare the file size when the file is first created. No need to compact disk space 
+Con: Direct access is very inefficient. Pointers can take up space. Scattering the pointers all over the disk poses a reliability problem 
+
+Indexed Allocation method 
+Pros: Grouping all the pointers into one location solves the problem of reliability. Direct access is efficient. The ‘ith entry in the index block points to the ‘its block of the file 
+Cons: Pointers may waste a lot of space since an entire disk block must be allocated to hold them even if few pointers are actually  used 
+
+Resource abstraction is the process of hiding the details of how the hardware operates, thereby making computer hardware relatively easy for an application programmer to use 
+
+For the most part, system software is transparent to the end user, but it holds a major significant. 
+
+Disk Scheduling Algorithms 
+FCFS 
+-perform operations in order requested 
+-no reordering of work queue 
+-no starvation: every request is serviced 
+-poor performance 
+
+SSTF (shortest seek time first)
+-After a request, go to the closest request in the work queue, regardless of direction 
+-reduces total seek time compared to FCFS 
+-Starvation is possible; stay in one area of the disk; if very busy switching directions can slow things down 
+
+SCAN 
+-go from the outside to the inside, servicing requests and then back from the outside to the inside servicing requests 
+-repeats this over and over 
+-reduces variance compared to SSTF 
+
+LOOK
+-like SCAN but stops moving inwards (or outwards) when no more requests in that direction exist 
+
+C-SCAN (circular scan) 
+moves inwards, servicing requests until it reaches in the innermost cylinder, then jumps to the outside cylinder of the disk without servicing any requests 
+-repeats this over and over 
+variant; service requests from inside to outside, and then skips back to the innermost cylinder 
+
+C-Look: 
+moves inwards, servicing requests until there are no more requests in that direction; then it jumps to the outermost outstanding requests
+repeats this over and over 
+variant: service frequents form inside to outside then skips back to the innermost cylinder. 
+
+Virtual memory
+
+Suppose, for example, that a main memory of 64 megabytes is required but only 32 megabytes is actually available. To create the illusion of the larger memory space, the memory manager would divide the required space into units called pages and store the contents of these pages in mass storage
+
+In order for this system to work, the memory manager must keep track of all the pages that are currently loaded into the primary memory. This information is stored in a page table maintained by the memory manager. A page fault occurs whenever a process requests a page that is not currently loaded into primary memory. To handle page faults, the memory manager takes the following steps:
+1. The memory manager locates the missing page in secondary memory.
+2. The page is loaded into primary memory, usually causing another page to be unloaded.
+3. The page table in the memory manager is adjusted to reflect the new state of the memory.
+4. The processor re-executes the instructions which caused the page fault.
+
+Operating Systems implements a tree hierarchy or a graph directory architecture
+A problem with acyclic graphs - how to ensure that there are no cycles? 
+	-Every time a link is added to a directory use a cycle detection algorithm 
+General graph directories allow cycles 
+
+Access control lists: Maintenance problems as system users can be dynamic
+Access lists are broken down into three classifications : owner, group, universe 
+
+Device Drivers 
+Communicates directly with peripheral devices (disk, tapes, etc) 
+
+Contiguous File Allocation each file occupies a set of contiguous blocks on the disk 
+allocation using first ft / best fit 
+need for compaction
+only starting block and length of file in blocks are needed to work with the file 
+allows random access 
+problems with files that grow 
+
+linked file allocation 
+each file is a linked list of blocks 
+no external fragmentation 
+effective for sequential access 
+very bad for direct / random access 
+
+
+

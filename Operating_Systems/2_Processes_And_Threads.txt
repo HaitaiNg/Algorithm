@@ -1,0 +1,102 @@
+All virtual CPUS share some non-CPU resources: I/O 
+& Memory 
+Each Thread can access the data of every other thread 
+
+Uniprogramming: one thread at a time 
+Multiprogramming / Multi-threading / Hyper-threading: 
+Exploit 
+natural processors to provide the illusion of multiple 
+processors 
+Each hyper thread can schedule each thread as if we 
+were on a separate 
+CPU. 
+
+States shared by all threads in process / address space 
+-Contents of global memory (global variables, heap) 
+-I/O state (file system, network connections, etc) 
+State "private" to each thread 
+-Kept in the thread control block 
+-CPU registers (including program counter) 
+-Execution stack 
+
+Pros Of Threads 
+Overlap I/O computation 
+Cheaper Context Switching 
+Better Mapping to shared memory multiprocessors 
+
+Cons of Threads 
+Potential Thread Interactions 
+Complexity of debugging 
+Complexity of multi-threaded programming 
+Backwards compatibility 
+
+PC: program counter : determines next instruction in 
+the sequence 
+Concurrency is accomplished by multiplexing CPU time: 
+1. Unload current thread (PC, registers) 
+2. Padding new thread (PC, registers)
+3. Context switching : Triggered by voluntary yield(), 
+or interrupt 
+
+-- Processes -- 
+Processes are made up of two parts: threads (concurrency) 
+& address space (protection) 
+Each process has a unique process id: getpid() 
+process creation : fork(): creates a copy of a process 
+and returns both processes 
+To kill a process use: kill(), signal() 
+A process is made up of multiple threads. 
+
+-- Process Management -- 
+Registers; Program Counter; Program status Word; Stack 
+Pointer; 
+Process State; Priority; Scheduling Parameters; Process 
+ID; Parent Process; 
+Signals; Time When Process Started; CPU Time Used Children's 
+CPU Time; Time Of Next Alarm; 
+
+-- Memory Management -- 
+Pointer to text segment; Pointer to data segment; Pointer 
+to stack segment; 
+
+-- File Management -- 
+Root Directory; Working Directory; File Descriptors; 
+User ID; Group ID; 
+
+Context Switching: Switching between processes. Most 
+expensive operation in OS 
+Store the old state of current process P1 
+Retrieve and load the state of the other process P2 
+Execute P2 for some allocated time 
+Store the state of P2 and load P1 
+Execute P1 ... contd. 
+
+Information that is included: EIP; General Registers; 
+Segment Registers; 
+CR3. Context switching occurs in kernel mode  
+
+Average run time for context switching : nanoseconds 
+The OS is like a traffic cop which tells which process 
+is run and which process is not run. 
+The cost associated to context switching is overhead 
+
+Challenges with Concurrency 
+-Single resources for many operations are designed 
+for single resource use alone. 
+-OS coordinates all of the activity 
+-Virtual machine functions as if it is the only one 
+running that needs resources 
+-Concurrency introduces synchronization problems via 
+shared data 
+
+Benefits of virtual machines 
+-Simple way to run more than one operating system on 
+the same computer 
+-Very powerful server that can be split into several 
+smaller virtual machines to use its resources better 
+-Can help with security. If the virtual machine is 
+affected by a virus, the host OS is unaffected 
+-Emulated using Java. 
+
+
+

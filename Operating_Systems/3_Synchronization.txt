@@ -1,0 +1,68 @@
+Programmer does not control over the OS's execution sequence.
+OS scheduler determines which thread to execute. 
+Concurrent programs are non-deterministic:
+not possible to tell when something will be executed. These 
+issues can be VERY VERY difficult to debug. 
+
+Synchronization: Use atomic operations to ensure cooperation between threads. 
+
+Why allow cooperating threads?
+-Share resources ( one computer, many users; one bank balance; embedded systems) 
+-Speed (Overlap I/O and computations; Multiprocessor: chop up program into parallel pieces) 
+-Modularity (Chop larger program into smaller pieces) 
+
+What does it mean to run two threads concurrently? 
+-Scheduler is free to run threads in any order and interleaving 
+-Dispatcher can choose to run each thread to completion or time-slice in small / big chunks
+-Allows parallel computing 
+-Allows overlapping of computation and I/O 
+** Two events are concurrent if we cannot tell which thread will be executed first. 
+
+Atomic Operation: An operation is always executed to completion or does not run at all. 
+Memory references & assignments are atomic. 
+Mutual Exclusion: ensuring that only one thread does a particular thing at a time. 
+
+Critical Section: piece of code that can only be accessed by one thread at a time. 
+Critical Section == Mutual Exclusion 
+
+How do threads impose mutual exclusion / critical sections? (LOCKS) 
+Locks.acquire() : wait until lock is free than grab 
+Locks.release() : unlock, alerts and notifies any lock that is waiting 
+Locks are ATOMIC (Locks -> Semaphores) 
+
+int value = FREE; 
+Acquire{ 
+ disable interrupts;
+ if value == BUSY { 
+	put thread on wait queue;
+	Go to sleep(); 
+	Enable Interrupts? 
+ } else{ 
+	value = BUSY; 
+ } 
+ enable interrupts; 
+} 
+
+Release{ 
+ disable interrupts; 
+ if anyone on wait queue { 
+	take thread off wait queue 
+	place on ready queue 
+} else {
+	value = FREE;
+} 
+ enable interrupts; 
+} 
+
+Semaphore is a generalized lock, and represents locks by using an integer. 
+Supports P (atomic operation), and B
+P(): semaphore becomes positive, decrement by 1. WAIT() 
+B(): increments semaphore, waking up a waiting P if any. SIGNAL()
+
+Usages: 
+If value == 1 ( binary semaphore) == LOCK == Mutual Exclusion 
+semaphore.P(); 
+// critical section locked 
+semaphore.V(); 
+
+Serialization: Event A must happen before event B 

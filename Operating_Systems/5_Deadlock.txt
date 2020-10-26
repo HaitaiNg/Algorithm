@@ -1,0 +1,91 @@
+DEADLOCKS 
+
+Deadlock prevention: disallow one of the four necessary conditions for deadlock 
+Deadlock avoidance: do not grant a resource request if this allocation has the potential to lead to a deadlock 
+Deadlock detection: always grant resource request when possible. Periodically check for deadlocks. If a deadlock exists, recover from it
+Ignore the problem: 
+
+
+DEADLOCK PREVENTION METHODS
+-Mutual Exclusion
+-Hold and wait: require a process to request and be allocated all its resources before it begins execution, or allow process to request resources only when the process has none. (Problem: starvation) 
+-No Preemption: All resources currently being held are released. The state of preempted resources has to be saved and later restored.
+-Circular Wait: require each process to request resources only in a strict increasing order. 
+
+DEADLOCK Avoidance 
+requirements must be defined in advance of each process. 
+	-resource allocation graph algorithm : one instance per resource type 
+	-banker’s algorithm: multiple instances per resource type 
+
+Safe state: A system is in a safe state if there exists a safe sequence of processes P1, p2 … pn… where for each pi the resources that p1 can still request can be satisfied by the currently available resources plus the resources held by all Pj , j < i 
+
+Recovery for a deadlock?
+-Process termination : abort all deadlocked processes 
+-Resource preemption 
+
+In a practical system, you can integrated multiple solutions
+group resources into a number of different classes and order them
+use prevention of circular wait to prevent deadlock between resource classes 
+use the best approach for each class to handle deadlocks within each class 
+
+There are two types of resources
+Preemptable: can take away : CPU : embedded security chip
+Non-preemptable: must leave it with the thread : disk space, mutual exclusion 
+
+Resources may require exclusive access or may be sharable 
+Starvation: threads wait indefinitely 
+Deadlock: circular waiting for resources 
+
+Deadlock -> starvation 
+starvation can end (but doesn’t have to ) 
+deadlock can’t end without external intervention 
+
+Just because you have a cycle does not mean you have deadlock 
+
+What are conditions for deadlock? 
+Deadlock is not always deterministic 
+Deadlock is difficult to determine and trouble shoot 
+Deadlock occurs with multiple resources 
+-Review Deadlock Detection Algorithms 
+
+Four requirements for dead lock
+-mutual exclusion
+-hold and wait
+-no preemption
+=circular wait 
+
+
+https://news.efinancialcareers.com/uk-en/3004591/h1b-visas-finance-tech-minimum-pay?utm_source=GLOBAL_ENG&utm_medium=SM_FB&utm_campaign=FANS&fbclid=IwAR3KnpRhehgQquWI5GOTxA4jgvvLXZSfLT-Bcz4_J1b_D7U_dz_P6q-Upyw
+
+
+Banker’s Algorithm:
+-State MAXIMUM resource needs in advance 
+-Allow particular thread to proceed if: 
+(available resources - # requested) >= max remaining that might be needed by 
+another thread // Alternative: OS allocates resources dynamically when resource is needed. A thread waits if its granting request would lead to deadlock ( a request can be granted if some sequential ordering of threads is deadlock free) 
+
+
+Deadlock Detection & Recovery 
+-Scan the resource allocation graph 
+-Detect circular chains of requests 
+-Recover from the deadlock 
+
+A less conservative approach is to allocate resources dynamically 
+This keeps the system in a SAFE state. Sequence of threads that finish, before new requests are executed, maximum resources do not get reached 
+
+Conditions for deadlocks:
+-Limited Access (lock-protected resources)
+-No preemption (if someone has the resource, it can’t be taken away)
+-Wait while holding (holding a resource while requesting and waiting for the next resource) 
+-Circular chain of requests 
+
+Deadlock prevention: 
+-infinite resources 
+-no sharing (totally independent threads) 
+-no waiting 
+-Allocate all resources at the beginning 
+-same ordering when accessing resources (all threads must grab semaphores in the order of P(x), and P(y)) 
+
+Rolling back a thread requires checkpointing or taking snapshots of the system from time to time. 
+
+https://s3.amazonaws.com/saylordotorg-resources/wwwresources/site/wp-content/uploads/2011/11/CS401-Bankers-Algorithm-Exercise-FINAL.pdf
