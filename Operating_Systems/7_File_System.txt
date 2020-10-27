@@ -25,7 +25,6 @@ Multilevel indexed allocation: Linux uses this.
 Simple, file scan easily expand, small files are cheap and easy
 Bad: lots of seeks; very large files must read indirect block 
 
-
 Disk scheduling has multiple algorithms: 
 SCAN : implements an elevator algorithm; take the closest request in the direction of travel. 
 
@@ -36,7 +35,6 @@ Goals
 	-easy management of file (growth, truncation)
 Continuous Allocation
 	-Use continuous range of blocks in logical block space 
-
 
 how do we access file?
 -Unix calls this the “inode”: Inodes are global resources identified by index (“number”). 
