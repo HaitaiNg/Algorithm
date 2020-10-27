@@ -1,40 +1,18 @@
 #CodeForces
-#Queue At the School
-#Python 3.6.5
+#Queue At The School
+#Python
 
-import sys
-
-def studentSort(students, time, start):
-
-    for i in range(start, len(students), 2):
-        if(students[i] == "G" and students[i-1] == "B"):
-            students[i-1], students[i] = "G","B"
-            #print(students)
-        else:
-            pass
-    if(len(students) % 2 == 1):
-        if(students[-1] == "G" and students[-2] == "B"):
-            students[-2], students[-1] = "G","B"
-    time = time - 1
-
-    if(start == 1):
-        start = 0
-    else:
-        start = 1 
-    
-    if(time > 0):
-        students = studentSort(students,time, start)
-
-    if(start == 1):
-        students.reverse()
-    return students
-        
-
-
-
-
-
-studentCount_time = input().split()
-time = int(studentCount_time[1]) 
+student_and_time = input().split()
+student_and_time = [int(f) for f in student_and_time] 
 students = list(input())
-print(''.join(studentSort(students, time, 1)))
+time = student_and_time[1]
+
+while(time > 0):
+    i = 0
+    while( i < len(students) - 1):
+        if( students[i] == "B" and students[i+1] == "G"):
+            students[i], students[i + 1] = "G", "B"
+            i += 1
+        i+= 1
+    time -= 1
+print(''.join(students))
