@@ -1,31 +1,24 @@
-#include <vector>
-#include <algorithm>
-#include <iostream>
+#include <iostream> 
 using namespace std;
 
-// O(log(n)) time | O(log(n)) space
-int binarySearch(vector<int> array, int target, int left, int right)
+// O(log(n) time) | O(log(n)) space 
+int  binarySearch(int a[], int target, int start, int end)
 {
-	while(left <= right)
-	{
-		int midpoint = (left + right)/2;
-		if(array[midpoint] == target)
-		{
-			return midpoint;
-		}
-		else if( array[midpoint] > target)
-		{
-			right = midpoint - 1;
-		}
-		else if( array[midpoint] < target)
-		{
-			left = midpoint + 1;
-		}
-	}
-	return -1;
+    while(start < end) 
+    {
+        int mid = (start + end) / 2;
+        if(a[mid] == target) return mid; 
+        if(a[mid] > target) end = mid - 1;
+        else start = mid + 1; 
+    }
+    return -1; 
 }
 
-int binarySearch(vector<int> array, int target) {
-	return binarySearch(array, target, 0, array.size() - 1);
+int main() 
+{
+    int arr[] = {2,3,4,10,40,100,600,4520}; 
+    int target = 100; 
+    int result = binarySearch(arr, target, 0, sizeof(arr) - 1); 
+    (result == -1) ? cout << "Element does not exist, return " << result 
+                   : cout << "Element does exist, return " << result << endl;
 }
-
