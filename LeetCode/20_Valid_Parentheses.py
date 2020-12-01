@@ -1,23 +1,15 @@
-'''
-Runtime: 28 ms, faster than 84.38% of Python3 online submissions for Valid Parentheses.
-Memory Usage: 13.8 MB, less than 78.42% of Python3 online submissions for Valid Parentheses.
-'''
-
-class Solution:
-    def isValid(self, s: str) -> bool:
-        mapOfEquivalents = {}
-        mapOfEquivalents[')'] = '('
-        mapOfEquivalents['}'] = '{'
-        mapOfEquivalents[']'] = '['
-        
+class Solution(object):
+    def isValid(self, s):
+        paren_map = {')':'(', '}':'{', ']':'['}
         stack = [] 
-        for i in s:
-            if i in mapOfEquivalents.keys():
-                if mapOfEquivalents[i] in stack: 
-                    if(mapOfEquivalents[i] == stack[-1]):
-                        stack.pop() 
-                else:
-                    return False 
-            else:
+        for i in s: 
+            if i in "({[":
                 stack.append(i) 
+            if i in paren_map.keys():
+                if len(stack) <= 0:
+                    return False 
+                lri = stack.pop()
+                if paren_map[i] != lri:
+                    return False 
         return len(stack) == 0 
+    

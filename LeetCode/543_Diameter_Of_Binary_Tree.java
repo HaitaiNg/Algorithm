@@ -1,22 +1,31 @@
-   // 4.11 Diameter of a binary tree 
-   public class TreeNode {
-         int val;
-         TreeNode left;
-         TreeNode right;
-         TreeNode(int x) { val = x; }
-        }
-        int ans; 
-   
-   public int diameterOfBinaryTree(TreeNode root) {
-       ans = 0;
-       ans = 1; 
-       depth(root);
-       return ans - 1; 
-   }
-       public int depth(TreeNode node) {
-       if (node == null) return 0;
-       int L = depth(node.left);
-       int R = depth(node.right);
-       ans = Math.max(ans, L+R+1);
-       return Math.max(L, R) + 1;
-   }
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int answer = 1; 
+    
+    public int diameterHelper(TreeNode root){
+        if(root == null) return 0; 
+        int left = diameterHelper(root.left);
+        int right = diameterHelper(root.right); 
+        answer = Math.max(answer, left + right + 1); 
+        return Math.max(left, right)+1; 
+    }
+    public int diameterOfBinaryTree(TreeNode root) {
+        diameterHelper(root); 
+        return answer - 1; 
+        
+    }
+}
