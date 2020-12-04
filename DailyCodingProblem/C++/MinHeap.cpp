@@ -1,84 +1,72 @@
+//< Source: https://www.techiedelight.com/min-heap-max-heap-implementation-c/
+
+#include <iostream>
 #include <vector>
-using namespace std;
+#include <algorithm>
+#include <stdexcept> 
+using namespace std; 
 
-class MinHeap{
-public:
-  vector<int> heap;
-  MinHeap(vector<int> vector){ heap = buildHeap(&vector);}
-
-  //O(n) time | O(1) space
-  vector<int> buildHeap(vector<int>* vector)
-  {
-    int firstParentIndex = (vector->size() - 2)/2;
-    for(int currentIndex = firstParentIndex; currentIndex >= 0; currentIndex--)
+struct PriorityQueue{
+  private:
+    vector<int> A; 
+    int parent(int index){ return (index - 1) / 2; }
+    int Left(int index) {return (2*index) + 1;}
+    int Right(int index) {return (2*index) + 2; }
+    void heapifyDown(int index)
     {
-      siftDown(currentIndex, vector->size() - 1, vector);
-    }
-    return *vector;
-  }
-
-  // O(log(n) time | O(1) space
-  void siftDown(int currentIndex, int endIndex, vector<int>* heap)
-  {
-    int childOneIndex = currentIndex * 2 + 1;
-    while(childOneIndex <= endIndex)
-    {
-      int childTwoIndex = currentIndex * 2 + 2 <= endIndex ? currentIndex * 2 + 2 : -1;
-      int indexToSwap;
-      if(childTwoIndex != -1 && heap->at(childTwoIndex) < heap->at(childOneIndex))
-      {
-        indexToSwap = childTwoIndex;
+      int left = Left(index);
+      int right = Right(index); 
+      int smallest = index; 
+      if(left < size() && A[left] < A[index]){
+        smallest = left; 
       }
-      else
-      {
-        indexToSwap = childOneIndex;
+      if(right < size() && A[right] < A[smallest]){
+        smallest = right; 
       }
-      if(heap->at(indexToSwap) < heap->at(currentIndex))
-      {
-        swap(currentIndex, indexToSwap, heap);
-        currentIndex = indexToSwap;
-        childOneIndex = currentIndex * 2 + 1;
-      }
-      else
-      {
-        return;
+      if(smallest != index){
+        swap(A[index], A[smallest]);
+        heapifyDown(smallest); 
       }
     }
-  }
-
-// O(log(n)) time | O(1) space
-  void siftUp(int currentIndex, vector<int>* heap)
-  {
-    int parentIndex = (currentIndex - 1) / 2;
-    while(currentIndex > 0 && heap->at(currentIndex) < heap->at(parentIndex))
-    {
-      swap(currentIndex, parentIndex, heap);
-      currentIndex = parentIndex;
-      parentIndex = (currentIndex - 1) / 2;
+    void heapifyUp(int index){
+      if(index && A[parent(index)] > A[index]){
+        swap(A[index], A[parent(index)]); 
+        heapifyDown(parent(index)); 
+      }
     }
-  }
+  
+  public: 
+    unsigned_int size() {return A.size(); }
+    bool empty() {return A.size() == 0; }
+    void push(int key){
+      A.push_back(key);
+      int index = size() - 1; 
+      heapifyUp(index); 
+    }
+    void pop(){
+      try{
+        if(size() == 0) throw out_of_range("vector out of range"); 
+        A[0] = A.back();
+        A.pop_back(); 
+        heapifyDown(0); 
+      }
+      catch(const out_of_range& oor){
+        cout << "\n" << oor.what(); 
+      }
+    }
 
-
-  int peak() {return heap[0];}
-
-  int remove()
-  {
-    swap(0, heap.size() - 1, &heap);
-    int valueToRemove = heap.back();
-    heap.pop_back();
-    siftDown(0, heap.size() - 1, &heap);
-    return valueToRemove;
-  }
-
-  int insert(int value)
-  {
-    heap.push_back(value);
-    siftUp(heap.size() -1, &heap);
-  }
-  void swap(int i,  int j, vector<int>* heap)
-  {
-    int temp = heap->at(j);
-    heap->at(j) = heap->at(i);
-    heap->at(i) = temp;
-  }
+    int top()
+    {
+      return A.at(0); 
+    }
 };
+
+int main()
+{
+  PriorityQueue pq; 
+  pq.push(5);
+  pq.push(100);
+  pq.push(50);
+  pq.pop();
+  pq.pop();
+}
