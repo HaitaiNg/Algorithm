@@ -1,8 +1,4 @@
 def balancedBrackets(string):
-	# O(n) time | O(n) space
-	# n is the space of the string
-	# All operations are constant
-	# Using a stack.
 	openingBrackets = "{[("
     closingBrackets = "}])"
 	matchingBrackets = { ")" : "(", "]":"[", "}": "{"}
