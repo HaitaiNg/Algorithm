@@ -3,24 +3,23 @@
 #Worst O(n^2) time | O(1) space
 
 def bubbleSort(array):
-
-    if(len(array) == 1):
-        return array 
+    if len(array) == 0:
+        return array
     
-    isSorted = 0
-    for i in range(1, len(array), 1):
-        if( array[i] < array[i-1]):
-            temp = array[i-1]
-            array[i-1] = array[i]
-            array[i] = temp
+    isSorted = True 
+    for i in range(1, len(array)):
+        if(array[i-1] > array[i]):
+            tmp = array[i] 
+            array[i] = array[i-1] 
+            array[i-1] = tmp 
+            isSorted = False 
         else:
-            isSorted += 1 
+            pass 
 
-    if(isSorted == len(array) - 1 ):
-        print(array)
-    else:
-        bubbleSort(array)
-
+    if(isSorted == False):
+        bubbleSort(array) 
+    
+    print(array)
 
 arrayOne = [90,523,123,23,123,-23,2,55,0]
 bubbleSort(arrayOne)
