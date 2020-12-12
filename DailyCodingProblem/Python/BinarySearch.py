@@ -13,3 +13,7 @@ def binarySearchCall(array, target, left, right):
 
 def binarySearch(array, target):
 	return binarySearchCall(array, target, 0, len(array) - 1)
+
+
+
+
