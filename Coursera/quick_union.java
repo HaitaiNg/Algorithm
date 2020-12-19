@@ -19,4 +19,20 @@ public class QuickUnionUF{
         int j = root(q); 
         id[i] = j; 
     }
+
+    public void modifiedUnion(int p, int q){ //< major improvement over union do to size constraint
+        int i = root(p);
+        int j = root(q); 
+        if( i == j) return;
+        if(sz[i] < sz[j]) {
+            id[i] = j;
+             sz[j] = sz[i];
+        }
+        else{
+            id[j] = i; sz[i] = sz[j];
+        }
+    }
+
+
+
 }

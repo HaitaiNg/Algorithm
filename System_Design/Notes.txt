@@ -1,0 +1,156 @@
+System Design Interview Overview (Youtube: System Design Interview) 
+
+-TIP: Ask requirements clarification questions 
+System Design Interviews are applicable for scalability and integrating into the big picture
+
+Database Choices:
+SQL Database (MySql, PostgreSQL) 
+NoSQL Database (Cassandra, DynamoDb)
+Cache (Redis) 
+Stream Processing (Kafka + Spark)
+Cloud Native Stream Processing (Kinesis)
+Batch Processing (Hadoop MapReduce)
+
+Four Big Areas: 
+TIP: Users / Customers
+	-who will use the system? 
+	-how will the system be used? 
+TIP: Scale (Read and Write)
+	-how many read queries per second?
+	-how much data is queried per request? 
+	-can there be spikes in traffic? 
+TIP: Performance (speed)
+	-what is expected write-to-read data delay 
+	-what is expected p99 latency for read queries? (if response time must be small: minimal no account. Data must already be aggregated) 
+TIP: Cost 
+	-should the design minimize the cost of development?
+	-should the design minimize the cost of maintenance? 
+Goal is to define the functional requirements (system behavior) 
+Non-Functional requirements ( qualities : fast, secure) 
+
+Functional Requirements - API - What is this program doing? 
+-ex: System has to count video view events 
+	—Define API Calls 
+		-countViewEvent; countEvent; processEvent; processEvents 
+-ex: System has to return video views counts for a time period?
+	-GetViewCounts; getCount; getStats; 
+—> Function Names, Function parameters 
+
+Non-Functional Requirements - (big scale / high performance) : time to find trade offs 
+Scalable: thousands of requests per second 
+Highly performance : few tens of millisecond to return total view counts
+Highly Available 
+CAP (consistency, availability, persistence 
+
+
+Data storage options
+1.) -individual events (every click) (video id; timestamp….)
+	+fast writes 
+	+can slice and dice data however we need 
+	+can recalculate numbers if needed 
+	- slow reads 
+	-expensive 
+-aggregate data (e.g permute in real time) (video id; timestamp; count) 
+	+ fast reads 
+	+used for decision making 
+	- can only query the way the data was aggregated 
+	-requires data aggregation pipeline
+	-hard or impossible to fix errors 
+
+-TIP: data delay? if several hours (aggregate); if only a few minutes (individual events) 
+
+You can combine both systems (row events + individual events), then purge the old data after an allocated period of time. (Fast reads; calculate statistics; more features; but more expensive) 
+
+——————
+Where we store? 
+SQL and NoSQL can scale and perform well 
+How to scale writes? 
+How to scale reads?
+how to make both writes and reads fast?
+How to not lose data in case of hardware faults and network partitions?
+How to achieve strong consistency in case of an outagE?
+How to ensure data security?
+How to make it extensible for data model changes in the future?
+
+SQL (database) MySQL 
+Sharding / horizontal partitioning : storing a subset on one data base, and having another subset on another data base 
+NoSQL dabs
+Quorum  to send requests to the other neighboring nodes 
+Normalization is good for relational databases 
+	—> minimize data duplication as much as you can so do reduce the risk of incorrect data 
+
+NoSQL -> think of datas as queries, not as separate rows 
+There are 4 types of NoSQL databases : key-value, document, column, graph. Hbase (column data store) 
+
+*Processing Service 
+How to scale?
+How to achieve high throughput?
+How not to lose data when processing node crashes?
+What to do when database is unavailable or slow?
+
+Scalable = partitioning
+Replication = replication and check-poinint
+fast = in-memory vs disk space 
+
+Data aggregation basic?
+-Should we pre-aggregate data in the processing service? 
+
+Ingestion path components 
+Partitioner service client
+	-blocking vs non-blocking I/O 
+	-1 thread per connection 
+	-Buffer and batching 
+	-Time outs 
+
+Load Balancer 
+	-software vs hardware load balancing 
+	-networking protocols 
+	-load balancing algorithms 
+	-DNS 
+	-health checking
+	-high availability 
+
+Partitioner Service and Partitions 
+	-partition strategy 
+	-service discovery 
+	-replication 
+
+Partitioner Service and Partitions 
+
+Timeouts: time the client has to wait for a response from the server 
+Connection timeout / Run time time out 
+
+
+Technology stack
+
+Client-Side:
+net, netflix hysteria, polly
+
+laid balancing 
+net scaler, nginx, AWS Elastic load balancer
+
+Messaging systems 
+apache kafka 
+AWS kinesis 
+
+data processing 
+apache spark
+apache fink
+was kinesis data analysis 
+
+storage 
+apache cassandra 
+apace hbase (wide column) 
+apache hadoop
+AWS redshift 
+AWS s3 
+
+other:
+vitas -> database storage for mysql 
+redis 
+was SQS / RabbitMQ 
+
+To identify bottlenecks in the system; load testing; stress testing; 
+soak testing; 
+
+Lambda architecture 
