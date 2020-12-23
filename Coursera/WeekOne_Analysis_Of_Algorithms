@@ -1,0 +1,140 @@
+Principles 
+Experiments must be reproducible
+Hypotheses must be falsifiable 
+
+
+How to Time a program in Java? 
+public class StopWatch (part of stdlib.jar)
+    StopWatch(); // creates a new stop watch 
+    double elapsedTime() // time since creaton (in seconds) 
+
+public static void main(String[] args){
+    int[] a = In.readInts(args[0]); 
+    StopWatch stopwatch = new StopWatch(); 
+    System.out.println(ThreeSum.count(a)); 
+    double time = stopwatch.elapsedTime(); 
+}
+
+System independent effects : algorithm & input data 
+System dependent effects: 
+    -hardware: CPU, memory cache 
+    -software: compiler, interpreter, garbage collector 
+    -system: operating system, network, other apps. 
+
+total running time = sum of cost * frequency of all operations 
+    -need to analyzze program to determine set of operations 
+    -cost depends on machine, compiler 
+    -ferquency depends on algorithm, input data 
+
+Tilde Notation: Estimate running time (or memory) as a function of input size N
+Ignore lower order terms:
+    - when N is large, terms are negligble 
+    -when N is small, we do not care 
+
+Common Order Of Growth Classifications 
+Constant < logarithmic < linear < linearithmic < quadratic < cubic < expotential 
+(1, logN, N, NlogN, N^2, N^3, 2^n) 
+
+constant : statement (variables, add, subtract, etc.) 
+logarithmic: divide in half (binary search) 
+linear : loop : find the maximum 
+linearithmic: divide and conquer : merge sort 
+quadratic : double loop : check all pairs 
+cubic : triple loop : check all tripes 
+2^n : expotnential : check all subsets 
+
+How to optimize 3 sum?
+1.) Sort the N distinct numbers 
+2.) For each pair of numbers a[i] and a[j], binary search for -(a[i] + a[j]) 
+This run time will be O(n^2) 
+
+Tilde Notation: Looks at the leading term 
+Big Theta: Asymptotic growth rate 
+Big Oh: O(n^2) and smaller 
+Big Omega: O(n^2) and larger 
+
+Bit: 1 or 0 
+Byte: 8 bits 
+MegaByte (MB) : 1 million or 2^20 bytes 
+GigaByte (GB) : 1 billion or 2^30 bytes 
+64 bit machine: 8 byte pointers 
+    -can address more memory 
+    -pointers use more space 
+
+For Java 
+boolean 1 byte(s) 
+byte 1 byte(s) 
+char 2 byte(s) 
+int 4 byte(s) 
+float 4 byte(s) 
+long 8 byte(s) 
+double 8 byte(s) 
+char[] 2N+ 24 byte(s) 
+int[] 4N + 24 byte(s) 
+double[] 8N + 24 byte(s) 
+char[][ ~ 2MN 
+int[][] ~ 4 MN 
+double[][] ~ 8 MN 
+
+Example 
+Object Overhead: 16 bytes 
+Reference: 8 bytes 
+Padding: Each object uses multiple of 8 bytes 
+
+A DATE object uses 32 bytes of memory 
+
+//16 bytes overhead 
+public class Date{
+    private int day; //< 4 bytes 
+    private int month; //< 4 bytes 
+    private int year; //< 4 bytes
+    //< 4 bytes padding  
+}
+Total bytes: 16 + 4 + 4 + 4 + 4 = 32 bytes 
+
+
+A virgin String of length N uses 2N bytes of memory 
+// 16 bytes overhead 
+public class String{
+    private char[] value; //< 2N+24
+    //< 8 bytes (refernece to array) 
+    private int offset; //< 4 
+    private int count; //< 4 
+    private int hash //< 4 
+    //< 4 bytes padding 
+}
+Total bytes = 2N+24 + 4 + 4 + 4 + + 4 + 8 + 16 = 2N + 64 bytes 
+
+Average Memory Usage 
+primitive type:
+    integer : 4 byte(s)
+    double : 8 byte(s) 
+    object reference : 8 byte(s) 
+    array: 24 byte(s) + memory for each array entry 
+    object : 16 byte(s) + memory for each instance variable 
+        -+8 byte(s) if inner class (for pointer to enclosing class) 
+    padding: round up to multiple of 8 bytes 
+
+How much memory is this function?
+public class WeightedQuickUnionFindUF
+{
+    //< 16 bytes overhead 
+    private int[] id; //< 4N + 24 + 8 
+    private int[] sz; //< 4N + 24 + 8 
+    private int count; //< 4 
+    //< 4 bytes (padding) 
+
+    public WeightedQuickUnionFindUF(int N)
+    {
+        id = new int[N];
+        sz = new int[N]; 
+        for(int i = 0; i < N; i++) id[i] = i;
+        for(int i = 0; i < N; i++) sz[i] = 1; 
+    }
+}
+
+Total Bytes: 2*(4N + 24 + 8 ) + 16 + 4 + 4
+    8N + 48 + 16 + 16 + 8 
+    8N + 48 + 32 + 8 
+    8N + 48 + 40 
+    8N + 88 ~ 8N bytes  
