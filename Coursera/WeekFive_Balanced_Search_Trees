@@ -1,0 +1,49 @@
+2-3 Tree
+Allows 1 or 2 keys per node 
+2-node : one key, two children
+3-node : two keys, three children 
+
+Search / Insert / Delete 
+cLgN : cLgN : c LgN 
+
+Direct implementation is complicated because:
+-maintaining multiple node types is cumbersome 
+-need multiple compares to move down tree 
+-need to move back up the tree to split 4-nodes 
+-large number of cases for splitting 
+
+Red-black trees are derived from 2-3 Tree 
+A BST such that:
+-no node has two red links connected to it 
+-every path from root to null link has the same number of black links 
+-red links lean left 
+
+Search implementation for red-black trees is the same for elementary BST 
+
+public Val get(Key key)
+{
+    Node x = root;
+    while(x != null)
+    {
+        int cmp = key.compareTo(x.key); 
+        if(cmp < 0) x = x.left;
+        else if(cmp > 0) x = x.right; 
+        else return x.val; 
+    }
+    return null; 
+}
+
+Red - Black Trees are tricky but very powerful.
+Will need to conduct further research and review on this topic 
+Red black trees are widely used as system symbol tables:
+Java: java.util.TreeMap, java.util.TreeSet 
+C++ STL: map, multimap, multiset 
+Linux : completely fair schedule
+Emacs: conservative stack scanning 
+
+B-Tree: generalize 2-3 by allowing up to M - 1 key link pairs per node 
+-At least 2 key-link pairs at root 
+-At least M / 2 key-link pairs in other nodes 
+-External nodes contain client keys 
+-Internal nodes contain copies of keys to guide search 
+
