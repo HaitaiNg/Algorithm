@@ -1,0 +1,14 @@
+Mergesort:
+-divide array into two halves 
+-recursively sort each half 
+-merge two halves 
+
+Mergesort uses extra space proportional to N 
+Use Insertion Sort for small subarrays (< 7 items)
+Mergesort has too much overhead for tiny subarrays 
+
+A stable sort preserves the relative order of items with
+equal keys 
+
+Which sorts are stable?
+-Insertion sort and merge sort (not selection sort or shell sort) 

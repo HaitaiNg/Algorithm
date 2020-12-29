@@ -1,0 +1,66 @@
+Stack: LIFO
+1.) Linked-List Representation: maintain pointer to first node in linked List
+A stack with N items uses 40 N bytes 
+
+16 bytes object overhead 
+8 bytes (inner class extra overhead)
+8 bytes (reference to String) 
+8 bytes (reference to Node)
+---- Total: 40 bytes per stack node 
+
+Pros: every operation takes constant time in the worst case 
+Con: uses extra time and space to deal with the links 
+
+2.) Array implementation 
+
+Stack Considerations : overflow, underflow 
+If an array is full, how do we re-size it? Create a new array (2x the size)
+and copy over items 
+How to shrink an array? pop() / halve size of array s[] when array is 1/4 full 
+
+Run Time: 
+Construct (best) : 1  / (worst) 1 / (amortized) 1 
+Push (best) : 1 / (worst) N / (amortized) 1 
+Pop (best) : 1 / (worst) N / (amortized) 1 
+Size (best) : 1 / (worst) 1 / (amortized) 1 
+
+Re-sizing array implementation
+Pros: every operations takes amortized time, no wasted space
+
+Queue: FIFO 
+1.) Linked list approach. Maintain pointer to first and last 
+nodes in a linked list (insert / remove from opposite ends) 
+
+Why do we have interfaces? To hide the details of the 
+implementation. (Encapsulation)
+Client: program using operations defined in interface 
+Implementation: actual code implementating operations 
+Interface: description of data type, basic operations 
+
+2.) Array 
+
+Generics: Implementing data structures that can support multiple types
+
+example:
+
+StackOfObjects s = new StackOfObjects(); 
+Apple a = new Apple(); 
+Orange b = new Orange(); 
+s.push(a);
+s.push(b); 
+a = (Apple) (s.pop()); 
+
+What is an Iteratble? Has a method that returns an Iterator 
+public interface Iterator<Item>{
+    Iterator<Item> iterator; 
+}
+What is an Iterator? Has methods hasNext() and next() 
+public interface Iterator<Item>{
+    boolean hasNext(); 
+    Item next();
+    void remove(); 
+}
+
+
+Java - Bag API: adding items to a collectio and iterating through it (not order sensitive)
+
