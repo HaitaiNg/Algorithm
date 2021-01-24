@@ -1,5 +1,5 @@
-# Project Euler 1-10 
-###### Refresh Date: 07.11.20 
+# Project Euler 
+###### Refresh Date: 01.23.2021 
 ###### Author: Haitai Ng 
 
-This directory stores Java 8 and Python 3.6.5 submissions Project Euler 1-10 via HackerRank
+This directory stores my C++, Python, & Java submissions for Project Euler on HackerRank.
