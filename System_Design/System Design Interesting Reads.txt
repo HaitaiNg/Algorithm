@@ -1,8 +1,4 @@
-System Design Interesting Reads: 
-https://docs.google.com/document/d/1iKk6vJbWtI02AllnIEZTrKWQb4dT2QthJdRt05vq6Hw/edit
-
-Basics:
-01.26.21 - 01.27.21
+Basics 01.26.21 - 01.27.21
 System Design Cheatsheet · GitHub 
 How to Succeed in a System Design Interview
 Approach a System Design Interview
@@ -12,14 +8,12 @@ System Design, Chapter 4: Caching
 System Design, Chapter 5: Indexes in Databases
 System Design, Chapter 6: Proxies
 System Design, Chapter 7: Queues
-
-02.01-21 - 02.10.21
-Popular Datastores:
+Popular Datastores & Data Papers 02.01-21 - 02.10.21
 Choose the right data store - Azure Application Architecture Guide
 Redis vs Aerospike
 Elasticsearch vs MongoDB
 MongoDB vs CouchDB
-Mongo: How To Decide If MongoDB Is Right For You
+How To Decide If MongoDB Is Right For You
 The Google File System
 Dynamo: Amazon's Highly Available Key-value Store
 MapReduce: Simplified Data Processing on Large Clusters
@@ -27,9 +21,7 @@ TAO: Facebook's Distributed Data Store for the Social Graph
 Kafka: a Distributed Messaging System for Log Processing
 Bigtable: A Distributed Storage System for Structured Data
 Spark: Cluster Computing with Working Sets
-
-2.11.21 - 2.12.21 
-Redis
+Redis 02.11.21 - 02.12.21
 Redis Persistence – Redis
 Goodbye Cache: Redis as a Primary Database
 Transactions in Redis
@@ -37,8 +29,20 @@ Partitioning: how to split data among multiple Redis instances. – Redis
 Horizontal scaling in/out techniques for redis cluster
 Redis Cluster
 Key Problems with Redis Persistence
+Elasticsearch 02.15.21 
+Elasticsearch from the Top Down
+Uses of Elasticsearch, and Things to Learn
+Elasticsearch from the Bottom Up, Part 1
+Postgre SQL 02.20.21 
+Comparing Data Stores for PostgreSQL - MVCC vs InnoDB
+Postgres MVCC
+PostgreSQL 10: Partitions of partitions!
+Easy : Dead links (02.20.21)
+Design Chess
+Design Tic-Tac-Toe
+Design Elevator System
 
-Cassandra
+Cassandra (04.04.21) 
 Cassandra writes in depth. Surprises you can expect from a… | by Andrzej Ludwikowski
 Cassandra Data Modelling
 Why Cassandra writes faster than Traditional RDBMS?
@@ -46,19 +50,9 @@ When to use Cassandra and when to steer clear
 Log Structured Merge Trees
 How is data read? | Apache Cassandra 3.0
 
-Elasticsearch
-Elasticsearch from the Top Down
-Uses of Elasticsearch, and Things to Learn
-Elasticsearch from the Bottom Up, Part 1
-
-PostgreSql
-Comparing Data Stores for PostgreSQL - MVCC vs InnoDB
-Postgres MVCC
-PostgreSQL 10: Partitions of partitions!
-
 Interesting Blogs:
 All Company Blogs !!
-Building Reliable Reprocessing and Dead Letter Queues with Kafka
+2.28.20 Building Reliable Reprocessing and Dead Letter Queues with Kafka
 A Practical Introduction to the Internals of Kafka Storage
 How To Design A Scalable Rate Limiting Algorithm
 Data Compression for Large-Scale Streaming Experimentation | by Netflix Technology Blog
@@ -97,10 +91,6 @@ Three Tier Caching
 Consistent Hashing
 
 
-Actual Questions:
-Design Chess
-Design Tic-Tac-Toe
-Design Elevator System
 Design Uber
 Design Instagram
 Design Facebook Messenger
@@ -109,8 +99,6 @@ Design Dropbox / Google Drive
 Design News Feed System / Quora
 Design Price Surging Service
 Design AirBnb
-
-Hard
 Design YouTube / Netflix
 Design Web Crawler
 
